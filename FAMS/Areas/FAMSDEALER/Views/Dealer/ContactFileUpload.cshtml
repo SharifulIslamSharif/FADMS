@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "ContactFileUpload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 mb-0 pb-0" style="width:98%">
+    <div class="card-header border" style="background-color:#F7F7F7;margin-left: 6px;">
+        <h4 class="font-weight-bold;margin-left: -26px;">
+            যোগাযোগ সম্পর্কিত  এক্সেল ফাইল আপলোড করুন
+            <a class='btn btn-outline-info float-right mr-4 mb-0' style="" data-toggle='tooltip' title='Go Back' href="/FAMSDEALER/Dealer/DealerMenu?id=@ViewBag.dealerId"><i class="fas fa-backward"></i></a>
+        </h4>
+    </div>
+</div>
+
+<div class="col-12 p-4" style="width:98%">
+    <div class="card">
+        <div class="card-body">
+            <form action="/FAMSDEALER/Dealer/ContactFileUpload" method="post" class="row" enctype="multipart/form-data">
+                <input type="hidden" name="dealerId" value="@ViewBag.dealerId" />
+                <div class="col-8">
+                    <div class="form-group row">
+                        <label class="col-4"> যোগাযোগের এক্সেল ফাইল আপলোড করুন</label>
+                        <div class="col-6">
+                            <input class="form-control" type="file" name="file" value="" />
+                        </div>
+                        <div class="col-2">
+                            <input class="btn btn-info btn-sm" type="submit" name="name" value="আপলোড করুন" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    যোগাযোগের ফাইল ফরমেট ডাউনলোড করুন
+                    <a href="~/ExcelFileFormat/Dealer/Contact.xlsx" class="btn btn-success ml-2" download> <i class="fa fa-download"></i></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,17 @@
+﻿{
+
+  "type": "ভ্রমণের প্রকার",
+  "purpose": "ভ্রমণের উদ্দেশ্য",
+  "location": "ভ্রমণের অবস্থান",
+  "presentDivision": "বর্তমান বিভাগ",
+  "country": "দেশ",
+  "sponsoringAgency": "স্পনসর সংস্থা",
+  "startDate": "যাত্রা শুরু",
+  "endDate": "যাত্রা শেষ",
+  "goNumber": "যাত্রা নম্বর",
+  "goDate": "ভ্রমণের তারিখ",
+  "file": "ফাইল আপলোড",
+  "titleOfFile": "ফাইলের শিরোনাম",
+  "remarks": "মন্তব্য",
+  "action": "প্রক্রিয়া"
+}

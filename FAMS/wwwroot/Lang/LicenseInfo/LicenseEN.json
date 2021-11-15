@@ -1,0 +1,18 @@
+{
+  "title": "License Information",
+  "licenseNumber": "License Number",
+  "licenseRenew": "License Renew",
+  "place": "Place of Issue",
+  "dateOfIssue": "Date Of Issue",
+  "dateOfExpair": "Date Of Expairy",
+  "licenseRenewYear": "license Renew Year",
+  "SourceName": "Source Name",
+  "LicenseType": "License Type",
+  "armType": "Arm Type",
+
+  "reason": "Reason",
+  "source": "Source",
+  "licenseTypeId": "License Type Id",
+  "licenseGunType": "License Gun Type"
+}
+

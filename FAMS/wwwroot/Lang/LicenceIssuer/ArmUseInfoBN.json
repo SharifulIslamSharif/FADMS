@@ -1,0 +1,13 @@
+﻿{
+
+  "reason": "ব্যবহারের কারন",
+  "gdNo": "মামলা/জি ডি নাম্বার",
+  "documentSubject": "ফাইলের বিষয়",
+  "documentDescription": "ফাইল",
+  "address": "ঘটনা স্থল",
+  "thana": "থানার নাম",
+  "district": "জেলা",
+  "bulletQuantity": "ফায়ারকৃত গুলির সংখ্যা",
+  "division": "বিভাগ",
+  "Fresult": "মামলা/জি ডি এর ফলাফল/মন্তব্য"
+}

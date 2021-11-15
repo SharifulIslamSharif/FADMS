@@ -1,0 +1,14 @@
+﻿{
+  "title": "শিক্ষাগত যোগ্যতা ",
+  "levelOfEducation": "শিক্ষা স্তর",
+  "degree": "সার্টিফিকেট / ডিগ্রী",
+  "instritution": "প্রতিষ্ঠান",
+  "result": "ফলাফল",
+  "resultSpecification": "মার্কস/সিজিপিএ/জিপিএ",
+  "grade": "গ্রেড",
+  "passingYear": "পাশের সাল",
+  "action": "প্রক্রিয়া",
+  "subject": "বিষয়",
+  "majorGroup": "মেজর গ্রুপ",
+  "organization": "বিশ্ববিদ্যালয়/বোর্ড"
+}

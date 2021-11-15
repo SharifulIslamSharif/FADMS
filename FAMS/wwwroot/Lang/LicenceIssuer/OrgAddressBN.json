@@ -1,0 +1,19 @@
+﻿{
+  "title": "ঠিকানা",
+  "titlelist": "ঠিকানার তালিকা",
+  "Division": "বিভাগ",
+  "District": "জেলা",
+  "Upazila": "উপজেলা",
+  "Union": "ইউনিয়ন",
+  "PostOffice": "পোস্ট অফিস",
+  "PostCode": "পোস্টকোড",
+  "BlockSector": "ব্লক/সেক্টর",
+  "HouseVillage": "বাড়ী নং",
+  "area": "মহল্লা/গ্রাম",
+  "permanent": "স্থায়ী ঠিকানা",
+  "present": "বর্তমান ঠিকানা",
+  "name": "নাম",
+  "type": "স্থায়ী/বর্তমান ঠিকানা",
+  "organization": "প্রতিষ্ঠান ঠিকানা"
+
+}

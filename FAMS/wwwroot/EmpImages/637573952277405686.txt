@@ -1,0 +1,77 @@
+**Aloha--99 -- dotnet alohasms.dll --server.urls "http://localhost:5000"
+AUST CLUB--85 - dotnet CLUB.dll --server.urls "http://localhost:5500"
+BECL CLUB--92 - dotnet CLUB.dll --server.urls "http://localhost:5555"
+DMC ERP--1010 - dotnet OPUSERP.dll --server.urls "http://localhost:6008"
+**Json Core SME--89 - dotnet JSON.dll --server.urls "http://localhost:5007"
+Json Mobile Link--91 - dotnet JSON.dll --server.urls "http://localhost:5009"
+Json VAT--86 - dotnet JSON.dll --server.urls "http://localhost:6010"
+
+
+
+
+**Brac ERP 90- dotnet OPUSERP.dll --server.urls "http://localhost:5080"
+**BNB ERP--1020 - dotnet OPUSERP.dll --server.urls "http://localhost:5090"
+OPUS-ERP--65-dotnet OPUSERP.dll --server.urls "http://localhost:5091"
+Ezon 60- dotnet JSON.dll --server.urls "http://localhost:50901"
+
+
+BIWTA -- 1026 --dotnet SHIP_MANAGEMENT.dll --server.urls "http://localhost:25484"
+
+Json VAT--86 - dotnet JSON.dll --server.urls "http://localhost:6010"
+**priojon--71--dotnet OPUSERP.dll --server.urls "http://localhost:5093"
+
+**Meeting--46--dotnet OPUSERP.dll --server.urls "http://localhost:3345"
+**shanker--75---dotnet OPUSERP.dll --server.urls "http://localhost:5092"
+
+Demo link--73 - dotnet JSON.dll --server.urls "http://localhost:5095"
+
+**inventory--72 - dotnet Inventory.dll --server.urls "http://localhost:5094"
+lost & Fond-- 1021- dotnet alohasms.dll --server.urls "http://localhost:5500"
+BNB ERP-test--1023 - dotnet OPUSERP.dll --server.urls "http://localhost:5096"
+Emerging ERP-test--1024 - dotnet OPUSERP.dll --server.urls "http://localhost:5097"
+BRAC ERP-test--1025 - dotnet OPUSERP.dll --server.urls "http://localhost:5098"
+Smart Caffe-test--66 - dotnet OPUSERP.dll --server.urls "http://localhost:5083"
+
+Lost & Found ChatBot--122 - dotnet OpusBot.dll --server.urls "http://localhost:23999"
+
+**Police ChatBot--120 - dotnet OpusBot.dll --server.urls "http://localhost:23997"
+
+CDMS ChatBot--121 - dotnet OpusBot.dll --server.urls "http://localhost:23998"
+
+OPUS-ERP--93-dotnet OPUSERP.dll --server.urls "http://localhost:5099"
+
+BIWTA KIOSK--82-dotnet OPUSERP.dll --server.urls "http://localhost:5082"
+
+Ezone--60-dotnet OPUSERP.dll --server.urls "http://localhost:50901"
+
+Bazar 7 days--61-dotnet JSON.dll --server.urls "http://localhost:50900"
+
+Winshild 40 -dotnet Windshield.dll --server.urls "http://localhost:5070"
+
+Vendor 41 -dotnet OPUSERP.dll --server.urls "http://localhost:5075"
+
+POLWEL 45 -dotnet OPUSERP.dll --server.urls "http://localhost:5077"
+
+LostFound 1028 -dotnet LostAndFound.dll --server.urls "http://localhost:60995"
+
+Nursing 1022 -dotnet OPUSERP.dll --server.urls "http://localhost:5078"
+
+Essence 1027 -dotnet OPUSERP.dll --server.urls "http://localhost:5079"
+
+PressClub 1032 -dotnet OPUSERP.dll --server.urls "http://localhost:5097"
+
+splenor 1035 -dotnet OPUSERP.dll --server.urls "http://localhost:5098"
+
+Lablight 46---dotnet OPUSERP.dll --server.urls "http://localhost:6122"
+
+Carlcare VAT--1039 - dotnet JSON.dll --server.urls "http://localhost:6120"
+
+Essence VAT--- Json VAT--86 - dotnet JSON.dll --server.urls "http://localhost:61111"
+
+
+
+PoliceStore 1038- dotnet OPUSERP.dll --server.urls "http://localhost:50903"
+
+Conference Room  1040 -dotnet OPUSERP.dll --server.urls "http://localhost:3345"
+
+Shahilivs 1033

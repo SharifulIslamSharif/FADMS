@@ -1,0 +1,16 @@
+{
+  "title": "Address",
+  "Division": "Division",
+  "District": "District",
+  "Upazila": "Upazila",
+  "Union": "Union",
+  "PostOffice": "Post Office",
+  "PostCode": "Post Code",
+  "BlockSector": "Block Sector",
+  "HouseVillage": "House Village",
+  "area": "Area",
+  "permanent": "Permanent Address",
+  "present": "Present Address",
+  "organization": "Organization Address"
+
+}

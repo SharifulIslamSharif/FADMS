@@ -1,0 +1,1484 @@
+﻿@model FADMS.Areas.FAMSDEALER.Models.PurchaseViewModel
+@{
+    ViewData["Title"] = "DealerPurchase";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int masterId = Convert.ToInt32(ViewBag.masterId);
+}
+
+
+<style>
+    input[readonly] {
+        background-color: transparent;
+    }
+</style>
+
+<div class="col-12" style="width:97%">
+    
+    <div class="card p-0 m-0">
+        <div class="row">
+            <div class="col-sm-10">
+                <h5 class="card-title pull-left col-md-12 p-3" style="color: black;margin-left:0px;padding-left:0px;">ক্রয় চালান </h5>
+            </div>
+            <div class="col-md-2 pull-right pt-3" style="padding-top:2px">
+                @*<button type="button" class="btn btn-default btn-sm pull-right" style="width:100px;background-color:#024972;color:white;float:right;" onclick="location.href='@Url.Action("PurchaseImportList", "PurchaseI")'">Back To List</button>*@
+                <a class="btn btn-default btn-sm pull-right btn-info" href="/FAMSDEALER/Purchase/PurchaseImportList">তালিকায় ফিরে যান </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 mt-1">
+            <form id="frmPurchaseOrder" aria- data-parsley-validate="parsley" autocomplete="off">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="card p-4">
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label for="purchaseNo" class="col-sm-4 col-form-label text-left">ক্রয় নং </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control input-group-sm" name="poNo" id="poNo" readonly value="@ViewBag.PurchaseNo" />
+                                        <input type="hidden" id="purchaseOrderMasterId" name="purchaseOrderMasterId" value="0" />
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="billOfEntryNo" class="col-sm-4 col-form-label text-left">বিল অফ এন্ট্রি নং </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control input-group-sm" name="billOfEntryNo" id="billOfEntryNo" value="" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="supplierName" class="col-sm-4 col-form-label text-left">সরবরাহকারীর নাম <span style="float:right;color:red;">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control input-group-sm" name="supplierName" id="supplierName" />
+                                        <input type="hidden" id="supplierId" name="supplierId" value="" />
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="remarks" class="col-sm-4 col-form-label text-left">কাস্টম হাউস / স্টেশন</label>
+                                    <div class="col-sm-8">
+
+                                        <input type="text" class="form-control input-group-sm" id="remarks" name="remarks" />
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group row">
+                                    <label for="countryId" class="col-sm-4 col-form-label text-left">কান্ট্রি অফ অরিজিন<span style="float:right;color:red;" class="redStar">*</span></label>
+                                    <div class="col-sm-8">
+                                        <select type="text" data-parsley-required="true" class="form-control" name="countryId" id="countryId">
+                                            @foreach (var item in Model.countries)
+                                            {
+                                                <option value="@item.Id">@item.countryName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                @*<div class="form-group row">
+                                        <label for="binNo" class="col-sm-4 col-form-label">Dealer</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control input-group-sm" id="dealerId" name="dealerId">
+                                                <option value="">Select</option>
+                                                @foreach (var item in Model.dealers)
+                                                {
+                                                    <option value="@item.Id">@item.dealerName</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>*@
+
+                                <div class="form-group row">
+                                    <label for="purchaseDate" class="col-sm-4 col-form-label text-left">ক্রয়ের তারিখ</label>
+                                    <div class="col-sm-8 input-group">
+                                        <input name="poDate" id="poDate" class="form-control input-group-sm" readonly />
+                                        <div class="input-group-prepend">
+                                            <label for="poDate" class="fas fa-calendar-alt form-control input-group-sm input-group-text bg-white"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<div class="form-group row">
+                                        <label for="purchaseVatTypeId" class="col-sm-4 col-form-label">VAT Type<span style="float:right;color:red;" class="redStar">*</span></label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" name="purchaseVatTypeId" id="purchaseVatTypeId">
+                                                <option value="">Select Type</option>
+                                                @foreach (var data in Model.purchaseVatTypes)
+                                                {
+                                                    <option value="@data.Id">@data.name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>*@
+
+                                <div class="form-group row">
+                                    <label for="supplierName" class="col-sm-4 col-form-label text-left">বি.আই.এন</label> 
+                                    <div class="col-sm-8">
+
+                                        <input type="text" class="form-control input-group-sm" id="binNo" name="binNo" readonly />
+                                        <input type="hidden" class="form-control input-group-sm" id="organizationTypeId" name="organizationTypeId" readonly />
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="purchaseDate" class="col-sm-4 col-form-label text-left">সরবরাহকারীর ঠিকানা</label>
+                                    <div class="col-sm-8 input-group">
+                                        <textarea name="address" id="address" class="form-control input-group-sm" readonly></textarea>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="lcNo" class="col-sm-4 col-form-label text-left">এল.ছি নং<span style="float:right;color:red;" class="redStar">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" data-parsley-required="true" class="form-control input-group-sm" name="lcNo" id="lcNo" value="" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="purchaseDate" class="col-sm-4 col-form-label text-left">এল.ছি তারিখ </label>
+                                    <div class="col-sm-8 input-group">
+                                        <input name="lcDate" id="lcDate" class="form-control input-group-sm" readonly />
+                                        <div class="input-group-prepend">
+                                            <label for="poDate" class="fas fa-calendar-alt form-control input-group-sm input-group-text bg-white"></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div style="height:5px;"></div>
+                <div class="card p-4">
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label for="itemName" class="col-sm-4 col-form-label">আগ্নেয়াস্ত্রের নাম <span style="float:right;color:red;">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" data-parsley-required="true" data-parsley-trigger="keyup" class="form-control" name="itemName" id="itemName">
+                                        <input type="hidden" name="itemsId" id="itemsId" value="0" />
+                                        <input type="hidden" name="VAT" id="VAT" value="0" />
+                                        <input type="hidden" id="itemSpecificationId" name="itemSpecification" />
+                                       
+                                        <input type="hidden" name="AIT" id="AIT" value="0" />
+                                       
+                                    </div>
+                                </div>
+
+                                @*<div class="form-group row">
+                    <label for="txtSD" class="col-sm-4 col-form-label">VAT Category</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="txtVatCat" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="txtSD" class="col-sm-4 col-form-label">VAT Schedule</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="txtVatSchedule" readonly>
+                    </div>
+                </div>*@
+
+                                <div class="form-group row">
+                                    <label for="quantity" class="col-sm-4 col-form-label">পরিমান<span style="float:right;color:red;">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="number" class="form-control" data-parsley-trigger="keyup" name="Qty" id="Qty" min="0">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="assessableValue" class="col-sm-4 col-form-label">মূল্যায়নযোগ্য দাম</label>
+                                    <div class="col-sm-8">
+                                        <input data-parsley-type='number' class="form-control" data-parsley-trigger="keyup" name="assessableValue" id="assessableValue" min="0">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="price" class="col-sm-4 col-form-label">দাম <span style="float:right;color:red;">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="number" class="form-control" name="price" id="price" min="0" readonly>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                @*<div class="form-group row no">
+                    <label for="itemSpecification" class="col-sm-4  col-form-label">Item Specification<span style="float:right;color:red;">*</span></label>
+                    <div class="col-sm-6">
+                        
+                        <input style="margin-left: 5px" type="text" data-parsley-required="true" data-parsley-trigger="keyup" class="form-control" name="itemSpecificationName" id="itemSpecificationName">
+                    </div>
+
+                    <div class="col-sm-2">
+                        <a href="#" class="btn btn-info" data-toggle="modal" data-target="#addItemSpecificationModal" style="font-size:12px;">
+                            <span data-toggle="tooltip" title='Add Specification'>
+                                <i class="fas fa-plus-square"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>*@
+
+                                @*<div class="form-group row">
+                    <label for="txtSD" class="col-sm-4 col-form-label">Hs Code</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="hsCode" name="hsCode" readonly>
+                    </div>
+                </div>*@
+                                <div class="form-group row">
+                                    <label for="Unit" class="col-sm-4 col-form-label">ইউনিট</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="unit" id="unit" readonly>
+                                    </div>
+                                </div>
+
+                                @*<div class="form-group row">
+                    <label for="txtSD" class="col-sm-4 col-form-label">VAT Table</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="txtVatTable" readonly>
+                    </div>
+                </div>*@
+                                <div class="form-group row">
+                                    <label for="txtSD" class="col-sm-2 col-form-label"></label>
+                                    <label for="txtSD" class="col-sm-2 col-form-label">ভ্যাট(%)</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="txtVatpercent">
+                                    </div>
+                                    <label for="txtSD" class="col-sm-2 col-form-label">ট্যাক্স(%)</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="txtTaxpercent">
+                                    </div>
+                                </div>
+                                @*<div class="form-group row">
+                    <label for="txtSD" class="col-sm-2 col-form-label"></label>
+                    <label for="txtSD" class="col-sm-2 col-form-label">SD(%)</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtSDpercent">
+                    </div>
+                    <label for="txtSD" class="col-sm-2 col-form-label">CD(%)</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtCDpercent">
+                    </div>
+                </div>*@
+                                @*<div class="form-group row">
+                    <label for="txtSD" class="col-sm-2 col-form-label"></label>
+                    <label for="txtSD" class="col-sm-2 col-form-label">AT(%)</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtATpercent">
+                    </div>
+                    <label for="txtSD" class="col-sm-2 col-form-label">RD(%)</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="txtRDpercent">
+                    </div>
+                </div>*@
+
+                            </div>
+                        </div>
+                        @*<div class="row" style="margin-top:10px">
+                                <div class="col-sm-12 p-0">
+                                    <div class="form-group row">
+                                        <label for="itemSpecification" class="col-sm-2  col-form-label">Item Specification<span style="float:right;color:red;">*</span></label>
+                                        <div class="col-sm-4">
+                                            <input type="hidden" id="itemSpecificationId" name="itemSpecificationId" />
+                                            <input style="margin-left: 5px" type="text" data-parsley-required="true" data-parsley-trigger="keyup" class="form-control" name="itemSpecificationName" id="itemSpecificationName">
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                            <a href="#" class="btn btn-info" data-toggle="modal" data-target="#addItemSpecificationModal" style="font-size:12px;">
+                                                <span data-toggle="tooltip" title='Add Specification'>
+                                                    <i class="fas fa-plus-square"></i>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                        <div class="row">
+                            <div class="col-sm-6 p-0">
+
+                            </div>
+
+                            <div class="col-sm-6">
+
+
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <button type="button" onclick="AdditemDetails()" value="Add" title="Add" class="btn btn-info" style="float:right;"><i class="fas fa-plus fa-w-1"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+
+                            <input type="hidden" id="detailsId" name="detailsId" value="0" />
+                            <input type="hidden" id="IsEdit" name="IsEdit" value="0" />
+                            <div class="col-12 m-0 p-0">
+                                <table class="table table-bordered table-responsive table-striped table-sm" style="width:100%" id="tblitemDetails" data-parsley-required="true">
+                                    <thead>
+                                        <tr style="background-color:#E9ECEF">
+                                            <th style="width:3%">আগ্নেয়াস্ত্র </th>
+                                            @*<th>Item Specification</th>*@
+                                            <th>ইউনিট</th>
+                                            <th>পরিমান</th>
+                                            <th>দাম </th>
+
+                                            @*<th>CD</th>
+                            <th>RD</th>
+                            <th>SD</th>*@
+                                            <th>ভ্যাট</th>
+                                            <th>ট্যাক্স</th>
+                                            @*<th>AT</th>*@
+                                            <th>সর্বমোট </th>
+                                            <th>সম্পাদনা করুন  </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-8">&nbsp;</div>
+                            <label for="grossTotal" class="col-sm-2 col-form-label" style="text-align:right;"> মোট(Gross) </label>
+                            <div class="col-sm-2" style="padding-right: 0px;">
+                                <input type="text" class="form-control" name="totalAmount" id="totalAmount" style="text-align:right;" readonly>
+                            </div>
+                        </div>
+
+
+                        @*<div class="form-group row">
+                                <div class="col-sm-8">&nbsp;</div>
+                                <label for="cdPercent" class="col-sm-2 col-form-label" style="text-align:right;">CD</label>
+                                <div class="col-sm-2" style="padding-right: 0px;">
+                                    <input type="number" class="form-control" name="cdAmount" id="cdPercent" style="text-align:right;padding-right: 0px;" min="0" readonly>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-8">&nbsp;</div>
+                                <label for="rdPercent" class="col-sm-2 col-form-label" style="text-align:right;">RD</label>
+                                <div class="col-sm-2" style="padding-right: 0px;">
+                                    <input type="number" class="form-control" name="rdAmount" id="rdPercent" style="text-align:right;padding-right: 0px;" min="0" readonly>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-8">&nbsp;</div>
+                                <label for="sdPercent" class="col-sm-2 col-form-label" style="text-align:right;">SD</label>
+                                <div class="col-sm-2" style="padding-right: 0px;">
+                                    <input type="number" class="form-control" name="sdAmount" id="sdPercent" style="text-align:right;padding-right: 0px;" min="0" readonly>
+
+                                </div>
+                            </div>*@
+
+
+                        <div class="form-group row">
+                            <div class="col-sm-8">&nbsp;</div>
+                            <label for="grossVAT" class="col-sm-2 col-form-label" style="text-align:right;">ভ্যাট</label>
+                            <div class="col-sm-2" style="padding-right: 0px;">
+                                <input type="number" class="form-control" name="vatAmount" id="vatPercent" style="text-align:right;padding-right: 0px;" min="0" readonly>
+                                @*<input type="hidden" name="vatAmount" id="vatAmount">*@
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-8">&nbsp;</div>
+                            <label for="grossDiscount" class="col-sm-2 col-form-label" style="text-align:right;">ট্যাক্স</label>
+                            <div class="col-sm-2" style="padding-right: 0px;">
+                                <input type="number" class="form-control" name="taxAmount" id="taxPercent" style="text-align:right;padding-right: 0px;" min="0" readonly>
+                                @*<input type="hidden" name="taxAmount" id="taxAmount">*@
+                            </div>
+                        </div>
+                        @*<div class="form-group row">
+                            <div class="col-sm-8">&nbsp;</div>
+                            <label for="sdPercent" class="col-sm-2 col-form-label" style="text-align:right;">AT</label>
+                            <div class="col-sm-2" style="padding-right: 0px;">
+                                <input type="number" class="form-control" name="atAmount" id="atPercent" style="text-align:right;padding-right: 0px;" min="0" readonly>
+                                
+                            </div>
+                        </div>*@
+
+                        <div class="form-group row">
+                            <div class="col-sm-8">&nbsp;</div>
+                            <label for="netTotal" class="col-sm-2 col-form-label" style="text-align:right;">মোট(Net) </label>
+                            <div class="col-sm-2" style="padding-right: 0px;">
+                                <input type="text" class="form-control" name="netTotal" id="netTotal" style="text-align:right;" readonly>
+                            </div>
+                        </div>
+
+                        @*<div class="form-group row">
+            <div class="col-sm-7">&nbsp;</div>
+            <label for="vds" class="col-sm-2 col-form-label" style="text-align:right;">VDS</label>
+            <div class="col-sm-2" style="padding-right: 0px;">
+                <input type="number" class="form-control" name="vds" id="vds" style="text-align:right;" min="0">
+            </div>
+            <div class="col-sm-1">&nbsp;</div>
+        </div>*@
+
+                    </div>
+
+                    <div class="mb-4 pb-4">
+                        <input type="button" onclick="RefreshAll()" id="btnRefesh" value="রিফ্রেশ করুন " class="btn btn-danger btn-sm float-right" style="width:90px;" />&nbsp;&nbsp;
+                        <input type="button" id="btnSave" value="জমা দিন " class="btn btn-info btn-sm float-right mr-2" style="width:90px;" />
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+    
+</div>
+
+@section Scripts{
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="~/SweetAlert/sweetalert2.common.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" />
+
+
+    <script type="text/javascript">
+
+        function getPurchaseDate(pdate) {
+            var formattedDate = new Date(pdate);
+            var d = formattedDate.getDate();
+            var m = formattedDate.getMonth();
+            //m += 1;  // JavaScript months are 0-11
+            var y = formattedDate.getFullYear();
+
+            var monthNames = [
+                "Jan", "Feb", "Mar",
+                "Apr", "May", "Jun", "Jul",
+                "Aug", "Sep", "Oct",
+                "Nov", "Dec"
+            ];
+
+            var fullDate = d + "-" + monthNames[m] + "-" + y;
+            return fullDate;
+        }
+
+        function getCurrentDate() {
+            $("#poDate").datepicker({ dateFormat: "dd-M-yy", showAnim: "scale", changeMonth: true, changeYear: true, yearRange: "2010:2030" }).datepicker("setDate", new Date());
+        }
+
+        function orgCountry(response) {
+            var options = '<option value="">Select</option>';
+            $.each(response, function (i, item) {
+                options += '<option value="' + item.Id + '">' + item.countryName + '</option>';
+            });
+            $('#countryId').empty();
+            $('#countryId').append(options);
+        }
+
+        $(document).ready(function () {
+
+            var currentDate = new Date();
+            $("#opDate").datepicker({ dateFormat: "dd-M-yy", showAnim: "scale", changeMonth: true, changeYear: true, yearRange: "2010:2030" }).datepicker("setDate", currentDate);
+            $("#lcDate").datepicker({ dateFormat: "dd-M-yy", showAnim: "scale", changeMonth: true, changeYear: true, yearRange: "2010:2030" }).datepicker("setDate", currentDate);
+
+            //$("#opDate").datepicker("setDate", currentDate);
+            //$("#lcDate").datepicker("setDate", currentDate);
+            //Common.Ajax('GET', '/global/api/countries', [], 'json', orgCountry);
+
+            $("#lcDate").datepicker({ dateFormat: "dd-M-yy", showAnim: "scale", changeMonth: true, changeYear: true, yearRange: "2010:2030" }).datepicker("setDate", new Date());
+            $("#poDate").datepicker({ dateFormat: "dd-M-yy", showAnim: "scale", changeMonth: true, changeYear: true, yearRange: "2010:2030" }).datepicker("setDate", new Date());
+            $("#paymentDate").datepicker({ dateFormat: "dd-M-yy", showAnim: "scale", changeMonth: true, changeYear: true, yearRange: "2010:2030" }).datepicker("setDate", new Date());
+            $("#poDate").change(function () {
+              //getPoNo();
+            });
+            Common.Ajax('GET', '/global/api/GetAllItemForPurchase', [], 'json', ajaxGetAllItem);
+            $("#taxPercent").keyup(function () {
+               //CalculateVatTax();
+            });
+            $("#vatPercent").keyup(function () {
+              //CalculateVatTax();
+            });
+            $('#Qty').keyup(function () {
+                checkvalidQty();
+                priceCalculation();
+            })
+            $('#price').keyup(function () {
+                checkvalidRate();
+            })
+            $('#taxPercent').keyup(function () {
+                checkvalidVatTax();
+            })
+            $('#vatPercent').keyup(function () {
+                checkvalidVatTax();
+            })
+
+             if (@masterId>0) {
+                 Common.Ajax('GET', '/FAMSDEALER/Purchase/GetPurchaseOrderMasterById/?id=' + @ViewBag.masterId, [], 'json', ajaxGetPurchaseOrderMasterById);
+                 Common.Ajax('GET', '/FAMSDEALER/Purchase/GetPurchaseOrderDetailByPOId/?id=' + @ViewBag.masterId, [], 'json', ajaxGetPurchaseOrderDetailByPOId);
+            }
+
+            $("#btnSave").click(function (e) {
+                let rowCount = $("#tblitemDetails tbody>tr").length;
+                if ($("#supplierName").val() == "") {
+                    alert("Please Enter Supplier Name.!!!");
+                    return false;
+                }
+                if ($("#supplierId").val() == "0") {
+                    $("#supplierName").val('');
+                    alert("Please Enter valid Supplier Name.!!!");
+                    return false;
+                }
+
+                if ($("#lcNo").val() == "") {
+                    alert("Please Select lc No.!!!");
+                    return false;
+                }
+
+                if ($("#lcDate").val() == "") {
+                    alert("Please Select lc Date.!!!");
+                    return false;
+                }
+                if ($("#countryId").val() == "") {
+                    alert("Please Select Country!!!");
+                    return false;
+                }
+
+                if ($("#purchaseVatTypeId").val() == "") {
+                    alert("Please Select Vat Type.!!!");
+                    return false;
+                }
+
+                if (rowCount<1) {
+                    alert("Please Add Item from Purchase Details!!!");
+                    return false;
+                }
+                e.preventDefault();
+
+                var form = $("#frmPurchaseOrder");
+                $.ajax({
+                    url:'/FAMSDEALER/Purchase/DealerPurchase',
+                    data: form.serialize(),
+                    type: 'POST',
+                    success: function (records) {
+                        console.log(records);
+                        if (records =="stock") {
+                            swal({
+                                title: '', text: 'Item already Stock In!', type: 'success', showCancelButton: false, confirmButtonColor: '#3085d6', confirmButtonText: 'Ok!',
+                            }).then(function () {
+                                window.location.href = "/FAMSDEALER/Purchase/PurchaseImportList";
+                            });
+                        }
+                        else {
+                            swal({
+                                title: '', text: 'Save Successfully!', type: 'success', showCancelButton: false, confirmButtonColor: '#3085d6', confirmButtonText: 'Ok!',
+                            }).then(function () {
+                                window.location.href = "/FAMSDEALER/Purchase/PurchaseDetail?id=" + records;
+                            });
+                        }
+                    }
+                });
+            });
+
+            $(".numeric").keydown(function (e) {
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    return;
+                }
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    e.preventDefault();
+                }
+            });
+
+
+            $('#assessableValue').keyup(function () {
+                priceCalculation();
+            })
+            Common.Ajax('GET', '/FAMSDEALER/Supplier/GetGetSupplierForPurchaseByRoleId', [], 'json', ajaxAllSupplier);
+        });
+
+        function ajaxAllSupplier(response) {
+            var supplierList = [];
+            $.each(response, function (id, option) {
+                var obj = new Object();
+                obj.binNumber = option.binNumber;
+                obj.registeredAddress = option.registeredAddress;
+                obj.label = option.supplierName;
+                obj.value = option.supplierName;
+                obj.supId = option.Id;
+                supplierList.push(obj);
+            });
+
+            $('#supplierName').autocomplete({
+                source: supplierList,
+                select: function (event, ui) {
+                    console.log(ui);
+                    $("#supplierId").val(ui.item.supId);
+                    $("#address").val(ui.item.registeredAddress);
+                    $("#supplierName").val(ui.item.label);
+                    $("#binNo").val(ui.item.binNumber);
+                    // $("#organizationTypeId").val(ui.item.organizationTypeId);
+                    // Common.Ajax('GET', '/global/api/supplier/GetAddressListByOrganizationId/' + ui.item.orgId, [], 'json', ajaxAddress);
+                }
+            });
+        }
+
+
+        function priceCalculation() {
+            var assessableValue = parseFloat($('#assessableValue').val());
+            var qty = parseInt($('#Qty').val());
+            if (assessableValue != null && qty != null) {
+                var price = (assessableValue / qty);
+                $('#price').val(price.toFixed(6));
+            }
+        }
+        function addCommas(x) {
+            var parts = x.toString().split(".");
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return parts.join(".");
+        }
+        function ajaxGetAllItem(response) {
+            var GetInStockItemList = [];
+            $.each(response, function (id, option) {
+                console.log(option);
+                var obj = new Object();
+                obj.key = option.Id;
+                obj.value = option.specificationName;
+                //obj.vat = option.itemHsCode.VAT;
+                //obj.ait = option.itemHsCode.AIT;
+                //obj.cd = option.itemHsCode.CD;
+                //obj.sd = option.itemHsCode.SD;
+                //obj.at = option.itemHsCode.AT;
+                //obj.rd = option.itemHsCode.rd;
+                //obj.unitName = option.unit.unitName;
+                //obj.vat = option.itemHsCode.VAT ? option.itemHsCode.VAT : 0.00;
+                //obj.ait = option.itemHsCode.AIT ? option.itemHsCode.AIT : 0.00;
+                //obj.hsCode = option.itemHsCode.hsCode;
+                GetInStockItemList[GetInStockItemList.length] = obj;
+            });
+            $('#itemName').autocomplete({
+                source: GetInStockItemList,
+                select: function (event, ui) {
+                    $("#itemSpecificationId").val(ui.item.key);
+                    $("#itemName").val(ui.item.value);
+                    //$("#itemIdspec").val(ui.item.key);
+                    //$("#itemNamespec").val(ui.item.value);
+                    //$("#unit").val(ui.item.unitName);
+                    //$("#itemSpecificationId").val('');
+                    //$("#itemSpecificationName").val('');
+                    //$("#VAT").val(ui.item.vat);
+                    //$("#AIT").val(ui.item.ait);
+                    //$("#cd").val(ui.item.cd);
+                    //$("#sd").val(ui.item.sd);
+                    //$("#AT").val(ui.item.at);
+                    //$("#RD").val(ui.item.rd);
+                    //$("#hsCode").val(ui.item?.hsCode);
+                    //$("#txtVatpercent").val(ui.item.vat);
+                    //$("#txtTaxpercent").val(ui.item.ait);
+                    //$("#txtSDpercent").val(ui.item.sd);
+                    //$("#txtCDpercent").val(ui.item.cd);
+                    //$("#txtRDpercent").val(ui.item.rd);
+                    //$("#txtATpercent").val(ui.item.at);
+                    //Common.Ajax('GET', '/FAMSDEALER/ItemInfo/GetItemHSCodeByHsCode/' + ui.item.key, [], 'json', GetItemHSCodebyCode);
+                    //Common.Ajax('GET', '/FAMSDEALER/ItemInfo/GetItemSpecNamebyItem/' + ui.item.key, [], 'json', ajaxGetItemSpacification);
+                    //Common.Ajax('GET', '/FAMSDEALER/Item/GetAllSpecificationDetailByitemId/?itemId=' + $("#itemsId").val(), [], 'json', ajaxGetAllSpecificationDetailByitemId);
+                }
+            });
+        }
+        function GetItemHSCodebyCode(response) {
+            // console.log(response);
+            $("#hsCode").val(response.hsCode);
+         //   $("#txtVatpercent").val(response.VAT ? response.VAT : 0.00);
+            //$("#txtTaxpercent").val(response.AIT ? response.AIT : 0.00);
+            $("#txtVatTable").val(response.vatTable.tableName);
+            $("#txtVatSchedule").val(response.vATSchedule.vatScheduleName);
+            $("#txtVatCat").val(response.vatCategory.vatCategoryName);
+           // $('#VAT').val(response.VAT ? response.VAT : 0.00);
+           // $('#AIT').val(response.AIT ? response.AIT : 0.00);
+           // $('#cd').val(response.CD ? response.CD : 0.00);
+           // $('#sd').val(response.SD ? response.SD : 0.00);
+            // $('#AT').val(response.AT ? response.AT : 0.00);
+            //$('#RD').val(response.rd ? response.rd : 0.00);
+           // $("#txtSDpercent").val(response.SD ? response.SD : 0.00);
+           // $("#txtCDpercent").val(response.CD ? response.CD : 0.00);
+           // $("#txtATpercent").val(response.AT ? response.AT : 0.00);
+           // $("#txtRDpercent").val(response.rd ? response.rd : 0.00);
+        }
+
+        function AdditemDetailsSpec() {
+            var ifExistIndex = window.localStorage.getItem("holdIndex");
+            var index = "0";
+            if (ifExistIndex == "null" || ifExistIndex == null) {
+                index = $("#tblitemDetailsSpec tbody>tr").length;
+            }
+            else {
+                index = ifExistIndex;
+                tdRID = $("#tblitemDetailsSpec tbody >tr:eq(" + ifExistIndex + ") td:eq(0) .clsspecificationCategoryId").val();
+            }
+
+            if ($("#itemspecification").val() == "") {
+                alert("Plaese Enter Specification Name.");
+                return false
+            }
+
+            if ($("#specCategory").val() == "") {
+                alert("Plaese Enter Specification Category.");
+                return false
+            }
+            if ($("#catValue").val() == "") {
+                alert("Plaese Enter Category Value.");
+                return false
+            }
+
+            let id = parseInt($("#detailsIdSpec").val()) ? parseInt($("#detailsIdSpec").val()) : 0;
+            var itemSpecificationName = $("#itemspecification").val();
+            var itemSpecificationNameShow = $("#itemspecification").val();
+            var specificationCategoryId = $("#specCategory").val();
+            var specificationCategoryName = $("#specCategory option:selected").text();
+            var catValue = $("#catValue").val();
+
+            var RowCount = $("#tblitemDetailsSpec tbody>tr").length;
+            var editOption = parseInt($('#IsEditSpec').val()) ? parseInt($('#IsEditSpec').val()) : 0;
+
+            for (i = 0; i <= RowCount; i++) {
+                var _itemSpecificationName = $("#itemSpecificationNameVD" + i).val();
+                var _specificationCategoryId = $("#specificationCategoryId" + i).val();
+                if (_itemSpecificationName == itemSpecificationName && _specificationCategoryId == specificationCategoryId && editOption == 0) {
+                    alert('You have already added this Specification Category!');
+                    return false
+                }
+                if (_itemSpecificationName == itemSpecificationName) {
+                    itemSpecificationNameShow = "";
+                }
+            }
+
+            var dtTable = $("#tblitemDetailsSpec");
+            var tableBody = dtTable.find('tbody');
+            var trHtml = '<tr id=' + index + '>' +
+                '<td>' + itemSpecificationNameShow + '<input type="hidden" id="itemSpecificationName' + index + '" name="itemSpecificationName" class="clsitemSpecificationName" value="' + itemSpecificationNameShow + '"/><input type="hidden" id="itemSpecificationNameVD' + index + '" name="itemSpecificationNameVD" class="clsitemSpecificationNameVD" value="' + itemSpecificationName + '"/></td>' +
+                '<td>' + specificationCategoryName + '<input type="hidden" name="id"class="clsId" value="' + id + '"><input type="hidden" id="specificationCategoryId' + index + '" name="specificationCategoryId" class="clsspecificationCategoryId" value="' + specificationCategoryId + '"/></td>' +
+                '<td>' + catValue + '<input type="hidden" id="CategoryValue' + index + '" name="CategoryValue" class="clsCategoryValue" value="' + catValue + '"/></td>' +
+                '<td><a href="javascript:void(0)"style="background-color:red;border-color:red" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-xs" onclick="DeleteSpec(' + index + ')"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;' +
+                '<a onclick="EditTblSpec(' + index + "," + specificationCategoryId + ", '" + itemSpecificationName + "',  '" + catValue + "'," + id + ')" href="javascript:void(0)" title="Edit" class="btn btn-success btn-xs" > <i class="fa fa-edit"></i></a >' +
+
+
+                '</tr>';
+            if (ifExistIndex == null || ifExistIndex == "null") {
+                tableBody.append(trHtml);
+            }
+            else {
+                var rowUpdate = $("#tblitemDetailsSpec tbody >tr:eq(" + ifExistIndex + ")");
+                rowUpdate.replaceWith(trHtml);
+                window.localStorage.setItem("holdIndex", null);
+                ifExistIndex = null;
+            }
+
+            RefreshSpec();
+        }
+
+        function EditTblSpec(index, specificationCategoryId, itemSpecificationName, catValue, Id) {
+            var rightIndex = index;
+            $("#IsEditSpec").val(1);
+            $('#detailsIdSpec').val(Id);
+            $('#itemspecification').val(itemSpecificationName);
+            $('#specCategory').val(specificationCategoryId);
+            $('#catValue').val(catValue);
+
+            window.localStorage.setItem('holdIndex', null);
+            if (rightIndex != null) {
+                window.localStorage.setItem('holdIndex', rightIndex);
+            }
+        }
+
+        function RefreshSpec() {
+            $('#detailsIdSpec').val('');
+            $("#IsEditSpec").val(0);
+
+            $('#specCategory').val('');
+            $('#catValue').val('');
+            window.localStorage.setItem("holdIndex", null);
+            ifExistIndex = null;
+        }
+
+        function DeleteSpec(index) {
+            swal({
+                title: 'Are you sure?', text: 'Do you want to delete this record!', type: 'warning', showCancelButton: true, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!'
+            }).then(function () {
+                $("#tblitemDetailsSpec #" + index).remove();
+                swal('', 'Deleted Successfully!', 'success');
+            });
+        }
+
+        function ajaxGetAllSpecificationDetailByitemId(response) {
+            console.log(response);
+            var ifExistIndex = window.localStorage.getItem("holdIndex");
+            var index = "0";
+            if (ifExistIndex == "null" || ifExistIndex == null) {
+                index = $("#tblitemDetailsSpec tbody>tr").length;
+            }
+            else {
+                index = ifExistIndex;
+                tdRID = $("#tblitemDetailsSpec tbody >tr:eq(" + ifExistIndex + ") td:eq(0) .clsspecificationCategoryId").val();
+            }
+            $("#tblitemDetailsSpec tbody>tr").empty();
+            $.each(response, function (key, value) {
+                var itemSpecificationName = value.specificationName;
+                var itemSpecificationNameShow = value.specificationName;
+                var RowCount = $("#tblitemDetailsSpec tbody>tr").length;
+                for (i = 0; i <= RowCount; i++) {
+                    var _itemSpecificationName = $("#itemSpecificationNameVD" + i).val();
+
+                    if (_itemSpecificationName == itemSpecificationName) {
+                        itemSpecificationNameShow = "";
+                    }
+                }
+
+                index = $("#tblitemDetailsSpec tbody>tr").length;
+                var dtTable = $("#tblitemDetailsSpec");
+                var tableBody = dtTable.find('tbody');
+                var trHtml = '<tr id=' + index + '>' +
+                    '<td>' + itemSpecificationNameShow + '<input type="hidden" id="itemSpecificationName' + index + '" name="itemSpecificationName" class="clsitemSpecificationName" value="' + itemSpecificationNameShow + '"/><input type="hidden" id="itemSpecificationNameVD' + index + '" name="itemSpecificationNameVD" class="clsitemSpecificationNameVD" value="' + itemSpecificationName + '"/></td>' +
+                    '<td>' + value.specificationCategoryName + '<input type="hidden" name="id"class="clsId" value="' + value.Id + '"><input type="hidden" id="specificationCategoryId' + index + '" name="specificationCategoryId" class="clsspecificationCategoryId" value="' + value.specificationCategoryId + '"/></td>' +
+                    '<td>' + value.value + '<input type="hidden" id="CategoryValue' + index + '" name="CategoryValue" class="clsCategoryValue" value="' + value.value + '"/></td>' +
+                    '<td><a href="javascript:void(0)"style="background-color:red;border-color:red" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-xs" onclick="DeleteSpec(' + index + ')"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;' +
+                    '<a onclick="EditTblSpec(' + index + "," + value.specificationCategoryId + ", '" + value.specificationName + "',  '" + value.value + "'," + value.Id + ')" href="javascript:void(0)" title="Edit" class="btn btn-success btn-xs" > <i class="fa fa-edit"></i></a >' +
+                    '</tr>';
+
+                if (ifExistIndex == null || ifExistIndex == "null") {
+                    tableBody.append(trHtml);
+                }
+                else {
+                    var rowUpdate = $("#tblitemDetailsSpec tbody >tr:eq(" + ifExistIndex + ")");
+                    rowUpdate.replaceWith(trHtml);
+                    window.localStorage.setItem("holdIndex", null);
+                    ifExistIndex = null;
+                }
+            })
+
+            index = index + 1;
+        }
+        $("#btnSaveItemSpec").click(function (e) {
+            let rowCount = $("#tblitemDetailsSpec tbody>tr").length;
+            if (rowCount < 1) {
+                alert("Invalid attempt!!!");
+                return false;
+            }
+            e.preventDefault();
+
+            var form = $("#frmaddItemSpecification");
+            $.ajax({
+                url: '/Purchase/PurchaseOrder/SaveItemSpecification',
+                data: form.serialize(),
+                type: 'POST',
+                success: function (records) {
+                    swal({
+                        title: '', text: 'Save Successfully!', type: 'success', showCancelButton: false, confirmButtonColor: '#3085d6', confirmButtonText: 'Ok!',
+                    }).then(function () {
+
+                     //   $('#addItemSpecificationModal').modal('hide');
+                        Common.Ajax('GET', '/FAMSDEALER/Item/GetItemSpecNamebyItem/api/GetItemSpecNamebyItem/' + records, [], 'json', ajaxGetItemSpacification);
+                       // Common.Ajax('GET', '/global/api/ItemSpecDetail/' + records, [], 'json', ajaxGetItemSpacification);
+                    });
+                }
+            });
+        });
+
+        function ajaxGetItemSpacification(response) {
+
+            var GetInStockItemSpacificationList = [];
+            $.each(response, function (id, option) {
+                console.log(option);
+                var obj = new Object();
+                obj.key = option.Id;
+                obj.value = option.specificationName;
+                GetInStockItemSpacificationList[GetInStockItemSpacificationList.length] = obj;
+            });
+            $('#itemSpecificationName').autocomplete({
+                source: GetInStockItemSpacificationList,
+                select: function (event, ui) {
+                    $("#itemSpecificationId").val(ui.item.key);
+                }
+            });
+        }
+
+        function ajaxAddress(response) {
+            $.each(response, function (key, rc) {
+
+                $("#address").val(rc.union + "," + rc.houseVillage + "," + rc.blockSector + "," + rc.postCode + "," + rc.postOffice + "," + rc.thana.thanaName + "," + rc.district.districtName + "," + rc.division.divisionName);
+            });
+
+
+        }
+        function RefreshAll() {
+            window.location.href = "/FAMSDEALER/Purchase/Index?id=" + 0;
+        }
+
+        function AdditemDetails() {
+            var ifExistIndex = window.localStorage.getItem("holdIndex1");
+            var index = "0";
+            if (ifExistIndex == "null" || ifExistIndex == null) {
+                index = $("#tblitemDetails tbody>tr").length;
+            }
+            else {
+                index = ifExistIndex;
+                tdRID = $("#tblitemDetails tbody >tr:eq(" + ifExistIndex + ") td:eq(0) .clsId").val();
+            }
+
+            if ($("#itemName").val() == "") {
+                alert("Plaese Enter Valid Item Name.");
+                return false
+            }
+            //if ($("#itemSpecificationName").val() == "") {
+            //    alert("Plaese Enter Valid Item Specification.");
+            //    return false
+            //}
+            //if ($("#itemSpecificationId").val() == "" || $("#itemSpecificationId").val() == "0") {
+
+            //    alert("Plaese Enter Valid Item Specification.");
+            //    return false
+            //}
+
+            if ($("#Qty").val() == "") {
+                alert("Plaese Enter Valid Quantity.");
+                return false
+            }
+            if ($("#price").val() == "") {
+                alert("Plaese Enter Valid Price.");
+                return false
+            }
+
+            let id = parseInt($("#detailsId").val()) ? parseInt($("#detailsId").val()) : 0;
+            var itemName = $("#itemName").val();
+            var itemsId = $("#itemSpecificationId").val();
+            var itemSpecification = $("#itemSpecificationName").val();
+            var specid = $("#itemSpecificationId").val();
+            var price = parseFloat($("#price").val());
+            var quantity = parseFloat($("#Qty").val());
+            var unit = $("#unit").val();
+            var vat = $("#VAT").val();
+            //ar ait = $("#AIT").val();
+            //var cd = $("#cd").val();
+            //var sd = $("#sd").val();
+            //var at = $("#AT").val();
+            //var rd = $("#RD").val();
+
+            var vatPer = $("#txtVatpercent").val();
+            var taxPer = $("#txtTaxpercent").val();
+            var cdPer = $("#txtCDpercent").val();
+            var sdPer = $("#txtSDpercent").val();
+            var atPer = $("#txtATpercent").val();
+            var rdPer = $("#txtRDpercent").val();
+
+            var hsCode = $("#hsCode").val();
+
+
+            var totalprice = price * quantity;
+            cd = totalprice * cdPer / 100;
+
+
+            //var pricecd = totalprice + cd;
+
+            rd = totalprice * rdPer / 100;
+            //var pricerd = totalprice + rd;
+            sd = (totalprice+cd+rd) * sdPer / 100;
+            //var pricesd = pricecd + sd;
+            //vat = (totalprice+cd+sd+rd) * vatPer / 100;
+            vat = (totalprice) * vatPer / 100;
+            ait = price * quantity * taxPer / 100;
+            at = (totalprice + cd + sd + rd)  * atPer / 100;
+            //var totalAmount = (totalprice+rd + vat + ait + cd + sd+at);
+            var totalAmount = (totalprice+ vat + ait );
+
+            var RowCount = $("#tblitemDetails tbody>tr").length;
+            var editOption = parseInt($('#IsEdit').val()) ? parseInt($('#IsEdit').val()) : 0;
+
+            for (i = 0; i < RowCount; i++) {
+                var _itemSpecification = $("#itemSpecification" + i).val();
+
+                if (_itemSpecification == specid && editOption == 0) {
+                    alert('You have already added this Item Specification!');
+                    return false
+                }
+            }
+
+
+
+            var dtTable = $("#tblitemDetails");
+            var tableBody = dtTable.find('tbody');
+            var trHtml = '<tr id=' + index + '>' +
+                '<td>' + itemName + '<input type="hidden" name="id"class="clsId" value="' + id + '"><input type="hidden" id="itemId' + index + '" name="itemId" class="clsitemId" value="' + itemsId + '"/></td>' +
+                //'<td>' + itemSpecification + '<input type="hidden" id="itemSpecification' + index + '" name="itemSpecification" class="clsitemSpecification" value="' + specid + '"/></td>' +
+                '<td>' + unit + '</td>' +
+                '<td style="text-align:right;">' + quantity + '<input type="hidden" id="quantity' + index + '" name="quantity" class="clsquantity" value="' + quantity + '"/></td>' +
+                '<td style="text-align:right;">' + price.toFixed(6) + '<input type="hidden" id="rate' + index + '" name="rate" class="clsrate" value="' + price.toFixed(6) + '"/></td>' +
+                //'<td style="text-align:right;"> <input class="clscdAmount" onkeyup="onChangeAmount(this)"  data-parsley-trigger="keyup" type="number" min="0" style = "" id="cdtotal' + index + '" name="cdtotal"  value="' + cd.toFixed(6) + '"/></td>' +
+                //'<td style="text-align:right;"><input class="clsrdAmount" onkeyup="onChangeAmount(this)" data-parsley-trigger="keyup" type="number" min="0" style = "" id="rdtotal' + index + '" name="rdtotal"  value="' + rd.toFixed(6) + '"/></td>' +
+                //'<td style="text-align:right;"><input class="clssdAmount1" onkeyup="onChangeAmount(this)" data-parsley-trigger="keyup" type="number" min="0" style = "" id="sdtotal' + index + '" name="sdtotal"  value="' + sd.toFixed(6) + '"/></td>' +
+                '<td style="text-align:right;"><input class="clsvatAmount" onkeyup="onChangeAmount(this)" data-parsley-trigger="keyup" type="number" min="0" style = "" id="vattotal' + index + '" name="vattotal"  value="' + vat.toFixed(6) + '"/></td>' +
+                '<td style="text-align:right;"><input class="clstaxAmount" onkeyup="onChangeAmount(this)"  data-parsley-trigger="keyup" type="number" min="0" style = "" id="taxtotal' + index + '" name="taxtotal"  value="' + ait.toFixed(6) + '"/></td>' +
+                //'<td style="text-align:right;"><input class="clsatAmount" onkeyup="onChangeAmount(this)" data-parsley-trigger="keyup" type="number" min="0" style = "" id="attotal' + index + '" name="attotal"  value="' + at.toFixed(6) + '"/></td>' +
+
+                //'<input class="cdPercentage" type="hidden" id="attotal' + index + '" name="cdPercentage[]"  value="' + cdPer + '"/>' +
+                //'<input class="rdPercentage" type="hidden" id="attotal' + index + '" name="rdPercentage[]"  value="' + rdPer + '"/>' +
+                //'<input class="sdPercentage" type="hidden" id="attotal' + index + '" name="sdPercentage[]"  value="' + sdPer + '"/>' +
+                '<input class="vatPercentage" type="hidden" id="attotal' + index + '" name="vatPercentage[]"  value="' + vatPer + '"/>' +
+                '<input class="taxPercentage" type="hidden" id="attotal' + index + '" name="taxPercentage[]"  value="' + taxPer + '"/>' +
+                //'<input class="atPercentage" type="hidden" id="attotal' + index + '" name="atPercentage[]"  value="' + atPer + '"/>' +
+
+                '<td style="text-align:right;" ><input readonly style = "" id="itemtotalAmount' + index + '" name="itemtotalAmount" class="clstotalAmount" value="' + totalAmount.toFixed(6) + '"/></td>' +
+                '<td><a href="javascript:void(0)"style="background-color:red;border-color:red" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-xs" onclick="Delete(' + index + ')"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;' +
+                '<a onclick="EditTbl('
+                + index + ','
+                + itemsId + ', '
+                + quantity + ', `'
+                + itemName + '`,  `'
+                //+ itemSpecification + '`,`'
+                + unit + '`, '
+                + price.toFixed(6) + ','
+                + vat.toFixed(6) + ','
+                + ait.toFixed(6) + ', '
+                //+ cd.toFixed(6) + ', '
+                //+ sd.toFixed(6) + ', '
+                //+ at.toFixed(6) + ', '
+                //+ rd.toFixed(6) + ', '
+                + id + ','
+                + specid + ','
+                //+ "'" + hsCode + "'" + ','
+                + vatPer + ','
+                + taxPer + ',' +
+                //+ cdPer + ','
+                //+ sdPer + ','
+                //+ atPer + ','
+                //+ rdPer +
+                ')" href="javascript:void(0)" title="Edit" class="btn btn-success btn-xs" > <i class="fa fa-edit"></i></a >' +
+                '</tr>';
+
+            if (ifExistIndex == null || ifExistIndex == "null") {
+                tableBody.append(trHtml);
+            }
+            else {
+                var rowUpdate = $("#tblitemDetails tbody >tr:eq(" + ifExistIndex + ")");
+                rowUpdate.replaceWith(trHtml);
+                window.localStorage.setItem("holdIndex", null);
+                ifExistIndex = null;
+            }
+            fnGrandTotal();
+            Refresh();
+        }
+
+        function EditTbl(index, itemsId, quantity, itemName,
+            //itemSpecification,
+            unit, price, vat, ait,
+           // hsCodess,
+            Id, specId, vatPer, taxPer,
+            //cdPer, sdPer, atPer, rdPer
+        ) {
+            var rightIndex = index;
+            $("#IsEdit").val(1);
+            $('#detailsId').val(Id);
+            $('#itemSpecificationId').val(specId);
+            $('#Qty').val(quantity);
+            $('#price').val(price);
+            $('#itemName').val(itemName);
+            $('#itemsId').val(itemsId);
+            $('#itemSpecificationName').val(itemSpecification);
+            $('#unit').val(unit);
+            $('#VAT').val(vat);
+            $('#AIT').val(ait);
+            //$('#cd').val(cd);
+            //$('#sd').val(sd);
+            var assessableValue = quantity * price;
+            $('#assessableValue').val(assessableValue.toFixed(6))
+            $("#txtVatpercent").val(vatPer);
+            $("#txtTaxpercent").val(taxPer);
+            //$("#txtCDpercent").val(cdPer);
+            //$("#txtSDpercent").val(sdPer);
+            //$("#txtATpercent").val(atPer);
+            //$("#txtRDpercent").val(rdPer);
+            $('#itemNamespec').val(itemName);
+            $('#itemIdspec').val(itemsId);
+            Common.Ajax('GET', '/FAMSDEALER/ItemInfo/GetAllSpecificationDetailByitemId/?itemId=' + $("#itemsId").val(), [], 'json', ajaxGetAllSpecificationDetailByitemId);
+           // Common.Ajax('GET', '/api/ItemInfo/GetItemHSCodeByHsCode/' + hsCodess, [], 'json', GetItemHSCodebyCode);
+
+            window.localStorage.setItem('holdIndex1', null);
+            if (rightIndex != null) {
+                window.localStorage.setItem('holdIndex1', rightIndex);
+            }
+        }
+
+        function Refresh() {
+            $('#detailsId').val('');
+            $("#IsEdit").val(0);
+            $('#Qty').val('');
+            $('#price').val('');
+            $('#itemName').val('');
+            $('#itemsId').val('');
+            $('#itemSpecificationName').val('');
+            //$('#itemSpecificationId').val('');
+            $('#unit').val('');
+            $("#txtVatpercent").val('');
+            $("#txtTaxpercent").val('');
+            $('#assessableValue').val('');
+            $("#hsCode").val('');
+
+            $("#txtVatTable").val('');
+            $("#txtVatSchedule").val('');
+            $("#txtVatCat").val('');
+            $('#VAT').val('');
+            $('#AIT').val('');
+            $('#cd').val('');
+            $('#sd').val('');
+            $('#AT').val('');
+            $('#RD').val('');
+            $("#txtSDpercent").val('');
+            $("#txtCDpercent").val('');
+            $("#txtATpercent").val('');
+            $("#txtRDpercent").val('');
+
+            window.localStorage.setItem("holdIndex1", null);
+            ifExistIndex = null;
+        }
+
+        function Delete(index) {
+            swal({
+                title: 'Are you sure?', text: 'Do you want to delete this record!', type: 'warning', showCancelButton: true, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!'
+            }).then(function () {
+                $("#tblitemDetails #" + index).remove();
+                swal('', 'Deleted Successfully!', 'success');
+                fnGrandTotal();
+            });
+        }
+
+        function ajaxGetPurchaseOrderMasterById(response) {
+            console.log(response);
+            console.log(response.Id);
+            $("#purchaseOrderMasterId").val(response.Id);
+            $("#supplierName").val(response.supplier.supplierName);
+            $("#remarks").val(response.remarks);
+            $("#purchaseVatTypeId").val(response.purchaseVatTypeId);
+
+            $("#billOfEntryNo").val(response.billOfEntryNo);
+            $("#lcNo").val(response.lcNo);
+            $("#relSupplierCustomerResourseId").val(response.relSupplierCustomerResourseId).change();
+            $("#poDate").val(getPurchaseDate(response.poDate.toString("dd-MMM-yyyy")));
+         //   $("#paymentDate").val(getPurchaseDate(response.paymentDate.toString("dd-MMM-yyyy")));
+
+
+            $("#totalAmount").val(response.netTotal.toFixed(6));
+
+            $("#cdPercent").val(response.cdAmount.toFixed(6));
+            $("#rdPercent").val(response.rdAmount.toFixed(6));
+            $("#sdPercent").val(response.sdAmount.toFixed(6));
+            $("#vatPercent").val(response.vatAmount.toFixed(6));
+            $("#taxPercent").val(response.taxAmount.toFixed(6));
+            $("#atPercent").val(response.atAmount.toFixed(6));
+            $("#netTotal").val(response.netTotal.toFixed(6));
+            //if (response.vatPercent !== null) {
+            //    $("#vatPercent").val(response.vatPercent);
+            //}
+            //if (response.taxPercent !== null) {
+            //    $("#taxPercent").val(response.taxPercent);
+            //}
+
+          //  $("#taxAmount").val(response.taxAmount);
+
+
+
+            $("#vds").val(response.vds);
+            $("#countryId").val(response.countryId);
+        }
+
+        function ajaxGetPurchaseOrderDetailByPOId(response) {
+          //  console.log(response);
+            var ifExistIndex = window.localStorage.getItem("holdIndex1");
+            var index = "0";
+            if (ifExistIndex == "null" || ifExistIndex == null) {
+                index = $("#tblitemDetails tbody>tr").length;
+            }
+            else {
+                index = ifExistIndex;
+                tdRID = $("#tblitemDetails tbody >tr:eq(" + ifExistIndex + ") td:eq(0) .clsId").val();
+            }
+            $("#tblitemDetails tbody>tr").empty();
+
+            var itemtotalAmount = 0;
+            $.each(response, function (key, value) {
+                //itemtotalAmount = value.quantity * value.rate + value.vatPercent + value.taxPercent + value.sdPercent + value.cdPercent;
+                itemtotalAmount = (value.quantity * value.rate) + value.vatAmount + value.taxAmount + value.sdAmount + value.cdAmount + value.atAmount + value.rdAmount;
+                index = $("#tblitemDetails tbody>tr").length;
+                var dtTable = $("#tblitemDetails");
+                var tableBody = dtTable.find('tbody');
+
+                var str = value.itemSpecification.Item.itemName;
+                var itemName = str.replace('"', "");
+                str = value.itemSpecification.specificationName;
+                specificationName = str.replace('"', "");
+
+                if (value.vatPercent == null) value.vatPercent = 0;
+                if (value.taxPercent == null) value.taxPercent = 0;
+                if (value.cdPercent == null) value.cdPercent = 0;
+                if (value.rdPercent == null) value.rdPercent = 0;
+                if (value.atPercent == null) value.atPercent = 0;
+                if (value.sdPercent == null) value.sdPercent = 0;
+
+                var trHtml = '<tr id=' + index + '>' +
+                    '<td>' + itemName + '<input type="hidden" name="id"class="clsId" value="' + value.Id + '"><input type="hidden" id="itemId' + index + '" name="itemId" class="clsitemId" value="' + value.itemSpecification.Item.Id + '"/></td>' +
+                    '<td>' + specificationName + '<input type="hidden" id="itemSpecification' + index + '" name="itemSpecification" class="clsitemSpecification" value="' + value.itemSpecification.Id + '"/></td>' +
+                    '<td>' + value.itemSpecification.Item.unit.unitName + '</td>' +
+                    '<td style="text-align:right;">' + value.quantity + '<input type="hidden" id="quantity' + index + '" name="quantity" class="clsquantity" value="' + value.quantity + '"/></td>' +
+                    '<td style="text-align:right;">' + value.rate.toFixed(6) + '<input type="hidden" id="rate' + index + '" name="rate" class="clsrate" value="' + value.rate.toFixed(6) + '"/></td>' +
+
+                    '<td style="text-align:right;"><input class="clscdAmount" onkeyup="onChangeAmount(this)"  type="number" min="0" style = "width: 180px;text-align: right;" id="cdtotal' + index + '" name="cdtotal"  value="' + value.cdAmount.toFixed(6) + '"/></td>' +
+                    '<td style="text-align:right;"><input class="clsrdAmount"  onkeyup="onChangeAmount(this)" type="number" min="0" style = "width: 180px;text-align: right;" id="rdtotal' + index + '" name="rdtotal"  value="' + value.rdAmount.toFixed(6) + '"/></td>' +
+                    '<td style="text-align:right;"><input class="clssdAmount1" onkeyup="onChangeAmount(this)" data-parsley-trigger="keyup" type="number" min="0" style = "width: 180px;text-align: right;" id="sdtotal' + index + '" name="sdtotal"  value="' + value.sdAmount.toFixed(6) + '"/></td>' +
+                    '<td style="text-align:right;"><input class="clsvatAmount" onkeyup="onChangeAmount(this)" data-parsley-trigger="keyup" type="number" min="0" style = "width: 180px;text-align: right;" id="vattotal' + index + '" name="vattotal"  value="' + value.vatAmount.toFixed(6) + '"/></td>' +
+                    '<td style="text-align:right;"><input class="clstaxAmount" onkeyup="onChangeAmount(this)" data-parsley-trigger="keyup" type="number" min="0" style = "width: 180px;text-align: right;" id="taxtotal' + index + '" name="taxtotal"  value="' + value.taxAmount.toFixed(6) + '"/></td>' +
+                    '<td style="text-align:right;"><input class="clsatAmount" onkeyup="onChangeAmount(this)" data-parsley-trigger="keyup" type="number" min="0" style = "width: 180px;text-align: right;" id="attotal' + index + '" name="attotal"  value="' + value.atAmount.toFixed(6) + '"/></td>' +
+
+                    '<input class="cdPercentage" type="hidden" id="attotal' + index + '" name="cdPercentage[]"  value="' + value.cdPercent + '"/>' +
+                    '<input class="rdPercentage" type="hidden" id="attotal' + index + '" name="rdPercentage[]"  value="' + value.rdPercent + '"/>' +
+                    '<input class="sdPercentage" type="hidden" id="attotal' + index + '" name="sdPercentage[]"  value="' + value.sdPercent + '"/>' +
+                    '<input class="vatPercentage" type="hidden" id="attotal' + index + '" name="vatPercentage[]"  value="' + value.vatPercent + '"/>' +
+                    '<input class="taxPercentage" type="hidden" id="attotal' + index + '" name="taxPercentage[]"  value="' + value.taxPercent + '"/>' +
+                    '<input class="atPercentage" type="hidden" id="attotal' + index + '" name="atPercentage[]"  value="' + value.atPercent + '"/>' +
+
+
+                    '<td style="text-align:right;"><input type="" id="itemtotalAmount' + index + '" name="itemtotalAmount" class="clstotalAmount" style = "width: 180px;text-align: right;" value="' + itemtotalAmount.toFixed(6) + '" readonly/></td>' +
+                    '<td><a href="javascript:void(0)"style="background-color:red;border-color:red" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-xs" onclick="Delete(' + index + ')"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;' +
+                    '<a onclick="EditTbl('
+                    + index + ',' + value.itemSpecification.Item.Id + ', '
+                    + value.quantity + ', `'
+                    + itemName + '`,  `' +
+                    specificationName + '`,`'
+                    + value.itemSpecification.Item.unit.unitName + '`, '
+                    + value.rate.toFixed(6) + ', '
+                    //+ value.vatPercent.toFixed(6) + ', '
+                    //+ value.taxPercent.toFixed(6) + ', '
+                    //+ value.cdPercent.toFixed(6) + ', '
+                    //+ value.sdPercent.toFixed(6) + ', '
+                    //+ value.atPercent.toFixed(6) + ', '
+                    //+ value.atPercent.toFixed(6) + ', '
+                    //+ value.rdPercent.toFixed(6) + ', '
+                    + value.Id + ','
+                    + value.itemSpecification.Id + ',' + "'"
+                    + value.itemSpecification.Item.itemHsCode.hsCode + "',"
+                    + value.vatPercent + ','
+                    + value.taxPercent + ','
+                    + value.cdPercent + ','
+                    + value.sdPercent + ','
+                    + value.atPercent + ','
+                    + value.rdPercent +')" href="javascript:void(0)" title="Edit" class="btn btn-success btn-xs" > <i class="fa fa-edit"></i></a >' +
+
+
+                    '</tr>';
+
+                if (ifExistIndex == null || ifExistIndex == "null") {
+
+                    tableBody.append(trHtml);
+                }
+                else {
+                    var rowUpdate = $("#tblitemDetails tbody >tr:eq(" + ifExistIndex + ")");
+                    rowUpdate.replaceWith(trHtml);
+                    window.localStorage.setItem("holdIndex1", null);
+                    ifExistIndex = null;
+                }
+            })
+
+            index = index + 1;
+           // fnGrandTotal();
+        }
+
+
+        function fnGrandTotal() {
+            var tax = 0;
+            var vat = 0;
+            var totalAmount = 0;
+            var vatAmount = 0;
+            var taxAmount = 0;
+            var cdAmount = 0;
+            var rdAmount = 0;
+            var sdAmount = 0;
+            var atAmount = 0;
+            var netTotal = 0;
+
+            $(".clstotalAmount").each(function () {
+                totalAmount += +parseFloat($(this).val().replace(/,/g, '')) ? parseFloat($(this).val().replace(/,/g, '')) : 0;
+            });
+
+            $(".clsvatAmount").each(function () {
+                vatAmount += +parseFloat($(this).val().replace(/,/g, '')) ? parseFloat($(this).val().replace(/,/g, '')) : 0;
+                $("#vatPercent").val(vatAmount.toFixed(6));
+               // $("#vatAmount").val(vatAmount);
+            });
+            $(".clstaxAmount").each(function () {
+                taxAmount += +parseFloat($(this).val().replace(/,/g, '')) ? parseFloat($(this).val().replace(/,/g, '')) : 0;
+                $("#taxPercent").val(taxAmount.toFixed(6));
+               // $("#taxAmount").val(taxAmount.toFixed(6));
+            });
+            $(".clscdAmount").each(function () {
+                cdAmount += +parseFloat($(this).val().replace(/,/g, '')) ? parseFloat($(this).val().replace(/,/g, '')) : 0;
+                $("#cdPercent").val(cdAmount.toFixed(6));
+               // $("#cdAmount").val(cdAmount);
+            });
+            $(".clssdAmount1").each(function () {
+                sdAmount += +parseFloat($(this).val().replace(/,/g, '')) ? parseFloat($(this).val().replace(/,/g, '')) : 0;
+                $("#sdPercent").val(sdAmount.toFixed(6));
+               // $("#sdAmount").val(sdAmount);
+            });
+            $(".clsatAmount").each(function () {
+                atAmount += +parseFloat($(this).val().replace(/,/g, '')) ? parseFloat($(this).val().replace(/,/g, '')) : 0;
+                $("#atPercent").val(atAmount.toFixed(6));
+             //   $("#atAmount").val(atAmount);
+            });
+            $(".clsrdAmount").each(function () {
+                rdAmount += +parseFloat($(this).val().replace(/,/g, '')) ? parseFloat($(this).val().replace(/,/g, '')) : 0;
+                $("#rdPercent").val(rdAmount);
+               // $("#rdAmount").val(rdAmount);
+            });
+
+            //if ($("#taxPercent").val() != "") {
+            //    var taxPercentage = $("#taxPercent").val();
+            //    tax = totalAmount  * taxPercentage / 100;
+
+            //}
+            //if ($("#vatPercent").val() != "") {
+            //    var vatPercentage = $("#vatPercent").val();
+            //    vat = totalAmount * vatPercentage / 100;
+            //}
+
+            netTotal = parseFloat(totalAmount); //+ parseFloat(vat) + parseFloat(tax);
+
+            //$("#taxAmount").val(taxAmount.toFixed(6));
+            //$("#taxPercent").val(taxAmount.toFixed(6));
+            //$("#vatAmount").val(vatAmount.toFixed(6));
+            //$("#vatPercent").val(vatAmount.toFixed(6));
+            //$("#cdAmount").val(cdAmount.toFixed(6));
+            //$("#rdAmount").val(rdAmount.toFixed(6));
+            //$("#sdAmount").val(sdAmount.toFixed(6));
+            //$("#atAmount").val(atAmount.toFixed(6));
+            //$("#atPercent").val(atAmount.toFixed(6));
+            //$("#totalAmount").val(totalAmount.toFixed(6));
+            $("#netTotal").val(netTotal.toFixed(6));
+            $("#totalAmount").val(netTotal.toFixed(6));
+
+            //$("#cdPercent").val(cdAmount.toFixed(6));
+            //$("#rdPercent").val(rdAmount.toFixed(6));
+            //$("#sdPercent").val(sdAmount.toFixed(6));
+        }
+
+        function CalculateVatTax() {
+            var tax = 0;
+            var vat = 0;
+            var totalAmount = 0;
+            var netTotal = 0;
+            totalAmount = $("#totalAmount").val();
+
+            if ($("#vatPercent").val() != "" && $("#totalAmount").val() != "") {
+                var vatPercentage = $("#vatPercent").val();
+                vat = totalAmount * vatPercentage / 100;
+            }
+            if ($("#taxPercent").val() != "" && $("#totalAmount").val() != "") {
+                var taxPercentage = $("#taxPercent").val();
+                tax = totalAmount * taxPercentage / 100;
+            }
+
+            netTotal = parseFloat(totalAmount) + parseFloat(vat) + parseFloat(tax);
+           // $("#taxAmount").val(tax.toFixed(2));
+           // $("#vatAmount").val(vat.toFixed(2));
+            $("#netTotal").val(netTotal.toFixed(2));
+        }
+
+        function checkvalidQty() {
+            let Qty = $('#Qty').val();
+            let QtyLen = $('#Qty').val().length;
+
+            if (Qty < 0) {
+                alert("Please insert Valid Quantity");
+                $('#Qty').val('');
+                return false;
+            }
+            if (QtyLen > 16) {
+                alert("Please insert Max 8 digit");
+                $('#Qty').val('');
+                return false;
+            }
+        }
+
+        function checkvalidRate() {
+            let Rate = $('#price').val();
+            let RateLen = $('#price').val().length;
+            if (Rate < 0) {
+                alert("Please insert Valid Price");
+                $('#price').val('');
+                return false;
+            }
+            if (RateLen > 15) {
+                alert("Please insert Max 15 digit");
+                $('#price').val('');
+                return false;
+            }
+        }
+
+        function checkvalidVatTax() {
+            let TaxLen = $('#taxPercent').val().length;
+            let VatLen = $('#vatPercent').val().length;
+
+            if (TaxLen > 2) {
+                alert("Please insert Max 2 digit");
+                $('#taxPercent').val('');
+                return false;
+            }
+            if (VatLen > 2) {
+                alert("Please insert Max 2 digit");
+                $('#vatPercent').val('');
+                return false;
+            }
+        }
+
+        function getPoNo() {
+            let poDate = $('#poDate').val();
+            Common.Ajax('GET', '/api/global/getPoNo/' + poDate, [], 'json', setAutoNumber);
+        }
+
+        function setAutoNumber(response) {
+            $('#poNo').val(response);
+        }
+
+        function onChangeAmount(data) {
+            //console.log(data);
+            var rate = parseFloat($(data).closest('tr').find('input:hidden[name=rate]').val());
+            var qty = parseFloat($(data).closest('tr').find('input:hidden[name=quantity]').val());
+            var asseablevalue = (rate * qty);
+            var clscdAmount = parseFloat($(data).closest('tr').find('.clscdAmount').val());
+            var clsrdAmount = parseFloat($(data).closest('tr').find('.clsrdAmount').val());
+            var clssdAmount1 = parseFloat($(data).closest('tr').find('.clssdAmount1').val());
+            var clsvatAmount = parseFloat($(data).closest('tr').find('.clsvatAmount').val());
+            var clstaxAmount = parseFloat($(data).closest('tr').find('.clstaxAmount').val());
+            var clsatAmount = parseFloat($(data).closest('tr').find('.clsatAmount').val());
+
+            var total = asseablevalue + clscdAmount + clsrdAmount + clssdAmount1 + clsvatAmount + clstaxAmount + clsatAmount;
+            $(data).closest('tr').find('.clstotalAmount').val(total.toFixed(6));
+            fnGrandTotal();
+            //alert(value);
+        }
+    </script>
+}
+
+
+

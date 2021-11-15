@@ -1,0 +1,11 @@
+﻿{
+  "reason": "Reason of Use",
+  "gdNo": "GD No",
+  "documentSubject": "Document Subject",
+  "documentDescription": "Document",
+  "address": "Address Line",
+  "thana": "Thana Name",
+  "district": "District",
+  "bulletQuantity": "Quantity of Used Bullet",
+  "division": "Division"
+}

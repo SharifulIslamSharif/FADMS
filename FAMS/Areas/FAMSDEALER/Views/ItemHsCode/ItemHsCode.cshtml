@@ -1,0 +1,381 @@
+﻿@model FADMS.Areas.FAMSDEALER.Models.ItemHsCodeViewModel
+@{
+    ViewData["Title"] = "ItemHsCode";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Style{
+    <style>
+        .redStar {
+            color: red;
+        }
+    </style>
+}
+<div class="col-md-12 mb-0 pb-0" style="width:98%">
+    <div class="card-header border" style="background-color:#F7F7F7;margin-left: 6px;">
+        <h4 class="font-weight-bold;margin-left: -21px;">
+            Item Hsah Information
+            <a class='btn btn-outline-info float-right mr-4 mb-0' style="" data-toggle='tooltip' title='Go Back' href="#"><i class="fas fa-backward"></i></a>
+        </h4>
+    </div>
+</div>
+
+<div class="card-header border" style="background-color: #F8F9FC; width:95%;margin-top:20px;margin-left:20px">
+    <div class="col-md-12">
+        <h5 class="card-title" style="color: black; margin: 0; text-transform: uppercase;">
+            Create
+            <a class="float-right btn btn-sm btn-info" href="/FAMSDEALER/ItemHsCode/ItemHsFileUpload"><i class="fas fa-upload"></i> Excel File Upload</a>
+        </h5>
+    </div>
+</div>
+
+<div class="card" style="width:95%; margin-left:20px">
+    <div class="col-12">
+        <div class="card-body">
+            <form asp-area="MasterData" id="FormId" asp-controller="Item" asp-action="ItemHsCode" method="post" data-parsley-validate="parsley">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <input type="hidden" name="itemHsCodeId" id="itemHsCodeId" value="0" />
+                            <label for="hsCode" class="col-sm-4 col-form-label">HS Code <span style="color:red;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" data-parsley-required="true" data-parsley-trigger="keyup" class="form-control" name="hsCode" id="hsCode" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+
+                            <label for="hsCode" class="col-sm-4 col-form-label">Schedule <span style="color:red;">*</span></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" name="vatScheduleId" id="vatScheduleId">
+                                    <option value="">Select Schedule</option>
+                                    @foreach (var data in Model.vATSchedules)
+                                    {
+                                        <option value="@data.Id">@data.vatScheduleName</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="validFrom" class="col-sm-4 col-form-label">Valid From <span style="color:red;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" autocomplete="off" data-parsley-required="true" data-parsley-trigger="keyup" class="form-control" name="validFrom" id="validFrom">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+
+                            <label for="hsCode" class="col-sm-4 col-form-label">Table <span style="color:red;">*</span></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" name="vatTableId" id="vatTableId">
+
+                                    <option value="">Select Table</option>
+                                    @foreach (var data in Model.vatTables)
+                                    {
+                                        <option value="@data.Id">@data.tableName</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="taxYearId" class="col-sm-4 col-form-label">Tax Year <span style="color:red;">*</span></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" name="taxYearId" id="taxYearId" data-parsley-required="true">
+                                    <option value="">Select Tax Year</option>
+                                    @foreach (var data in Model.taxYears)
+                                    {
+                                        <option value="@data.Id">@data.taxYearName</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-group row">
+                            <label for="hsCode" class="col-sm-4 col-form-label">Vat Category <span style="color:red;">*</span></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" name="vatCategoriesId" id="vatCategoriesId">
+                                    <option value="">Select Category</option>
+                                    @foreach (var data in Model.vatCategories)
+                                    {
+                                        <option value="@data.Id">@data.vatCategoryName</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="hsDescription" class="col-sm-4 col-form-label">HS Description <span style="color:red;">*</span></label>
+                            <div class="col-sm-8">
+                                <textarea data-parsley-required="true" data-parsley-trigger="keyup" class="form-control" name="hsDescription" id="hsDescription"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="CD" class="col-sm-4 col-form-label">CD</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="CD" id="CD">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="SD" class="col-sm-4 col-form-label">SD</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="SD" id="SD">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="VAT" class="col-sm-4 col-form-label">VAT</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="VAT" id="VAT">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="AIT" class="col-sm-4 col-form-label">AIT</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="AIT" id="AIT">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="AT" class="col-sm-4 col-form-label">AT</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="AT" id="AT">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="RD" class="col-sm-4 col-form-label">RD</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="RD" id="RD">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="EXD" class="col-sm-4 col-form-label">EXD</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="EXD" id="EXD">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="TTI" class="col-sm-4 col-form-label">TTI</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="TTI" id="TTI">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pb-4 mb-4">
+                    <button type="button" id="submit" value="Submit" class="btn btn-success float-right"><i class="fas fa-save"></i></button>
+                    <button type="button" onclick="Refresh()" class="btn btn-danger float-right mr-2"><i class="fas fa-sync"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="col-12 mt-3">
+    <div class="card-header border" style="background-color:#F8F9FC;width:98%">
+        <h4 class="m-0 font-weight-bold">Item Hash List</h4>
+    </div>
+</div>
+
+<div class="col-12" style="width:98%">
+    <div class="card ">
+        <div class="card-body">
+            <table class="table table-striped table-bordered table-sm" id="unitTable">
+                <thead>
+                    <tr>
+                        <th>HS Code</th>
+                        @*<th>Description</th>*@
+                        <th>CD</th>
+                        <th>SD</th>
+                        <th>VAT</th>
+                        <th>AIT</th>
+                        <th>AT</th>
+                        <th>RD</th>
+                        <th>EXD</th>
+                        <th>TTI</th>
+                        <th>Action</th>
+                </thead>
+                <tbody>
+                    @foreach (var data in Model.itemHsCodes)
+                    {
+                        <tr>
+                            <td>@data?.hsCode</td>
+                            @*<td>@data?.hsDescription</td>*@
+                            <td>@data?.CD</td>
+                            <td>@data?.SD</td>
+                            <td>@data?.VAT</td>
+                            <td>@data?.AIT</td>
+                            <td>@data?.AT</td>
+                            <td>@data?.RD</td>
+                            <td>@data?.EXD</td>
+                            <td>@data?.TTI</td>
+                            <td>
+                                <a class="btn btn-info " onclick="Edit(@data.Id, '@data.hsCode', '@data.hsDescription', '@data.validFrom', @data.taxYearId, '@data.CD', '@data.SD', '@data.VAT', '@data.AIT', '@data.AT','@data.RD', '@data.EXD', '@data.TTI','@data.vatCategoryId','@data.vatTableId','@data.vATScheduleId')" title='Edit'><i class="fa fa-edit text-light"></i></a>
+                                <a class="btn btn-danger" onclick="Remove(@data.Id)" href="#"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+
+
+        $('#submit').click(function () {
+		    console.log($('#FormId').serializeArray());
+		    var data = $('#FormId').serializeArray();
+		    console.log(data[0].value)
+		    swal({
+			    title: 'Are you sure?', text: 'Do you want to submit this record!', type: 'warning', showCancelButton: true, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Yes, submit it!'
+		    }).then(function () {
+			    $.ajax({
+                    url: '/FAMSDEALER/ItemHsCode/ItemHsCode',
+				    type: 'POST',
+				    data: data
+			    }).done(function () {
+                    if (data[0].value == 0) {
+                        swal('success', 'Saved Successfully!', 'success').then(function () {
+                            location.reload();
+                        });
+                    }
+                    else {
+                        swal('success', 'Updated Successfully!', 'success').then(function () {
+                            location.reload();
+                        });;
+                    }
+			    }).fail(function () {
+				    swal('warning', 'Failed!', 'warning');
+			    })
+		    });
+	    })
+
+
+        function Remove(Id) {
+            chk = confirm('Are You Sure To Delete This.?');
+            if (chk) {
+                location.replace("/FAMSDEALER/ItemHsCode/Delete/" + Id);
+            } else {
+                return false;
+            }
+        }
+
+        //function GetAllHSCode() {
+        //    $('#unitTable').DataTable().destroy();
+        //    $('#unitTable').DataTable({
+        //        ajax: {
+        //            url: '/api/Item/GetAllItemHSCode',
+        //            dataSrc: ""
+        //        },
+        //        "scrollX": true,
+        //        columns: [
+        //            {
+        //                title: "Edit", width: 6,
+        //                "render": function (data, type, e, meta) {
+        //                    return '<a href="javascript:void(0)" class="btn btn-info btn-xs" onclick="Edit(' +  e.hsCode + "'" + ',' + "'" + e.hsDescription + "'" + ',' + "'" + e.validFrom + "'" + ',' + "'" + e.taxYearId + "'" + ',' + "'" + e.CD + "'" + ',' + "'" + e.SD + "'" + ',' + "'" + e.VAT + "'" + ',' + "'" + e.AIT + "'" + ',' + "'" + e.AT + "'" + ',' + "'" + e.RD + "'" + ',' + "'" + e.EXD + "'" + ',' + "'" + e.TTI + "'" + ',' + "'" + e.vatCategoriesId + "'" + ',' + "'" + e.vatTableId + "'" + ',' + "'" + e.vatScheduleId + "'" + ')"><i class="fa fa-pen"></i></a>';
+        //                }
+        //            },
+        //            { data: "hsCode", title: "Code", width: 40 },
+        //            { data: "hsDescription", title: "Description", width: 150 },
+        //            { data: "CD", title: "CD", width: 10 },
+        //            { data: "SD", title: "SD", width: 10 },
+        //            { data: "VAT", title: "VAT", width: 10 },
+        //            { data: "AIT", title: "AIT", width: 10 },
+        //            { data: "AT", title: "AT", width: 10 },
+        //            { data: "RD", title: "RD", width: 10 },
+        //            { data: "EXD", title: "EXD", width: 10 },
+        //            { data: "TTI", title: "TTI", width: 5 }
+
+        //        ]
+        //    });
+        //}
+
+        $(document).ready(function () {
+            $('#unitTable').DataTable();
+            $("#validFrom").datepicker(
+                {
+                    dateFormat: "dd-M-yy",
+                    showAnim: "scale",
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "2010:2030"
+                }).datepicker("setDate", new Date());
+            //GetAllHSCode();
+        });
+
+        function Refresh() {
+            location.reload();
+        }
+
+        function getPurchaseDate(pdate) {
+            var formattedDate = new Date(pdate);
+            var d = formattedDate.getDate();
+            var m = formattedDate.getMonth();
+            var y = formattedDate.getFullYear();
+            var monthNames = [
+                "Jan", "Feb", "Mar",
+                "Apr", "May", "Jun", "Jul",
+                "Aug", "Sep", "Oct",
+                "Nov", "Dec"
+            ];
+            var fullDate = d + "-" + monthNames[m] + "-" + y;
+            return fullDate;
+        }
+
+
+
+        function Edit(Id, hsCode, hsDescription, validFrom, taxYearId, CD, SD, VAT, AIT, AT, RD, EXD, TTI, vatcat, vattable, vatschedule) {
+
+            $("#vatScheduleId").val(vatschedule);
+            $("#vatTableId").val(vattable);
+            $("#vatCategoriesId").val(vatcat);
+
+            $("#itemHsCodeId").val(Id);
+            $("#hsCode").val(hsCode);
+            $("#hsDescription").val(hsDescription);
+            $("#validFrom").val(getPurchaseDate(validFrom));
+            $("#taxYearId").val(taxYearId);
+            $("#CD").val(CD);
+            $("#SD").val(SD);
+            $("#VAT").val(VAT);
+            $("#AIT").val(AIT);
+            $("#AT").val(AT);
+            $("#RD").val(RD);
+            $("#EXD").val(EXD);
+            $("#TTI").val(TTI);
+        }
+
+    </script>
+}
+
+
+
+
+
+

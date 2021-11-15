@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewData["Title"] = "LicenseInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .fas {
+        margin-top: 10px;
+        font-size: 25px;
+    }
+
+    .active {
+        color: darkcyan;
+    }
+    .btn_color {
+        background-color: #30994C;
+        color: #fff !important;
+    }
+
+    .nav-link {
+        padding: 5px 20px !important;
+        border-radius: 5px !important;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-left:0!important; padding-left:0!important">
+
+                <div class="collapse navbar-collapse" id="navbarNav" style="padding:5px!important; margin-left:0!important;padding-left:0!important">
+                    <ul class="navbar-nav" id="navlist">
+
+                        <li class="nav-item  btn btn-sm">
+                            <a class="nav-link btn_color active" id="countryInfo" href="/FAMSAPP/DealerInfo/DealerInfo">Dealer Info</a>
+                        </li>
+
+                        <li class="nav-item  btn btn-sm">
+                            <a class="nav-link btn_color" id="divisionInfo" href="/FAMSAPP/DealerInfo/Address">Address</a>
+                        </li>
+
+                        <li class="nav-item  btn btn-sm">
+                            <a class="nav-link btn_color" id="districtInfo" href="/FAMSAPP/DealerInfo/LicenseInfo">License</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="col-md-12">
+
+            @*<div class="" style="width: 100%;">
+                <div class="card-header row outBox" style="background-color: #EAF6FA; color: black;">
+                    <div class="col-md-4" style="display: flex; justify-content: flex-start; align-items: center;">
+                        <h5 class="card-title" style="color: black; margin: 0; text-transform: uppercase;">আগ্নেয়াস্ত্রের  বিবরণ</h5>
+                    </div>
+                    <div class="col-md-8">
+                        <div style="float: right; margin: 16px;">
+                            <a class='btn btn-outline-info' style="" data-toggle='tooltip' title='Go Back' href='#'><i class="fas fa-backward"></i></a>
+                            <a id="btngle" href="javascript:void(0)" class="btn btn-outline-secondary btn-sm"
+                               style="position: absolute; right: 82px; top: 17px; box-shadow: none; font-size: 20px;"><i class="fas fa-th"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>*@
+
+            <div class="card" style="width: 97%;margin:0!important;">
+                <div class="card-header">
+                    <h5 class="card-title" style="color: black">Lience Info</h5>
+                </div>
+            </div>
+            <div class="card mt-1" style="width: 97%;padding:10px">
+
+                <div class="card-body">
+                    <input type="hidden" name="id" id="id">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group row">
+                                <label for="armTypeId" class="col-sm-4 col-form-label">License No.</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="licenseNumber" name="licenseNumber" data-parsley-required="true" />
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                @*<label for="armTypeId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.armsType</label>*@
+                                <label for="armTypeId" class="col-sm-4 col-form-label">License Renue</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="licenseRenew" name="licenseRenew" data-parsley-required="true" />
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                @*<label for="manufactureId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.manufacturer</label>*@
+                                <label for="manufactureId" class="col-sm-4 col-form-label">License Issue</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="dateOfIssue" name="dateOfIssue" data-parsley-required="true" />
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                @*<label for="purchaseDate" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.purchaseDate</label>*@
+                                <label for="purchaseDate" class="col-sm-4 col-form-label">License Type</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="LicenseType" name="LicenseType" data-parsley-required="true">
+                                        <option value="value">text</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group row">
+                                <label for="purchaseDate" class="col-sm-4 col-form-label">License Issue Authority</label>
+                                <div class="col-sm-8">
+                                    <input type="number" class="form-control" id="licenseIssueAthority" name="licenseIssueAthority" data-parsley-required="true" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @*<label for="armModelId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.model</label>*@
+                                <label for="armModelId" class="col-sm-4 col-form-label">License Renue Year</label>
+                                <div class="col-sm-8">
+                                    <input type="number" class="form-control" id="licenseRenewYear" name="licenseRenewYear" data-parsley-required="true" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                @*<label for="quantity" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.armIdNo</label>*@
+                                <label for="quantity" class="col-sm-4 col-form-label"> License Expaire </label>
+                                <div class="col-sm-8">
+                                    <input type="number" class="form-control" id="dateOfExpair" name="dateOfExpair" data-parsley-required="true" />
+                                </div>
+                            </div>
+
+                            <button class="btn btn-success btn-sm btnWith mt-5" type="submit" id="btnAdd" style="float:right;"><i class="fa fa-save"></i> Save</button>
+                        </div>
+                    </div>
+
+                </div>
+                <hr />
+                <br />
+                <div class="col-12">
+                    <table id="tblDealerInfo" class="table table-striped table-sm table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Organaization Name</th>
+                                <th>Mobile Office</th>
+                                <th>Owner Name</th>
+                                <th>Persona Mobile</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @*@foreach (var data in Model.GetarmPurchaseInfobydealerId)
+                            {*@
+                            <tr>
+                                <td>NameOfOrganization</td>
+                                <td>ArmTypeName</td>
+                                <td>modelName</td>
+                                <td>ManufactureName</td>
+
+                                <td>
+                                    <a href="javascript:void(0)" class="btn btn-success" onclick="Edit()"><i class="fa fa-edit"></i></a>
+                                    <a href="javascript:void(0)" class="btn btn-danger" onclick="Delete()"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            @*}*@
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

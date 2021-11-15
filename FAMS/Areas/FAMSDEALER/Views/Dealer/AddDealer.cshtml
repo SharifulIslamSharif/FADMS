@@ -1,0 +1,301 @@
+﻿@model FADMS.Areas.FAMSDEALER.Models.DealerViewModel
+@{
+    ViewData["Title"] = "AddDealer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<style>
+    .form-control {
+        border-radius: 25px;
+        border-color: #18c1ef;
+        /*height:46px; 
+        width:46%;*/
+        /*margin-left: 13%;*/
+        color: #606066 !important;
+    }
+</style>
+<div class="col-md-12 mb-0 pb-0" style="width:97%">
+    <div class="card-header border" style="background-color:#F7F7F7;margin-left: 6px;">
+        <h5 class="font-weight-bold;margin-left: -26px;">
+            ডিলার তথ্য
+            <a class='btn btn-outline-info float-right mr-4 mb-0' style="" data-toggle='tooltip' title='Go Back' href="/FAMSDEALER/Dealer/DealerList/@ViewBag.DealerId"><i class="fas fa-backward"></i></a>
+        </h5>
+    </div>
+</div>
+<div class="card border-0" style="width: 100%;">
+
+    <div class="card-body p-4">
+        <div class="card-header border" style="background-color: #F8F9FC; width:98%;margin-top:10px;">
+            <div class="col-md-12">
+                <h5 class="card-title" style="color: black; margin: 0; text-transform: uppercase;">
+                    নতুন তৈরী করুন
+                    <a class="float-right btn btn-sm btn-info" href="/FAMSDEALER/Dealer/DealerFileUpload"><i class="fas fa-upload"></i> এক্সেল ফাইল আপলোড</a>
+                </h5>
+            </div>
+        </div>
+        <div class="card text-light" style="padding:30px!important; width:98%">
+            <form asp-area="FAMSDEALER" asp-controller="Dealer" id="fromInfo" asp-action="AddDealer" method="post" enctype="multipart/form-data" data-parsley-validate="parsley">
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <input type="hidden" name="dealerId" id="dealerId" value="@ViewBag.DealerId" />
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group row">
+                            <label for="type" class="col-sm-4 col-form-label">ডিলারের নাম</label>
+                            <div class="col-sm-8">
+                                <input type="text" data-parsley-required="true" data-parsley-trigger="keyup" class="form-control" id="dealerName" value="@Model.dealer?.dealerName" name="dealerName" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group row">
+                            <label for="type" class="col-sm-4 col-form-label">লাইসেন্স নম্বর</label>
+                            <div class="col-sm-8">
+                                <input type="text" data-parsley-required="true" data-parsley-trigger="keyup" onchange="CheckLicenseNo()" class="form-control" name="LicenseNumber" id="LicenseNumber" value="@Model.dealer?.LicenseNumber" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group row">
+                            <label for="type" class="col-sm-4 col-form-label">নিবন্ধিত ঠিকানা</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="registeredAddress" value="@Model.dealer?.registeredAddress" name="registeredAddress">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group row">
+                            <label for="type" class="col-sm-4 col-form-label">ইটিন নম্বর</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="eTinNumber" value="@Model.dealer?.eTinNumber" name="eTinNumber">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group row">
+                            <label for="type" class="col-sm-4 col-form-label">বিন নম্বর</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="binNumber" value="@Model.dealer?.binNumber" name="binNumber">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+
+                        <div class="form-group row">
+                            <label for="type" class="col-sm-4 col-form-label">ভ্যাট নম্বর</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="VATNumber" value="@Model.dealer?.VATNumber" name="VATNumber">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+
+                        <div class="form-group row">
+                            <label for="type" class="col-sm-4 col-form-label">
+                                ইমেল
+                            </label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="email" name="email" id="email" value="@Model.dealer?.email" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group row">
+                            <label for="type" class="col-sm-4 col-form-label">বিকল্প ইমেইল</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="alternativeEmail" value="@Model.dealer?.alternativeEmail" name="alternativeEmail">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group row">
+                            <label for="type" class="col-sm-4 col-form-label">মোবাইল</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="mobile" onkeyup="phoneValidation()" value="@Model.dealer?.mobile" name="mobile">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group row">
+                            <label for="type" class="col-sm-4 col-form-label">ফোন </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="phone" value="@Model.dealer?.phone" name="phone">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group row">
+                            <label for="type" class="col-sm-4 col-form-label">ডিলার ধরণ</label>
+                            <div class="col-sm-8">
+
+                                <select class="form-control" id="dealerTypeId" name="dealerTypeId">
+                                    <option value="">নির্বাচন করুন</option>
+                                    @foreach (var item in Model.dealerTypes)
+                                    {
+                                        <option value="@item.Id">@item.dealerTypeName</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+
+                    </div>
+                </div>
+
+                <div class="pb-4 mb-4">
+                    <button type="button" id="submit" value="Submit" class="btn btn-success float-right mt-2"><i class="fas fa-save"></i></button>
+                    <button type="reset" id="submit" onclick="Refresh()" value="Submit" class="btn btn-danger float-right mr-2 mt-2"><i class="fas fa-sync"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        $(document).ready(function () {
+            $('#supplierTable').DataTable();
+            $(function () {
+                $('#dob').datepicker({
+                    uiLibrary: 'bootstrap4'
+                });
+                $('#dateOfExpair').datepicker({
+                    uiLibrary: 'bootstrap4'
+                });
+            });
+            $('#submit').click(function () {
+                SaveDealer();
+            })
+        });
+
+        function CheckLicenseNo() {
+            var lino = $('#LicenseNumber').val();
+            $.ajax({
+
+                url: '/FAMSDEALER/Dealer/CheckUniqueLicenseNo?lino=' + lino,
+                type: "GET",
+
+                success: function (response) {
+                    if (response == 'not Unique') {
+                        swal('Warning', 'License Number already used', 'warning');
+                        $('#licenseNumber').val('');
+                        return false;
+                    }
+                },
+                failure: function () {
+                    swal('warning', 'Failed!', 'warning');
+                    //$.alert.open("error", "Failed!");
+                }
+            });
+        }
+        function phoneValidation() {
+            $("#mobile").on("blur", function () {
+                var mobNum = $(this).val();
+                var filter = /^\d*(?:\.\d{1,2})?$/;
+                if (filter.test(mobNum)) {
+                    if (mobNum.length == 11) {
+                        //swal("valid");
+                    } else {
+                        swal('warning', 'অনুগ্রহ করে ১১ সংখ্যার মোবাইল নাম্বারটি প্রদান করুন', 'warning');
+                        return false;
+                    }
+                }
+            });
+        };
+        function SaveDealer() {
+            var name = $('#mobile').val();
+            var filter = /^\d*(?:\.\d{1,2})?$/;
+            if (filter.test(name)) {
+                if (name.length == 11) {
+                    //Is Valid
+                }
+                else {
+                    swal('warning', 'অনুগ্রহ করে ১১ সংখ্যার মোবাইল নাম্বারটি প্রদান করুন', 'warning');
+                    return false;
+                }
+            } 
+            var data = $('#fromInfo').serializeArray();
+		    swal({
+			    title: 'Are you sure?', text: 'Do you want to submit this record!', type: 'warning', showCancelButton: true, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Yes, submit it!'
+		    }).then(function () {
+			    $.ajax({
+				    url: '@Url.Action("/FAMSDEALER/Dealer/AddDealer")',
+				    type: 'POST',
+				    data: data
+                }).done(function () {
+                    swal('success', 'Saved Successfully!', 'success').then(function () {
+                        window.location.href = "/FAMSDEALER/Dealer/DealerList";
+                    });
+                    //if (data[0].value == 0) {
+                    //}
+                    //else {
+                    //    swal('success', 'Updated Successfully!', 'success').then(function () {
+                    //        location.reload();
+                    //    });;
+                    //}
+			    }).fail(function () {
+				    swal('warning', 'Failed!', 'warning');
+			    })
+		    });
+        }
+        
+        function UpdateAddress(Id, supplierName, LicenseNumber, registeredAddress, eTinNumber, binNumber, VATNumber, email, alternativeEmail, mobile, phone, supplierTypeId) {
+            $('#supplierId').val(Id);
+            $('#supplierName').val(supplierName);
+            $('#supplierName').val(supplierName);
+            $('#registeredAddress').val(registeredAddress);
+            $('#eTinNumber').val(eTinNumber);
+            $('#binNumber').val(binNumber);
+            $('#VATNumber').val(VATNumber);
+            $('#email').val(email);
+            $('#alternativeEmail').val(alternativeEmail);
+            $('#mobile').val(mobile);
+            $('#phone').val(phone);
+            $('#supplierTypeId').val(supplierTypeId);
+        }
+
+        function Refresh() {
+            $('#supplierId').val('');
+            $('#supplierName').val('');
+            $('#supplierName').val('');
+            $('#registeredAddress').val('');
+            $('#eTinNumber').val('');
+            $('#binNumber').val('');
+            $('#VATNumber').val('');
+            $('#email').val('');
+            $('#alternativeEmail').val('');
+            $('#mobile').val('');
+            $('#phone').val('');
+            $('#supplierTypeId').val('');
+        }
+        
+    </script>
+}
+
+
+
+
+
+
+

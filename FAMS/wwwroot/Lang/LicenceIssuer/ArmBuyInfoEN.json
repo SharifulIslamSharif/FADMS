@@ -1,0 +1,9 @@
+﻿{
+  "title": "Arm Buy Information",
+  "armsType": "Arms Type",
+  "quantity": "Quantity",
+  "position": "Position",
+  "source": "Source",
+  "sourceInfo": "Source Info",
+  "action": "Action"
+}

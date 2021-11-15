@@ -1,0 +1,537 @@
+  http://202.79.18.217/
+  deshbord are alignment ak2 righ a jaba.
+
+ http://202.79.18.217/FAMSDB/LicenseInfo/NewLicenseEntry/0
+  mandatory fild is not working
+
+ http://202.79.18.217/FAMSDB/LicenseInfo/NewLicenseEntryforOrg/0
+  next button naie
+
+ http://202.79.18.217/FAMSDB/LicenseInfo/NewLicenseEntryforFinanOrg/0
+ drop down is not working and next button naie
+
+ http://202.79.18.217/FAMSDB/Trasaction/UseofGun#
+  action button is not working
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/Address/54729
+  address a in kora jaccha na
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/TrainingInfo/53696#
+    action button is not working
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/UseofGun/53696
+  thana drop down is not working,action button is not working
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/GunStolen/53696
+   data charo o file save hoccha action button is not working
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/NewEntry/53697
+  bangla kora hoye naie,data charo o file save hoccha action button is not working
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/Gunwithdrawn/53697
+  bangla kora hoye naie,data charo o file save hoccha action button is not working
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/UseofGun/53697#
+    bangla kora hoye naie,data charo o file save hoccha action button is not working
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/GunStolen/53697#
+   bangla kora hoye naie,data charo o file save hoccha action button is not working
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/GunRepair/53697
+    bangla kora hoye naie,data charo o file save hoccha action button is not working
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/Index
+  add new ta in kora jaye na
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/License/54728
+   bangla kora hoye naie,mandatory data chare save hoccha action button is not working
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/Gunwithdrawn/54728
+   bangla kora hoye naie,thana drop down is not working,action button is not working
+
+
+ http://202.79.18.217/FAMSDB/GuardInfo/IndexNew/0?oId=2
+  bangla kora hoye naie,mobil no @ nid ta alphabet diea save hoccha
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/TrainingInfo/
+   bangla kora hoye naie,save korla page error hoye
+
+ http://202.79.18.217/FAMSDB/FinancialOrganization/GDInformations/2#
+   bangla kora hoye naie,action button not working
+
+
+ http://202.79.18.217/FAMSDB/FinancialOrganization/TaxInfo/2#
+   bangla kora hoye naie,action button not working
+
+ http://202.79.18.217/FAMSDB/LicenseInfo/CreateLicense/2#
+   delet button is not working,division name select kora thaka,save korla result show kora na
+
+
+ http://202.79.18.217/FAMSDB/FinancialOrganization/GunBuy/2
+    action button not working,without data save hoccha
+
+ http://202.79.18.217/FAMSDB/FinancialOrganization/GunStolen/2#
+    action button not working,without data save hoccha
+
+
+ http://202.79.18.217/FAMSDB/FinancialOrganization/GunDeposite/2
+   save korla page error hoya jaccha
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/NewEntry/53697
+ age,mobil nb & income a alphabet niccha,bangla hoye naie...........
+
+
+
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/TrainingInfo/53697#
+  bangla hoye naie
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/GDInfo/53697
+  bangla hoye naie,data chare save hoccha,advance date a save hoccha
+
+
+
+
+            licence talika
+             ( personal)
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/PersonalInfList
+   add new ta in kora jaccha na 
+  
+ http://202.79.18.217/FAMSAPP/PersonalInfo/NewEntry/54729
+  mobil no,email,nid,passpport no a alphabet& onno sine aacha, bangla hoye naie
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/TrainingInfo/54729#
+  save dila page error hoye
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/GDInfo/54729#
+    bangla kora hoye naie,gd number a alphabat asha,bangla hoye naie 
+  
+  http://202.79.18.217/FAMSAPP/PersonalInfo/TaxInfo/54729
+   without data save hoye,tin & amount a alphabet aache
+
+   http://202.79.18.217/FAMSAPP/PersonalInfo/License/54729#
+    without data save hoye ,delet button kaj kora na
+
+  http://202.79.18.217/FAMSAPP/PersonalInfo/GunBuy/54729#
+   without data save hoye ,delet button naie,2tar base save data show kora na
+
+  http://202.79.18.217/FAMSAPP/PersonalInfo/UseofGun/54729#
+       without data save hoye,thanaie drop down naie,1tar base save show kora na,gd number a alphabet a save hoye
+
+  http://202.79.18.217/FAMSAPP/PersonalInfo/GunStolen/54729#
+     without data save hoye,delet button naie
+
+
+  http://202.79.18.217/FAMSAPP/PersonalInfo/UseofGun/54729#
+   without data save hoye, delet button not working
+
+ http://202.79.18.217/FAMSAPP/PersonalInfo/Gunwithdrawn/54729
+   without data save hoye,thana drop down is not working delet button naie
+
+  http://202.79.18.217/FAMSAPP/PersonalInfo/GunRepair/54729
+   save result show kora na
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

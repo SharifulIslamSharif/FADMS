@@ -1,0 +1,307 @@
+﻿@{
+    ViewData["Title"] = "ArmBuyer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" style="width: 100%;padding:10px">
+                @*<div class="card-body">
+                        <h5 class="card-title" style="color: black">@Model.armBuyInfoLn.licenseNo </h5>
+                        <hr />
+                    </div>*@
+                <div class="container">
+                    <form asp-area="License" asp-controller="ArmBuyInfo" asp-action="Index" method="post" enctype="multipart/form-data" data-parsley-validate="parsley">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div></div>
+                        <br />
+                        @*<h5 class="card-title" style="color: black">@Model.armBuyInfoLn.title </h5>*@
+                        <h5 class="card-title" style="color: black">Arms Deposit</h5>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    @*<label for="armTypeId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.licenseNo</label>*@
+                                    <label for="armTypeId" class="col-sm-4 col-form-label"> লাইসেন্স নং</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="licenseNo" name="licenseNo" data-parsley-required="true" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    @*<label for="armTypeId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.dealerName</label>*@
+                                    <label for="armTypeId" class="col-sm-4 col-form-label"> ডিলারের নাম</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="dealerName" name="dealerName" data-parsley-required="true" readonly="readonly" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    @*<label for="armTypeId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.issueDate</label>*@
+                                    <label for="armTypeId" class="col-sm-4 col-form-label">ইস্যুর তারিখ</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="issueDate" name="issueDate" data-parsley-required="true" readonly="readonly" />
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    @*<label for="armTypeId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.expiryDate</label>*@
+                                    <label for="armTypeId" class="col-sm-4 col-form-label">মেয়াদ শেষ হওয়ার তারিখ</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="expiryDate" name="expiryDate" data-parsley-required="true" readonly="readonly" />
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    @*<label for="armModelId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.address</label>*@
+                                    <label for="armModelId" class="col-sm-4 col-form-label">ঠিকানা</label>
+                                    <div class="col-sm-8">
+                                        <textarea rows="5" class="form-control" id="address" name="address" data-parsley-required="true" readonly="readonly"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    @*<label for="quantity" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.phone</label>*@
+                                    <label for="quantity" class="col-sm-4 col-form-label">মোবাইল নাম্বার</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="phone" name="phone" data-parsley-required="true" readonly="readonly" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+
+                            <hr />
+                        </div>
+                        <h5 class="card-title" style="color: black">পূর্ব আগ্নেয়াস্ত্র  ক্রয় তথ্য</h5>
+                        <hr />
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <table id="tblarmBuyInfo" class="table table-striped table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>dealerName</th>
+                                                <th>armsType</th>
+
+                                                <th>model</th>
+                                                <th>manufacturer</th>
+                                                <th>armIdNo</th>
+                                                <th>purchaseDate </th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tblarmBuyInfotbody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: black">আগ্নেয়াস্ত্রের  বিবরণ</h5>
+                            <hr />
+
+
+                            <input type="hidden" name="id" id="id">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label for="armTypeId" class="col-sm-4 col-form-label">বিক্রয়য়ের ধরণ</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="salesType" name="salesType" data-parsley-required="true">
+                                                <option value="">-Select-</option>
+                                                <option value="আগ্নেয়াস্ত্র ">আগ্নেয়াস্ত্র </option>
+                                                <option value="গুলি">গুলি</option>
+
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group row">
+                                        @*<label for="armTypeId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.armsType</label>*@
+                                        <label for="armTypeId" class="col-sm-4 col-form-label"> আগ্নেয়াস্ত্রের  ধরন</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="armType" name="armType" data-parsley-required="true">
+                                                <option>-Select-</option>
+                                                @*@foreach (var data in Model.getArmsType)
+                                                    {
+                                                        <option value="@data.Id">@data.ArmTypeName</option>
+                                                    }*@
+
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @*<label for="manufactureId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.manufacturer</label>*@
+                                        <label for="manufactureId" class="col-sm-4 col-form-label"> উৎপাদকের নাম</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="manufactureInfo" name="manufactureInfo" data-parsley-required="true">
+                                                <option>-Select-</option>
+                                                @*@foreach (var data in Model.getManufactureInfos)
+                                                    {
+                                                        <option value="@data.Id">@data.ManufactureName</option>
+                                                    }*@
+
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label for="purchaseDate" class="col-sm-4 col-form-label">গুলি</label>
+                                        <div class="col-sm-8">
+                                            <input type="number" class="form-control" id="ammunition" name="ammunition" data-parsley-required="true" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        @*<label for="armModelId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.model</label>*@
+                                        <label for="armModelId" class="col-sm-4 col-form-label">মডেল</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="armsModel" name="ArmsModel" data-parsley-required="true"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        @*<label for="quantity" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.armIdNo</label>*@
+                                        <label for="quantity" class="col-sm-4 col-form-label"> আগ্নেয়াস্ত্রের  পরিচিতি নং </label>
+                                        <div class="col-sm-8">
+                                            <input type="number" class="form-control" id="serialNo" name="serialNo" data-parsley-required="true" />
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-success btn-sm btnWith" type="submit" id="btnAdd" style="float:right;"><i class="fa fa-plus"></i></button>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: black">আগ্নেয়াস্ত্রের  বিবরণ </h5>
+                            <hr />
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <table id="tblarmBuyInfoDetails" class="table table-striped table-sm table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>dealerName</th>
+                                                <th>armsType</th>
+
+                                                <th>model</th>
+                                                <th>manufacturer</th>
+                                                <th>armIdNo</th>
+                                                <th>purchaseDate </th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tblarmBuyInfoDetailstbody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" value="Submit" class="btn btn-success btn-sm" style="float:right; margin-top:5px;"><i class="fas fa-save"></i></button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+                $(document).ready(function () {
+                    $('#purchaseDate').datepicker({
+                        uiLibrary: 'bootstrap4'
+                    });
+                    $('#LicenseNo').change(function () {
+                        var LicenseNo = $(this).val();
+                        GetArmBuyInfo(LicenseNo);
+                        //alert(LicenseNo);
+                        //Common.Ajax('GET', '/License/ArmPurchase/GetArmBuyInfo/'+ LicenseNo, [], 'json', ajaxGetArmBuyInfo);
+                    });
+                    $("#ArmTypeId").change(function () {
+                        var id = $(this).val();
+                        Common.Ajax('GET', '/License/ArmPurchase/GetArmModel/'+ id, [], 'json', ajaxGetArmModel);
+                    });
+
+
+                })
+                function Edit(Id, ManufactureInfoId, ArmTypeId, ArmsModelId, PurchaseDate, SerialNo) {
+
+
+                    $("#id").val(Id);
+                    $("#ManufactureInfoId").val(ManufactureInfoId);
+
+                    $("#ArmTypeId").val(ArmTypeId);
+                    Common.Ajax('GET', '/License/ArmPurchase/GetArmModel/' + ArmTypeId, [], 'json', ajaxGetArmModel);
+                    // alert(ArmsModelId);
+
+
+                    //alert($("#ArmsModelId").val(ArmsModelId));
+                    $("#purchaseDate").val(PurchaseDate);
+                    // alert(SerialNo+'-'+PurchaseDate)
+                    $("#SerialNo").val(SerialNo);
+                    $("#ArmsModelId").val(ArmsModelId);
+
+                }
+                function ajaxGetArmModel(response) {
+
+                    var options = '<option value="">Select</option>';
+                    $.each(response, function (i, item) {
+                        options += '<option value="' + item.Id + '">' + item.modelName + '</option>';
+                    });
+                    $('#ArmsModelId').empty();
+                    $('#ArmsModelId').append(options);
+    }
+    function GetArmBuyInfo(LicenseNo) {
+        $.ajax({
+            url: '@Url.Action("GetArmBuyInfo", "ArmPurchase", "http")',
+            type: 'GET',
+            data: {LicenseNo: LicenseNo}
+        })
+            .done(function (response) {
+                console.log(response);
+                var options = '';
+            $.each(response, function (i, item) {
+
+                options += '<tr>' +
+                    +'<td>' + item.DealerInfo.NameOfOrganization + '</td>'
+                    +'<td>' + item.DealerInfo.NameOfOrganization + '</td>'
+                    + '<td>' + item.armType.ArmTypeName + '</td>'
+
+                    + '<td>' + item.ArmsModel.modelName + '</td>'
+                    + '<td>' + item.ManufactureInfo.ManufactureName + '</td>'
+                    + '<td>' + item.SerialNo + '</td>'
+                    + '<td>' + item.PurchaseDate + '</td>'
+
+                    + '<td><a  href="javascript:void(0)" class="btn btn-success"onclick="Edit(' + item.Id + ',' + item.ManufactureInfoId + ',' + item.armTypeId + ',' + item.ArmsModelId + ',' + "'" + item.PurchaseDate + "'" + ',' + "'" + item.SerialNo + "'" + ')"><i class="fa fa-edit"></i></a><a href="javascript:void(0)" class="btn btn-danger" onclick="Delete(' + item.Id + ')"><i class="fa fa-trash"></a></td>'
+                    //+ '<td>'
+                    //+ '<a href="javascript:void(0)" class="btn btn-success" onclick="Edit(' + item.Id, item.ManufactureInfoId, item.ArmTypeId, item.ArmsModelId, '' + item.PurchaseDate + '', item.SerialNo + ')"><i class="fa fa-edit"></i></a>'
+                    //+ '<a href="javascript:void(0)" class="btn btn-danger" onclick="Delete(' + item.Id + ')"><i class="fa fa-trash"></i></a>'
+                    //+ '</td>'
+                    + '</tr>'
+
+            });
+
+            $('#tblarmBuyInfotbody').empty();
+            $('#tblarmBuyInfotbody').append(options);
+        })
+    }
+
+
+    </script>
+
+}
+
+

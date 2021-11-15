@@ -1,0 +1,14 @@
+﻿{
+  "title": "Educational Qualification",
+  "levelOfEducation": "Level of Education",
+  "degree": "Certificate/Degree",
+  "instritution": "Intitution",
+  "result": "Result",
+  "resultSpecification": "Marks/CGPA/GPA",
+  "grade": "Grade",
+  "passingYear": "Passing Year",
+  "action": "Action",
+  "subject": "Subject",
+  "majorGroup": "Major Group",
+  "organization": "University/Board"
+}

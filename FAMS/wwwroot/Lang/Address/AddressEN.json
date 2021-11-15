@@ -1,0 +1,32 @@
+{
+  "title": "Address",
+  "organizationDivision": "Division",
+  "organizationDistrict": "District",
+  "organizationUpazila": "Upazila",
+  "organizationUnion": "Union",
+  "organizationPostOffice": "Post Office",
+  "organizationPostCode": "Post Code",
+  "organizationBlockSector": "Block Sector",
+  "organizationHouseVillage": "House Village",
+  "organizationArea": "Area",
+
+  "presentDivision": "Division",
+  "presentDistrict": "District",
+  "presentUpazila": "Upazila",
+  "presentUnion": "Union",
+  "presentPostOffice": "Post Office",
+  "presentPostCode": "Post Code",
+  "presentBlockSector": "Block Sector",
+  "presentHouseVillage": "House Village",
+  "presentArea": "Area",
+
+  "permanentDivision": "Division",
+  "permanentDistrict": "District",
+  "permanentUpazila": "Upazila",
+  "permanentUnion": "Union",
+  "permanentPostOffice": "Post Office",
+  "permanentPostCode": "Post Code",
+  "permanentBlockSector": "Block Sector",
+  "permanentHouseVillage": "House Village",
+  "permanentArea": "Area"
+}

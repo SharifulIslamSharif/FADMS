@@ -1,0 +1,13 @@
+{
+  "title": "Financial Organization",
+  "name": "Name",
+  "type": "Organization Type",
+  "EstablishDate": "Establish Date",
+  "noOfEmployee": "Number of Gard",
+  "noOfVehicle": "Number of Vehicle",
+  "ownerName": "Owner Name",
+  "blance": "Financial Balance",
+  "branchName": "Branch",
+  "branchManager": "Manager",
+  "tid": "TAX ID No"
+}

@@ -1,0 +1,23 @@
+﻿{
+  "title": "লাইসেন্সের  তথ্য",
+  "licenseNumber": "লাইসেন্স নম্বর",
+  "place": "লাইসেন্স ইস্যুর স্থান",
+  "dateOfIssue": "লাইসেন্স ইস্যুর তারিখ",
+  "dateOfExpair": "মেয়াদ শেষ হওয়ার তারিখ",
+  "reason": "লাইসেন্স নেয়ার কারন",
+  "source": "লাইসেন্স প্রাপ্তির উৎস",
+  "districtI": "লাইসেন্স ইস্যুর জেলা",
+  "thanaI": "লাইসেন্সধারীর থানা",
+  "armsType": "আগ্নেয়াস্ত্রের   ধরন",
+  "quantity": "পরিমান",
+  "position": "স্থান",
+  "action": "প্রক্রিয়া",
+  "licenseTypeId": "লাইসেন্সের ধরন",
+  "licenseGunType": "আগ্নেয়াস্ত্রের  ধরন",
+  "licenseRenew": "License Renew",
+  "licenseRenewYear": "license Renew Year",
+  "SourceName": "Source Name",
+  "LicenseType": "License Type",
+  "armType": "Arm Type"
+}
+ 

@@ -1,0 +1,200 @@
+﻿@model FADMS.Areas.FAMSDEALER.Models.DealerReportViewModel
+@{
+    ViewData["Title"] = "Sales Report";
+    Layout = "~/Views/Shared/_PrintView.cshtml";
+}
+<style>
+    .table-bordered {
+        border-collapse: collapse !important;
+    }
+
+        .table-bordered th {
+            border: 1px solid gray !important;
+        }
+
+        .table-bordered td {
+            border: 1px solid gray !important;
+        }
+
+    h5 {
+        color: black;
+    }
+
+    .hm-gradient {
+        background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    }
+
+    .darken-grey-text {
+        color: #2E2E2E;
+    }
+
+    .input-group.md-form.form-sm.form-2 input {
+        border: 1px solid #bdbdbd;
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+    }
+
+        .input-group.md-form.form-sm.form-2 input.purple-border {
+            border: 1px solid #9e9e9e;
+        }
+
+        .input-group.md-form.form-sm.form-2 input[type=text]:focus:not([readonly]).purple-border {
+            border: 1px solid #ba68c8;
+            box-shadow: none;
+        }
+
+    .form-2 .input-group-addon {
+        border: 1px solid #ba68c8;
+    }
+
+    .danger-text {
+        color: #ff3547;
+    }
+
+    .success-text {
+        color: #00C851;
+    }
+
+    .table-bordered.red-border, .table-bordered.red-border th, .table-bordered.red-border td {
+        border: 1px solid #ff3547 !important;
+    }
+
+    .table.table-bordered th {
+        text-align: center;
+    }
+</style>
+
+<div>
+    <div class="container-fluid">
+        <div class="fa-pull-right">
+            <p style="font-size:smaller;">Print at: @DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss")</p>
+        </div>
+        <div class="fa-pull-left">
+            @*<p style="font-size:small;color:black;">Office Copy</p>*@
+        </div>
+        <div class="row" style="padding-top:0px;">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <div style="color:black;text-align:center;">
+                    <img src="~/images/Special branch.png" alt="OPUS ERP" style="height:80px;" />
+                    <h3>Fair and Arms Management System@*@Model.company.companyName*@</h3>
+                    <label>
+                        215, Shaheed Syed Nazrul Islam Sarani Dhaka, Bangladesh@*@Model.company.addressLine*@
+                    </label> <br />
+                    <label>Telephone Number:+88 02 9553587@*@Model.company.officeTelephone*@</label>
+                    <h5>Dealer Purchase & Sales Report</h5>
+                    <h5>From : @Model.fromDdate?.ToString("dd-MMM-yyyy") To : @Model.toDate?.ToString("dd-MMM-yyyy")</h5>
+                    <br />
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+    <hr style="border:1px solid black;">
+
+    <div class="col-md-12">
+        <div class="block-content tab-content overflow-hidden">
+            <div class="tab-pane fade fade-left active show" id="profile-info" role="tabpanel">
+                <div class="block-content">
+                    <div class="block block-rounded block-fx-shadow">
+                        <div class="block-content">
+                            <div class="table-responsive table-rounded">
+                                @*Gun Deposite Informations*@
+                                <div>
+                                    @*<div class="col-12 bg-gray-200">
+                                            <h5>Gun Deposite Informations</h5>
+                                        </div>*@
+                                    @if (Model.salesInvoiceDetailReport != null)
+                                    {
+                                        <table class="table table-striped table-bordered" id="voucherList">
+                                            <thead>
+                                                <tr>
+                                                    <th>SL</th>
+                                                    <th>ডিলারের নাম</th>
+                                                    <th>আইটেমের নাম</th>
+                                                    <th>চালান তারিখ</th>
+                                                    <th>চালান নাম্বার</th>
+                                                    <th>আগ্নেয়াস্ত্রের ধরন</th>
+                                                    <th>লাইসেন্সে নাম্বার</th>
+                                                    <th>নিট টোটাল</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                                    var gunDeopIndex = 1;
+                                                    @foreach (var item in Model.salesInvoiceDetailReport)
+                                                    {
+                                                        <tr>
+                                                            <td>@gunDeopIndex</td>
+                                                            <td>@item.dealerName</td>
+                                                            <td>@item.itemName</td>
+                                                            <td>@item.invoiceDate</td>
+                                                            <td>@item.invoiceNumber</td>
+                                                            <td>@item.armsType</td>
+                                                            <td>@item.licenseNumber</td>
+                                                            <td>@item.netTotal</td>
+
+                                                        </tr>
+                                                        gunDeopIndex++;
+                                                    }
+                                                }
+                                            </tbody>
+                                            @if (Model.salesInvoiceDetailReport.Count() <= 0)
+                                            {
+                                                <tfoot>
+                                                    <tr><td colspan="8" class="text-center">কোন  ডাটা পাওয়া যায় নি !!</td></tr>
+                                                </tfoot>
+                                            }
+                                        </table>
+                                    }
+                                    @if (Model.purchaseDetailReport != null)
+                                    {
+                                        <table class="table table-striped table-bordered" id="voucherList">
+                                            <thead>
+                                                <tr>
+                                                    <th>SL</th>
+                                                    <th>Supplier Name</th>
+                                                    <th>Po Number</th>
+                                                    <th>Lc Date</th>
+                                                    <th>Arms Type</th>
+                                                    <th>Net Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                                    var i = 1;
+                                                    @foreach (var item in Model.purchaseDetailReport)
+                                                    {
+                                                        <tr>
+                                                            <td>@i</td>
+                                                            <td>@item.supplierName</td>
+                                                            <td>@item.poNo</td>
+                                                            <td>@item.lcDate</td>
+                                                            <td>@item.armsType</td>
+                                                            <td>@item.netTotal</td>
+
+                                                        </tr>
+                                                        i++;
+                                                    }
+                                                }
+                                            </tbody>
+                                            @if (Model.purchaseDetailReport.Count() <= 0)
+                                            {
+                                                <tfoot>
+                                                    <tr><td colspan="8" class="text-center">There are no data found !!</td></tr>
+                                                </tfoot>
+                                            }
+                                        </table>
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
