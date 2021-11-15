@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12 mt-3 mb-3">
+    <div class="card" style="width:95%">
+        <div class="card-body">
+            <a class="btn btn-info" href="/FAMSDEALER/Supplier/Index">Supplier Info</a>
+            <a class="btn btn-info" href="/FAMSDEALER/Supplier/Contacts">Contacts</a>
+            <a class="btn btn-info" href="/FAMSDEALER/Supplier/Address">Address</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-12" style="width:95%">
+    <form action="/" method="post">
+        <div id="CustomerInfo" class="tabcontent">
+            <div class="card-title" style="border:solid 0px;padding-left:3px"><h4>Supplier Information</h4></div>
+
+            <div class="form-group row">
+                <label for="nameEnglish" class="col-sm-3 col-form-label text-right">Organization Name<i style="color:red">*</i></label>
+                <div class="col-sm-9">
+                    @*<input type="text" maxlength="100" class="form-control" name="nameEnglish" id="nameEnglish" value="@Model?.GetOrganizationbyId?.organizationName" data-parsley-required="true">*@
+                    <input type="text" maxlength="100" class="form-control" name="nameEnglish" id="nameEnglish" value="" data-parsley-required="true">
+                    @*<input type="hidden" id="organizationId" name="organizationId" value="@Model?.GetOrganizationbyId?.Id" />*@
+                    <input type="hidden" id="organizationId" name="organizationId" value="" />
+                    @*<input type="hidden" class="form-control" name="relSupplierCustomerResourseId" id="relSupplierCustomerResourseId" value="@Model?.relSupplierCustomerResourseId">*@
+                    <input type="hidden" class="form-control" name="relSupplierCustomerResourseId" id="relSupplierCustomerResourseId" value="CustomerResourseId">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="registeredAddress" class="col-sm-3 col-form-label text-right">Registered Address<i style="color:red">*</i></label>
+                <div class="col-sm-9">
+                    @*<textarea type="text" row="2" class="form-control" name="registeredAddress" id="registeredAddress" data-parsley-required="true" value="@Model.GetOrganizationbyId.registeredAddress">@Model.GetOrganizationbyId.registeredAddress</textarea>*@
+                    <textarea type="text" row="2" class="form-control" name="registeredAddress" id="registeredAddress" data-parsley-required="true" value=""></textarea>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="LicenseNumber" class="col-sm-3 col-form-label text-right">License Number</label>
+                <div class="col-sm-9">
+                    @*<input type="text" class="form-control" name="LicenseNumber" id="LicenseNumber" value="@Model?.GetOrganizationbyId?.LicenseNumber" maxlength="50" data-parsley-trigger="keyup">*@
+                    <input type="text" class="form-control" name="LicenseNumber" id="LicenseNumber" value="" maxlength="50" data-parsley-trigger="keyup">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="eTinNumber" class="col-sm-3 col-form-label text-right">e-Tin Number</label>
+                <div class="col-sm-9">
+                    @*<input type="text" class="form-control" name="eTinNumber" id="eTinNumber" value="@Model?.GetOrganizationbyId?.eTinNumber" maxlength="50" data-parsley-trigger="keyup">*@
+                    <input type="text" class="form-control" name="eTinNumber" id="eTinNumber" value="" maxlength="50" data-parsley-trigger="keyup">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="binNumber" class="col-sm-3 col-form-label text-right">BIN Number</label>
+                <div class="col-sm-9">
+                    @*<input type="text" class="form-control" name="binNumber" id="binNumber" value="@Model?.GetOrganizationbyId?.binNumber" maxlength="50" data-parsley-trigger="keyup">*@
+                    <input type="text" class="form-control" name="binNumber" id="binNumber" value="" maxlength="50" data-parsley-trigger="keyup">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="VATNumber" class="col-sm-3 col-form-label text-right">VAT Number</label>
+                <div class="col-sm-9">
+                    @*<input type="text" class="form-control" name="VATNumber" id="VATNumber" value="@Model?.GetOrganizationbyId?.VATNumber" maxlength="50" data-parsley-trigger="keyup">*@
+                    <input type="text" class="form-control" name="VATNumber" id="VATNumber" value="" maxlength="50" data-parsley-trigger="keyup">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="email" class="col-sm-3 col-form-label text-right">Email</label>
+                <div class="col-sm-9">
+                    @*<input type="email" class="form-control" name="email" id="email" value="@Model?.GetOrganizationbyId?.email">*@
+                    <input type="email" class="form-control" name="email" id="email" value="">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="alternativeEmail" class="col-sm-3 col-form-label text-right">Alternative Email</label>
+                <div class="col-sm-9">
+                    @*<input type="email" class="form-control" name="alternativeEmail" id="alternativeEmail" value="@Model?.GetOrganizationbyId?.alternativeEmail">*@
+                    <input type="email" class="form-control" name="alternativeEmail" id="alternativeEmail" value="">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="mobile" class="col-sm-3 col-form-label text-right">Contact Number<i style="color:red">*</i></label>
+                <div class="col-sm-9">
+                    @*<input type="number" class="form-control" name="mobile" id="mobile" value="@Model?.GetOrganizationbyId?.mobile" maxlength="20" data-parsley-trigger="keyup" required>*@
+                    <input type="number" class="form-control" name="mobile" id="mobile" value="" maxlength="20" data-parsley-trigger="keyup" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="phone" class="col-sm-3 col-form-label text-right">Phone Number</label>
+                <div class="col-sm-9">
+                    @*<input type="number" class="form-control" name="phone" id="phone" value="@Model?.GetOrganizationbyId?.phone" maxlength="20" data-parsley-trigger="keyup">*@
+                    <input type="number" class="form-control" name="phone" id="phone" value="" maxlength="20" data-parsley-trigger="keyup">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="phone" class="col-sm-3 col-form-label text-right">Organization Type</label>
+                <div class="col-sm-9">
+                    <select class="form-control" name="isAuthorized" id="isAuthorized">
+                        <option value="">Select One</option>
+                        <option value="1">Registered</option>
+                        <option value="0">Unregistered</option>
+                        <option value="2">Turnover</option>
+                    </select>
+                </div>
+            </div>
+
+            @*<div class="form-group row">
+                <label for="attachment" class="col-sm-3 col-form-label text-right">Attachment</label>
+                <div class="col-sm-9">
+                    <input type="file" id="formFile" name="formFile" class="btn btn-success btn-sm">
+                </div>
+            </div>*@
+
+            <br />
+        </div>
+
+        <input type="submit" value="Submit" id="btnSubmit" class="btn btn-success" style="float:right;background-color:#024972; margin-top:5px;margin-bottom:5px;" />
+    </form>
+</div>
+

@@ -1,0 +1,37 @@
+﻿{
+  "title": "ঠিকানা",
+  "organizationDivision": "বিভাগ",
+  "organizationDistrict": "জেলা",
+  "organizationUpazila": "উপজেলা",
+  "organizationUnion": "ইউনিয়ন",
+  "organizationPostOffice": "পোস্ট অফিস",
+  "organizationPostCode": "পোস্টকোড",
+  "organizationBlockSector": "ব্লক/সেক্টর",
+  "organizationHouseVillage": "বাড়ী নং",
+  "organizationArea": "মহল্লা/গ্রাম",
+  "permanent": "স্থায়ী ঠিকানা",
+  "present": "বর্তমান ঠিকানা",
+  "organization": "প্রতিষ্ঠানের ঠিকানা",
+
+  "presentDivision": "বিভাগ",
+  "presentDistrict": "জেলা",
+  "presentUpazila": "উপজেলা",
+  "presentUnion": "ইউনিয়ন",
+  "presentPostOffice": "পোস্ট অফিস",
+  "presentPostCode": "পোস্টকোড",
+  "presentBlockSector": "ব্লক/সেক্টর",
+  "presentHouseVillage": "বাড়ী নং",
+  "presentArea": "মহল্লা/গ্রাম",
+
+
+  "permanentDivision": "বিভাগ",
+  "permanentDistrict": "জেলা",
+  "permanentUpazila": "উপজেলা",
+  "permanentUnion": "ইউনিয়ন",
+  "permanentPostOffice": "পোস্ট অফিস",
+  "permanentPostCode": "পোস্টকোড",
+  "permanentBlockSector": "ব্লক/সেক্টর",
+  "permanentHouseVillage": "বাড়ী নং",
+  "permanentArea": "মহল্লা/গ্রাম"
+
+}

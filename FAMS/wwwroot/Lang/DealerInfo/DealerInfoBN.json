@@ -1,0 +1,11 @@
+﻿{
+  "dealerTitle": "ডিলার তথ্য",
+  "nameOfOrganization": "প্রতিষ্ঠানের নাম ",
+  "nameOfOwner": "মালিকের নাম",
+  "establishedDate": "প্রতিষ্ঠার তারিখ",
+  "ownerNid": "মালিকের এন আই ডি",
+  "mobileOffice": "মোবাইল (অফিস)",
+  "mobileOwner": "মোবাইল (মালিক)",
+  "phoneOffice": "ফোন (অফিস)",
+  "licenseNo": "লাইসেন্স নাম্বার" 
+}

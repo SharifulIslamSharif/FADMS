@@ -1,0 +1,25 @@
+{
+  "name": "Name",
+  "typeofGun": "Type of Gun",
+  "model": "Model",
+  "source": "Source",
+  "place": "Place",
+  "delarnameaddress": "Delar/Person Name, Address,Licnse Number",
+  "gunIdentityficationNumber": "Gun Identification Number",
+  "productionPlace": "Production Place",
+  "gunUserPresentAddress": "Gun User Present Address",
+  "purposeOfUse": "Purpose Of Use",
+  "caseGdNumber": "Case/GD Number",
+  "numberOfCartise": "Number Of Cartridge",
+  "venue": "Venue/Spot",
+  "date": "Date",
+  "reasonOfGunDeposite": "Reason Of Gun Deposite",
+  "placeOfGunDeposite": "Place Of Gun Deposite",
+  "addressOfGunDeposite": "Gun User Address",
+  "reasonOfGd": "Reason Of Gd",
+  "numberOfGd": "Number Of Gd",
+  "resultOfGd": "Result Of Gd",
+  "description": "Description"
+}
+
+

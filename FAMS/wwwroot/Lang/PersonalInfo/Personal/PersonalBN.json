@@ -1,0 +1,99 @@
+﻿{
+  "title": "ব্যক্তিগত তথ্য",
+  "titledetails": "লাইসেন্স আবেদনকারীর সম্পূর্ণ তথ্য",
+  "photoTitle": "ছবি উত্তোলন",
+  "NameBangla": "নাম(বাংলা)",
+  "NameEnglish": "নাম(ইংরেজী)",
+  "FathersName": "বাবার নাম",
+  "FathersOcupation": "বাবার পেশা ",
+  "MothersName": "মায়ের নাম",
+  "MothersOcupation": "মায়ের পেশা ",
+  "WifeHusbendName": "স্ত্রী/স্বামী এর নাম",
+  "WifeHusbendOcupation": "স্ত্রী/স্বামী এর পেশা",
+  "nid": "এন আই ডি",
+  "dateofbirth": "জন্ম তারিখ",
+  "age": "বয়স",
+  "birthplace": "জন্ম স্থান",
+  "nationlatity": "জাতীয়তা",
+  "gender": "লিঙ্গ",
+  "religion": "ধর্ম",
+  "dropdown": "পছন্দ করুন",
+
+  "maritalStatus": "বৈবাহিক অবস্থা",
+  "bloodgroup": " রক্তের গ্র্রুপ",
+  "passportNo": "পাসপোর্ট নং",
+  "batch": "ব্যাচ",
+  "isnationality": "দ্বৈত্য নাগরিকত্ত্ব আছে কিনা?",
+  "educationalStatus": "শিক্ষাগত যোগ্যতা",
+  "phoneoffice": "টেলিফোন (অফিস)",
+  "phonehome": "টেলিফোন (বাসস্থান)",
+  "mobileoffice": "মোবাইল (অফিস)",
+  "mobilePersonal": "মোবাইল (ব্যক্তিগত)",
+  "email": "ইমেইল",
+  "ispolitical": "রাজনৈতিক সম্পর্ক (যদি থাকে)",
+  "isgovjob": "সরকারী চাকুরিজীবি কিনা?",
+  "govjobdegention": "পদবি",
+  "phisicalStability": "আগ্নেয়াস্ত্র  চালনা বা প্রশিক্ষনে শারীরিকভাবে সক্ষম কিনা?",
+  "organization": "প্রতিষ্ঠান ",
+  "yearlyincome": "বার্ষিক আয়",
+  "previousrecodearms": "ইত:পূর্বে শুল্কমুক্ত সুবিধায় বিদেশ হতে কোন আগ্নেয়াস্ত্র  আমদানি করা হয়েছে কিনা?",
+
+  "previousrecodelicense": "ইত:পূর্বে কোন আগ্নেয়াস্ত্রের লাইসেন্স বাতিল করা হয়েছে কিনা ?",
+  "reason": "কি কারণে আবেদনকৃত আগ্নেয়াস্ত্রের  লাইসেন্সের প্রয়োজন",
+  "armstype": "আবেদনকৃত আগ্নেয়াস্ত্রের  ধরণ",
+  "anotherarms": "অন্য কোন অগ্নেয়াস্ত্র রয়েছে কিনা এ সম্পর্কে ৩০০ /- টাকার নন-জুডিশিয়াল স্ট্যাম্পে হলফনামা প্রদান করা হয়েছে কিনা",
+  "armshended": "ওয়ারিশের নিকট আগ্নেয়াস্ত্র হস্তান্তরের ক্ষেত্রে ৩০০/-টাকার নন-জুডিশিয়াল স্ট্যাম্পে নোটারীকৃত না-দাবিনামা সংযুক্ত করা হয়েছে কিনা",
+  "yes": "হ্যাঁ",
+  "no": "না",
+  "bangladeshi": "বাংলাদেশী",
+  "foreigner": "বিদেশী",
+  "men": "পুরুষ",
+  "women": "মহিলা",
+  "gother": "অন্যান্য",
+  "Islam": "ইসলাম",
+  "Hindu": "হিন্দু",
+  "Boddo": "বৌদ্ধ",
+  "Khristan": "খ্রিস্টান ",
+  "rother": "অন্যান্য",
+  "pstol": "পিস্তল ",
+  "revolber": "রিভলবার",
+  "eknola": "একনলা বন্দুক",
+  "duenola": "দোনলা বন্দুক  ",
+  "shortgun": "শর্টগান",
+  "Married": "বিবাহিত",
+  "Unmarried": "অবিবাহিত",
+  "Ocupation": "পেশা",
+  "Teamname": "দলের নাম",
+  "PartyDesignation": "দলীয় পদবী",
+
+  "address": "ঠিকানা  ",
+
+  "addressTitle": " ঠিকানার শিরোনাম ",
+
+  "presentAddress": "বর্তমান ঠিকানা  ",
+
+  "permanentAddress": " স্থায়ী ঠিকানা ",
+
+  "houseNo": " বাসা নং ",
+
+  "block": " ব্লক/সেক্টর ",
+
+  "postCode": " পোস্ট কোড ",
+
+  "postOffice": "পোস্ট অফিস ",
+
+  "division": "বিভাগ  ",
+
+  "district": " জেলা ",
+
+  "thana": "উপজেলা  ",
+
+  "union": " ইউনিয়ন ",
+
+  "licenseNo": " লাইসেন্স নং ",
+
+  "licenseIssue": "লাইসেন্স ইস্যু তারিখ",
+
+  "qrCode": " QR কোড "
+}
+ 

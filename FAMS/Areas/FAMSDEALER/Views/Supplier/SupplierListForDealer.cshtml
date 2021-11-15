@@ -1,0 +1,89 @@
+﻿@model FADMS.Areas.FAMSDEALER.Models.SupplierViewModel
+@{
+    ViewData["Title"] = "SupplierListForDealer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-12" style="width:98%">
+    <div class="row clearfix">
+        <div class="col-12">
+            <div class="card mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h5 class="m-0 font-weight-bold">সরবরাহকারির তথ্য তালিকা </h5>
+                    <a href="/FAMSDEALER/Supplier/DealerSupplier" class="btn btn-info btn-sm pull-right" style="background-color:#024972;">নতুন যোগ করুন </a>
+                </div>
+                <!-- Card Body -->
+
+
+                <div class="card-body">
+                    <table class="table table-striped table-bordered table-sm" id="educationalTable">
+                        <thead>
+                            <tr>
+                                <th>সিরিয়াল নং</th>
+                                <th>প্রাতিষ্ঠানিক নাম</th>
+                                <th>ট্রেড লাইসেন্স নাম্বার </th>
+                                <th>যোগাযোগের নাম্বার</th>
+                                @*<th>Supplier Type</th>*@
+                                <th>সম্পাদনা করুন </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var i = 1;
+                                @foreach (var item in Model.suppliers)
+                                {
+                                    <tr>
+                                        <td>@i</td>
+                                        <td>@item.supplierName</td>
+                                        <td>@item.LicenseNumber</td>
+
+                                        <td>@item.mobile</td>
+                                        @*<td>@item.supplierType?.supplierTypeName</td>*@
+                                        <td>
+                                            <a class="btn btn-success" title="Edit Data" href="/FAMSDEALER/Supplier/SupplierMenu?id=@item.Id"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
+                                        </td>
+                                    </tr>
+                                    i++;
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#education").addClass("active");
+            $('#educationalTable').DataTable();
+        });
+
+
+        //var table = $('#educationalTable').DataTable();
+        //$('#educationalTable tbody').on('click', 'tr', function () {
+        //    var data = table.row(this).data();
+        //    var iddata = data[0];
+        //    let id = iddata.replace('<span style="display:none">', "").replace("</span>", "");
+        //    var vid = parseInt(id.split('-')[1]);
+        //    window.location.href = "/MasterData/Customer/CustomerDetails/?id=" + vid;
+        //});
+
+
+    </script>
+}
+
+@section Style{
+    <style>
+        #educationalTable tbody tr {
+            cursor: pointer;
+        }
+    </style>
+}
+

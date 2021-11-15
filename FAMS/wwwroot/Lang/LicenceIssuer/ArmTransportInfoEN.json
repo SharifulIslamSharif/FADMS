@@ -1,0 +1,9 @@
+﻿{
+  "title": "Arm Transport Information",
+  "originPlace": "Origin Place",
+  "destinationPlace": "Destination Place",
+  "FromDate": "From Date",
+  "toDate": "To Date",
+  "reason": "Reason",
+  "action": "Action"
+}

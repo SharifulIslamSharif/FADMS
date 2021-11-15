@@ -1,0 +1,358 @@
+﻿
+@{
+    ViewData["Title"] = "Address";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<style>
+    .fas {
+        margin-top: 10px;
+        font-size: 25px;
+    }
+
+    .active {
+        color: darkcyan;
+    }
+    .btn_color {
+        background-color: #30994C;
+        color: #fff !important;
+    }
+
+    .nav-link {
+        padding: 5px 20px !important;
+        border-radius: 5px !important;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-left:0!important; padding-left:0!important">
+
+                <div class="collapse navbar-collapse" id="navbarNav" style="padding:5px!important; margin-left:0!important;padding-left:0!important">
+                    <ul class="navbar-nav" id="navlist">
+
+                        <li class="nav-item  btn btn-sm">
+                            <a class="nav-link btn_color active" id="countryInfo" href="/FAMSDEALER/DealerInfo/DealerInfo">Dealer Info</a>
+                        </li>
+
+                        <li class="nav-item  btn btn-sm">
+                            <a class="nav-link btn_color" id="divisionInfo" href="/FAMSDEALER/DealerInfo/Address">Address</a>
+                        </li>
+
+                        <li class="nav-item  btn btn-sm">
+                            <a class="nav-link btn_color" id="districtInfo" href="/FAMSDEALER/DealerInfo/LicenseInfo">License</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="col-md-12">
+
+            @*<div class="" style="width: 100%;">
+                <div class="card-header row outBox" style="background-color: #EAF6FA; color: black;">
+                    <div class="col-md-4" style="display: flex; justify-content: flex-start; align-items: center;">
+                        <h5 class="card-title" style="color: black; margin: 0; text-transform: uppercase;">আগ্নেয়াস্ত্রের  বিবরণ</h5>
+                    </div>
+                    <div class="col-md-8">
+                        <div style="float: right; margin: 16px;">
+                            <a class='btn btn-outline-info' style="" data-toggle='tooltip' title='Go Back' href='#'><i class="fas fa-backward"></i></a>
+                            <a id="btngle" href="javascript:void(0)" class="btn btn-outline-secondary btn-sm"
+                               style="position: absolute; right: 82px; top: 17px; box-shadow: none; font-size: 20px;"><i class="fas fa-th"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>*@
+
+            @*<div class="card" style="width: 97%;margin:0!important;">
+                <div class="card-header">
+                    <h5 class="card-title" style="color: black">Address Information</h5>
+                </div>
+            </div>*@
+
+
+
+            <div class="card" style="width: 97%;margin:0!important;">
+                <div class="card-header">
+                    <h5 class="card-title" style="color: black">Address</h5>
+                </div>
+            </div>
+
+            <form action="/FAMSDEALER/DealerInfo/Address" method="post">
+
+                <div class="card" style="width: 97%;padding:10px">
+                    <div class="card-body">
+                        <input type="hidden" name="id" id="id">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="armTypeId" class="col-sm-4 col-form-label">organizationHouseVillage</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="organizationHouseVillage" name="organizationHouseVillage" data-parsley-required="true" />
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    @*<label for="armTypeId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.armsType</label>*@
+                                    <label for="armTypeId" class="col-sm-4 col-form-label">organizationBlockSector</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="organizationBlockSector" name="organizationBlockSector" data-parsley-required="true" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="purchaseDate" class="col-sm-4 col-form-label">organizationPostCode</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="organizationPostCode" name="organizationPostCode" data-parsley-required="true" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    @*<label for="armModelId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.model</label>*@
+                                    <label for="armModelId" class="col-sm-4 col-form-label">organizationPostOffice</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="organizationPostOffice" name="organizationPostOffice" data-parsley-required="true" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="armTypeId" class="col-sm-4 col-form-label">organizationDivision</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="organizationDivision" name="organizationDivision" data-parsley-required="true">
+                                            <option value="value">text</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    @*<label for="armTypeId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.armsType</label>*@
+                                    <label for="armTypeId" class="col-sm-4 col-form-label">organizationDistrict</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="organizationDistrict" name="organizationDistrict" data-parsley-required="true">
+                                            <option value="value">text</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="purchaseDate" class="col-sm-4 col-form-label">organizationUpazila</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="organizationUpazila" name="organizationUpazila" data-parsley-required="true">
+                                            <option value="value">text</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    @*<label for="armModelId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.model</label>*@
+                                    <label for="armModelId" class="col-sm-4 col-form-label">organizationUnion</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="organizationUnion" name="organizationUnion" data-parsley-required="true" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="width: 97%;margin:0!important;">
+                    <div class="card-header">
+                        <h5 class="card-title" style="color: black">present Address</h5>
+                    </div>
+                </div>
+
+                <div class="card" style="width: 97%;padding:10px">
+                    <div class="card-body">
+                        <input type="hidden" name="id" id="id">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="armTypeId" class="col-sm-4 col-form-label">presentHouseVillage</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="presentHouseVillage" name="presentHouseVillage" data-parsley-required="true" />
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    @*<label for="armTypeId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.armsType</label>*@
+                                    <label for="armTypeId" class="col-sm-4 col-form-label">presentBlockSector</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="presentBlockSector" name="presentBlockSector" data-parsley-required="true" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="purchaseDate" class="col-sm-4 col-form-label">presentPostCode</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="presentPostCode" name="presentPostCode" data-parsley-required="true" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    @*<label for="armModelId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.model</label>*@
+                                    <label for="armModelId" class="col-sm-4 col-form-label">presentPostOffice</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="presentPostOffice" name="presentPostOffice" data-parsley-required="true" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="armTypeId" class="col-sm-4 col-form-label">presentDivision</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="presentDivision" name="presentDivision" data-parsley-required="true">
+                                            <option value="value">text</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    @*<label for="armTypeId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.armsType</label>*@
+                                    <label for="armTypeId" class="col-sm-4 col-form-label">presentDistrict</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="presentDistrict" name="presentDistrict" data-parsley-required="true">
+                                            <option value="value">text</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="purchaseDate" class="col-sm-4 col-form-label">presentUpazila</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="presentUpazila" name="presentUpazila" data-parsley-required="true">
+                                            <option value="value">text</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    @*<label for="armModelId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.model</label>*@
+                                    <label for="armModelId" class="col-sm-4 col-form-label">presentUnion</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="presentUnion" name="presentUnion" data-parsley-required="true" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="card" style="width: 97%;margin:0!important;">
+                    <div class="card-header">
+                        <h5 class="card-title" style="color: black">permanent Address</h5>
+                    </div>
+                </div>
+
+
+                <div class="card" style="width: 97%;padding:10px">
+                    <div class="card-body">
+                        <input type="hidden" name="id" id="id">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="armTypeId" class="col-sm-4 col-form-label">permanentHouseVillage</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="permanentHouseVillage" name="permanentHouseVillage" data-parsley-required="true" />
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    @*<label for="armTypeId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.armsType</label>*@
+                                    <label for="armTypeId" class="col-sm-4 col-form-label">permanentBlockSector</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="permanentBlockSector" name="permanentBlockSector" data-parsley-required="true" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="purchaseDate" class="col-sm-4 col-form-label">permanentPostCode</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="permanentPostCode" name="permanentPostCode" data-parsley-required="true" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    @*<label for="armModelId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.model</label>*@
+                                    <label for="armModelId" class="col-sm-4 col-form-label">permanentPostOffice</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="permanentPostOffice" name="permanentPostOffice" data-parsley-required="true" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="armTypeId" class="col-sm-4 col-form-label">permanentDivision</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="permanentDivision" name="permanentDivision" data-parsley-required="true">
+                                            <option value="value">text</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    @*<label for="armTypeId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.armsType</label>*@
+                                    <label for="armTypeId" class="col-sm-4 col-form-label">permanentDistrict</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="permanentDistrict" name="permanentDistrict" data-parsley-required="true">
+                                            <option value="value">text</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label for="purchaseDate" class="col-sm-4 col-form-label">permanentUpazila</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="permanentUpazila" name="permanentUpazila" data-parsley-required="true">
+                                            <option value="value">text</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    @*<label for="armModelId" class="col-sm-4 col-form-label">@Model.armBuyInfoLn.model</label>*@
+                                    <label for="armModelId" class="col-sm-4 col-form-label">permanentUnion</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="permanentUnion" name="permanentUnion" data-parsley-required="true" />
+                                    </div>
+                                </div>
+                                <button class="btn btn-success btn-sm mt-4 mb-5" type="submit" id="" style="float:right;"><i class="fa fa-save"></i> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,16 @@
+{
+  "title": "Spouse Information",
+  "spouseName": "Spouse Name",
+  "spouseNameBN": "Spouse Name in Bengal",
+  "dateOfBirth": "Date Of Birth",
+  "occupation": "Occupation",
+  "gender": "Gender",
+  "designation": "Designation",
+  "organization": "Organization",
+  "bin": "BRN",
+  "nid": "NID",
+  "bloodGroup": "Blood Group",
+  "contact": "Mobile Number",
+  "higherEducation": "Educational Qualification",
+  "spouseList": "Spouse List"
+}

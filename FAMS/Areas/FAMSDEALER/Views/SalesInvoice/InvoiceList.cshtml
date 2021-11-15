@@ -1,0 +1,113 @@
+﻿
+@model FADMS.Areas.FAMSDEALER.Models.SalesInvoiceViewModel
+@{
+    ViewData["Title"] = "InvoiceList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@section Style{
+    <style>
+        .redStar {
+            color: red;
+        }
+
+        #tblInvoiceList tbody tr {
+            cursor: pointer;
+        }
+    </style>
+}
+
+    <div class="col-12">
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-9">
+                        <h5 class="card-title" style="color: black">বিক্রয় চালানের তালিকা </h5>
+                    </div>
+                    <div class="col-2">
+                        <a href="/FAMSDEALER/SalesInvoice/DealerSales?id=0" style="background-color:#024972;float:right;" class="btn btn-info btn-sm mr-0">নতুন যোগ করুন </a>
+                    </div>
+                    <div class="col-1">
+                        <a class='btn btn-outline-info btn-sm mb-0' style="" data-toggle='tooltip' title='Go Back' href="javascript: history.go(-1)"><i class="fas fa-backward"></i></a>
+                    </div>
+                </div>
+                <hr>
+                <div class="container">
+                    <div class="row">
+                        <input type="hidden" id="rowCount" name="rowCount" value="0" />
+                        <div class="col-12">
+                            <table class="table table-bordered table-striped"  id="tblInvoiceList" data-parsley-required="true">
+                                <thead style="width:100%;">
+                                    <tr>
+                                        <th>সিরিয়াল নং </th>
+                                        <th>চালান নং </th>
+                                        <th>আগ্নেয়াস্ত্রের নাম</th>
+                                        <th>চালানের তারিখ</th>
+                                        <th>লাইসেন্স নাম্বার</th>
+                                        <th>মোট </th>
+                                        <th>ভ্যাট</th>
+                                        <th>ট্যাক্স </th>
+                                        <th> সর্বমোট </th>
+                                        <th>সম্পাদনা করুন </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+
+                                        int i = 1;
+
+                                        @foreach (var item in Model.salesInvoiceMastersDetails)
+                                        {
+
+                                            <tr>
+                                                <td width="2%">@i</td>
+                                                <td width="25%"><span style="display:none">-@item.Id-</span>@item.salesInvoiceMaster?.invoiceNumber</td>
+                                                <td width="2%">@item.itemSpecification?.Item?.itemName</td>
+                                                <td width="10%">@item.salesInvoiceMaster?.invoiceDate?.ToString("dd/MM/yyyy")</td>
+                                                <td width="13%">@item.salesInvoiceMaster?.licenseInfo?.licenseNumber</td>
+                                                <td width="10%" style="text-align:right">@item.salesInvoiceMaster?.totalAmount?.ToString("0,0.00")</td>
+                                                <td width="8%" style="text-align:right">@item.salesInvoiceMaster?.VATOnTotal?.ToString("0,0.00")</td>
+                                                <td width="8%" style="text-align:right">@item.salesInvoiceMaster?.TAXOnTotal?.ToString("0,0.00")</td>
+                                                <td width="10%" style="text-align:right">@item.salesInvoiceMaster?.NetTotal?.ToString("0,0.00")</td>
+                                                <td width="15%">
+                                                    <a class="btn btn-info" href="/FAMSDEALER/SalesInvoice/DealerSales?id=@item.salesInvoiceMaster?.Id" title="Invoice Edit" ><i class="fa fa-edit"></i></a>
+                                                    <a class="btn btn-success" href="/FAMSDEALER/SalesInvoice/InvoiceDetails?id=@item.salesInvoiceMaster?.Id" target="_blank" title="Details"><i class="fas fa-info-circle"></i></a>
+                                                    <a class="btn btn-primary" href="/FAMSDEALER/SalesInvoice/InvoicePDFAction?id=@item.salesInvoiceMaster?.Id" target="_blank" title="Report"><i class="fa fa-print"></i></a>
+                                                </td>
+                                            </tr>
+                                            i++;
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#tblInvoiceList').DataTable();
+            var table = $('#tblInvoiceList').DataTable();
+
+            $('#tblInvoiceList tbody').on('click', 'tr', function () {
+                var data = table.row(this).data();
+                var iddata = data[1];
+                let id = iddata.replace('<span style="display:none">', "").replace("</span>", "");
+                var vid = parseInt(id.split('-')[1]);
+                window.location.href = "/Sales/SalesInvoice/InvoiceDetails/?id=" + vid;
+            });
+            $('#tblInvoiceList tbody').on('click', 'td:last-child', function (e) {
+                e.stopPropagation();
+            });
+        });
+
+    </script>
+}
+
+

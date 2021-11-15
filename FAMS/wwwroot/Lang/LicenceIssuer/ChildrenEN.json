@@ -1,0 +1,14 @@
+﻿{
+  "childName": "Child Name in English",
+  "childNameBN": "Child Name in Bengali",
+  "dateOfBirth": "Date Of Birth",
+  "education": "Education",
+  "gender": "Gender",
+  "bin": "BRN",
+  "occupation": "Occupation",
+  "designation": "Designation",
+  "organization": "Organization",
+  "nid": "NID",
+  "bloodGroup": "Blood Group",
+  "action": "Action"
+}

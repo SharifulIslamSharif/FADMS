@@ -1,0 +1,173 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using FADMS.Data.Entity
+@using FADMS.Areas.Auth.Models
+@model LogInViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="shortcut icon" href="~/appslogo/Specialbranch.png" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/css/mdb.min.css" rel="stylesheet">
+    @*<link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <link href="~/css/sb-admin-2.min.css" rel="stylesheet">*@
+
+    <style>
+        /*.centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-150%, -150%);
+        }*/
+        .form-control {
+            background-color: #2E00A8 !important;
+            font-size: 24px !important;
+            text-align: center;
+            border: 1px solid #410CCC !important;
+            /*border:0!important;*/
+            color: #fff !important;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .bg-image {
+            /* The image used */
+            /*background-image: url("/images/whatsapp image 2021-01-11 at 2.26.28 pm.jpeg");*/
+            background-color: #fff !important;
+            /*background-image: url('../../../../wwwroot/images/whatsapp image 2021-01-11 at 2.26.28 pm.jpeg');*/
+            /* Add the blur effect */
+            filter: blur(8px);
+            -webkit-filter: blur(5px);
+            /* Full height */
+            height: 100vh;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Position text in the middle of the page/image */
+        .bg-text {
+            font-weight: bold;
+            position: absolute;
+            top: 43%;
+            left: 45%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 60%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .form-control::-webkit-input-placeholder {
+            color: #8D74D9;
+        }
+
+        ul li {
+            list-style: none;
+            font-size: 12px;
+            padding-top: 0 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Material form register -->
+
+    <div class="bg-text">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-8" style="margin-left:200px;">
+                    <p class="text-center p-0 m-0 pb-1">
+                        <img src="~/appslogo/Specialbranch.png" width="120" style="margin:0 auto;margin-top:55px;height:120px" />
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container-fluid">
+
+            <!-- Outer Row -->
+            <div class="row">
+                <div class="col-xl-8" style="margin-left:200px;">
+
+                    <div class="card centered" style="background-color:#23017C; border:none!important; border-radius:10px!important; margin:0!important">
+                        <div class="card-body p-0">
+                            <div class="row">
+                                
+                                <div class="col-lg-12">
+                                    <div class="p-4 mt-1">
+                                        <div class="text-center" style="height: 80%;">
+                                            <h6 style="color:#fff;margin-bottom: 32px; font-family:Impact;font-size:35px">Firearms Dealer Management System (FADMS)</h6>
+
+                                         
+                                            <form class="user" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                                                <div asp-validation-summary="All" class="text-danger"></div>
+                                                <div class="form-group">
+                                                    <input type="text" style="font-size:26Px!important; margin-right:20px!important;width:90%;padding:27px 0; margin-left:20px!important" class="form-control" id="exampleInputEmail" name="Name" aria-describedby="emailHelp" placeholder="আইডি লিখুন" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" style="font-size:26Px!important; margin-right:20px!important;width:90%;padding:27px 0;margin-left:20px!important" class="form-control" name="Password" id="exampleInputPassword" placeholder="পাসওয়ার্ড" required>
+                                                </div>
+                                               
+                                                <button type="submit" style="background-color: #155a30;font-size:23px!important;margin-right:20px!important; width:90%;padding:10px 0;margin-left:20px!important;color:#ffffff!important" class="btn btn-block">
+                                                    প্রবেশ করুন
+                                                </button>
+                                                <div style="padding-top: 5%;">
+                                                    @*<label style="color:#fff!important;">কোন অ্যাকাউন্ট নেই?</label><a href="/Auth/Account/GeneralRegister">এখন নিবন্ধন করুন</a>*@
+                                                    <p style=" margin-top:0!important; color:#fff!important" href="#"><i class="fas fa-phone-square-alt"></i><i class="fas fa-phone-square"></i> Helpline:013xxxxxxxx</p>
+
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                       
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/css/mdb.min.css" rel="stylesheet">
+
+    @*<script src="~/vendor/jquery/jquery.min.js"></script>
+        <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="~/js/sb-admin-2.min.js"></script>*@
+
+</body>
+</html>

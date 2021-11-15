@@ -1,0 +1,192 @@
+﻿
+@model FADMS.Areas.FAMSDEALER.Models.DealerMenuViewModel
+@{
+    ViewData["Title"] = "DealerMenu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<style>
+    .redStar {
+        color: red;
+    }
+
+    .h {
+        text-decoration: none;
+        border: 2px solid lightgray;
+        transition: .3s all;
+    }
+
+        .h:hover {
+            /*  background-color: #ADD8E6;*/
+            background-color: #145B31;
+            background: #145B31; /* background: #73ddff;*/
+            border: 2px solid #E6B21E;
+            overflow: hidden;
+            color: #ffffff;
+            transform: scale(1.05)
+        }
+
+    .d {
+        color: black;
+        font-size: 10pt;
+        font-weight: 400;
+    }
+
+        .d:hover {
+            color: #ffffff;
+        }
+
+    .fas:hover, i:hover, .fa:hover, fab:hover {
+        /* color: #ffffff;*/
+        color: #E6B21E;
+    }
+</style>
+
+<div class="card" style="width: 98%; padding-bottom:200px">
+    <!--<div class="card-header row" style="background-colo3:#EAF6FA;">
+        <div class="col-8">
+            <h5 class="card-title" style="color: black">Employee's Personal Information</h5>
+        </div>
+        <div class="col-4">-->
+    @*<h6 class="identity-box">@Model.employeeNameCode</h6>*@
+    <!--</div>
+    </div>-->
+    <div class="card-header row " style="background-color: #E8E8EC; color: black;">
+        <div class="col-md-12">
+            <h5 class="card-title" style="color: black; margin: 0; text-transform: uppercase;margin-left: 10px;">
+                ডিলার তথ্য 
+                <a class='btn btn-outline-info float-right mr-4 mb-0' style="" data-toggle='tooltip' title='Go Back' href="/FAMSDEALER/Dealer/DealerList"><i class="fas fa-backward"></i></a>
+
+            </h5>
+        </div>
+
+    </div>
+
+    <div class="card-body row">
+        <div class="col-2">
+            <!--<img id="user_img_current" style="width: 180px;height: 165px;border-radius: 120px;"--> @*src="~/@Model.photograph?.url"*@ <!--alt="" class="img-thumbnail float-left">-->
+            <img id="user_img_current" style="width: 180px;height: 165px;" src="~/img/pistol.jpg" alt="" class="img-thumbnail float-left rounded-circle">
+            <a href="#">
+                @*<i class="fa fa-camera" data-toggle="modal" data-target="#updateEmpPhotoModal" style="position:relative;margin-top:120px;margin-left:-22px;cursor:pointer; color:black"></i>*@
+            </a>
+
+            <input type="hidden" id="hiddenFile" />
+        </div>
+        <div class="col-9" style="color: black; font-size: 15px; padding-top: 24px;">
+            <span style="font-weight:bold;">ডিলারের নাম : </span><span>@Model.dealer?.dealerName</span><br />
+            <span style="font-weight:bold;">ডিলারের লাইসেন্স নাম্বার  : </span><span>@Model.dealer?.LicenseNumber</span><br />
+            <span style="font-weight:bold;">ডিলারের ইমেল : </span><span>@Model.dealer?.email</span><br />
+            <span style="font-weight:bold;">ডিলারের মোবাইল : </span><span>@Model.dealer?.mobile</span><br />
+        </div>
+        <div class="col-1">
+            <a class='btn btn-info' style="float:right;margin-right: 32px;" data-toggle='tooltip' title='Print' target='_blank' href="#"><i class='fa fa-print'></i></a>
+        </div>
+    </div>
+
+    <div class="card-body row" style="padding-top: 0;">
+        <div class="col-2">
+            <div class="form-group text-center card" style="background-color:#efecee;border-color:lightgray;">
+                @*<a class="text-center btn btn-default h" href="@Url.Action("Index", "Info", new { id = @ViewBag.employeeID })" style="text-decoration:none;">
+                        <i class="fa fa-user-tie fa-3x"></i>
+                        <br /><span class="d">Basic</span>
+                    </a>*@
+                <a class="text-center btn btn-default h" href="/FAMSDEALER/Dealer/AddDealer/@Model.dealer?.Id" style="text-decoration:none;">
+                    <i class="fa fa-user-tie fa-3x"></i>
+                    <br /><span class="d">বেসিক</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group text-center card" style="background-color:#efecee;border-color:lightgray;">
+                <a class="text-center btn btn-default h" href="/FAMSDEALER/Dealer/Address/@Model.dealer?.Id" style="text-decoration:none;">
+                    <i class="fa fa-map-marker-alt fa-3x "></i>
+                    <br /><span class="d"> ঠিকানা </span>
+                </a>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group text-center card" style="background-color:#efecee;border-color:lightgray;">
+                <a class="text-center btn btn-default h" href="/FAMSDEALER/Dealer/Contact/@Model.dealer?.Id" style="text-decoration:none;">
+                    <i class="fas fa-award fa-3x"></i>
+
+                    <br /><span class="d"> যোগাযোগ </span>
+                </a>
+            </div>
+        </div>
+        @*<div class="col-2">
+                <div class="form-group text-center card" style="background-color:#efecee;border-color:lightgray;">
+                    <a class="text-center btn btn-default h" href="/FAMSDEALER/Supplier/Create/@Model.supplier?.Id" style="text-decoration:none;">
+
+                        <i class="fas fa-low-vision fa-3x "></i>
+                        <br /><span class="d">Shooting Gun Item</span>
+                    </a>
+                </div>
+            </div>*@
+    </div>
+</div>
+
+<div class="modal fade" id="updateEmpPhotoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                @*<img src="~/images/Aloha New Logo.png" style="height:50px;" />*@
+                <h5 class="modal-title" id="exampleModalLabel">ফটো আপডেট করুন </h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-area="HRPMSEmployee" asp-controller="Photograph" asp-action="Index" method="post" enctype="multipart/form-data" data-parsley-validate="parsley">
+
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="form-group row">
+                        <div class="col-5">
+                            <img id="user_img_current" style="width:200px;height:200px" @*src="~/@Model.photograph.url" *@ alt="" class="img-thumbnail float-left">
+                            <input type="hidden" id="hiddenFile" />
+                        </div>
+                        <div class="col-7">
+
+                            <img id="user_img" style="width:200px;height:200px" @*src="~/@Model.photograph.url" *@ alt="" class="img-thumbnail float-left">
+                            <input type="hidden" name="employeeID" @*value="@Model.employeeInfo.Id" *@ />
+                            <input type="hidden" name="photographID" @*value="@Model.photograph?.Id" *@ />
+                            <input type="file" title="Photo Upload" id="imagePath" data-parsley-required="true" name="empPhoto" class="btn btn-default btn-sm pull-right" />
+                            <span style="float:left;color:red;" class="redStar">*</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <button type="submit" value="Submit" class="btn btn-success btn-lg" style="float:right; margin-top:5px;"><i class="fas fa-save"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var filerdr = new FileReader();
+                filerdr.onload = function (e) {
+                    $('#user_img').attr('src', e.target.result);
+                    $('#user_img_current').attr('src', e.target.result);
+                }
+                filerdr.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $(document).ready(function () {
+            $("#photo").addClass("active");
+            $("#imagePath").change(function () {
+                readURL(this);
+            });
+
+        });
+
+    </script>
+}
+
+
+
+

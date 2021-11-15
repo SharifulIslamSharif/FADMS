@@ -1,0 +1,39 @@
+H:\Arif\Dealer Project\Dealer Project\Fire_Arms_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.csproj.CoreCompileInputs.cache
+H:\Arif\Dealer Project\Dealer Project\Fire_Arms_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.AssemblyInfoInputs.cache
+H:\Arif\Dealer Project\Dealer Project\Fire_Arms_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.AssemblyInfo.cs
+H:\Arif\Dealer Project\Dealer Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\bin\Debug\netcoreapp2.2\FADMS.DAL.deps.json
+H:\Arif\Dealer Project\Dealer Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\bin\Debug\netcoreapp2.2\FADMS.DAL.dll
+H:\Arif\Dealer Project\Dealer Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\bin\Debug\netcoreapp2.2\FADMS.DAL.pdb
+H:\Arif\Dealer Project\Dealer Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\bin\Debug\netcoreapp2.2\FADMS.Data.dll
+H:\Arif\Dealer Project\Dealer Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\bin\Debug\netcoreapp2.2\FADMS.Data.pdb
+H:\Arif\Dealer Project\Dealer Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.csprojAssemblyReference.cache
+H:\Arif\Dealer Project\Dealer Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.csproj.CoreCompileInputs.cache
+H:\Arif\Dealer Project\Dealer Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.AssemblyInfoInputs.cache
+H:\Arif\Dealer Project\Dealer Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.AssemblyInfo.cs
+H:\Arif\Dealer Project\Dealer Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.csproj.CopyComplete
+H:\Arif\Dealer Project\Dealer Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.dll
+H:\Arif\Dealer Project\Dealer Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.pdb
+H:\Arif\FAMS Dealer\Fire_Arms_Dealer_Management_System\FAMS.DAL\bin\Debug\netcoreapp2.2\FADMS.DAL.deps.json
+H:\Arif\FAMS Dealer\Fire_Arms_Dealer_Management_System\FAMS.DAL\bin\Debug\netcoreapp2.2\FADMS.DAL.dll
+H:\Arif\FAMS Dealer\Fire_Arms_Dealer_Management_System\FAMS.DAL\bin\Debug\netcoreapp2.2\FADMS.DAL.pdb
+H:\Arif\FAMS Dealer\Fire_Arms_Dealer_Management_System\FAMS.DAL\bin\Debug\netcoreapp2.2\FADMS.Data.dll
+H:\Arif\FAMS Dealer\Fire_Arms_Dealer_Management_System\FAMS.DAL\bin\Debug\netcoreapp2.2\FADMS.Data.pdb
+H:\Arif\FAMS Dealer\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.csprojAssemblyReference.cache
+H:\Arif\FAMS Dealer\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.csproj.CoreCompileInputs.cache
+H:\Arif\FAMS Dealer\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.AssemblyInfoInputs.cache
+H:\Arif\FAMS Dealer\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.AssemblyInfo.cs
+H:\Arif\FAMS Dealer\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.csproj.CopyComplete
+H:\Arif\FAMS Dealer\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.dll
+H:\Arif\FAMS Dealer\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.pdb
+F:\ARIF\FAMS Dealer\Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\bin\Debug\netcoreapp2.2\FADMS.DAL.deps.json
+F:\ARIF\FAMS Dealer\Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\bin\Debug\netcoreapp2.2\FADMS.DAL.dll
+F:\ARIF\FAMS Dealer\Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\bin\Debug\netcoreapp2.2\FADMS.DAL.pdb
+F:\ARIF\FAMS Dealer\Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\bin\Debug\netcoreapp2.2\FADMS.Data.dll
+F:\ARIF\FAMS Dealer\Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\bin\Debug\netcoreapp2.2\FADMS.Data.pdb
+F:\ARIF\FAMS Dealer\Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.csprojAssemblyReference.cache
+F:\ARIF\FAMS Dealer\Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.csproj.CoreCompileInputs.cache
+F:\ARIF\FAMS Dealer\Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.AssemblyInfoInputs.cache
+F:\ARIF\FAMS Dealer\Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.AssemblyInfo.cs
+F:\ARIF\FAMS Dealer\Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.csproj.CopyComplete
+F:\ARIF\FAMS Dealer\Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.dll
+F:\ARIF\FAMS Dealer\Project\Fire_Arms_Dealer_Management_System\FAMS.DAL\obj\Debug\netcoreapp2.2\FADMS.DAL.pdb

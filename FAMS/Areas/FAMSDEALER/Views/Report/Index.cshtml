@@ -1,0 +1,338 @@
+﻿@model FADMS.Areas.FAMSDEALER.Models.DealerReportViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .form-control {
+        border-radius: 25px;
+        border-color: #18c1ef;
+        /*height:46px;
+        width:46%;*/
+        /*margin-left: 13%;*/
+        color: #606066 !important;
+    }
+</style>
+
+<form class="mb-5" target="_blank" asp-area="FAMSDEALER" asp-controller="Report" asp-action="DealerReport" method="get" data-parsley-validate="parsley" style="width: 85%;margin-top:20px; margin-left: 68px;">
+    <div class="row">
+
+        <div class="col-md-12" style="padding-right:2px;">
+
+            <div class="container-fluid" style="padding: 0 8px;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header" style="padding:6px 0px 0px 3px;">
+                                <label style="padding:0px 0px 0px 10px;font-size:16px;font-weight:600" class="col-sm-10 pull-left"><i class="fa fa-print fa-sm"></i>&nbsp;&nbsp; ডিলার রিপোর্ট</label>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-md-12">
+                                    <div class="form-group row" id="DateRangeSelect">
+                                        <div class="col-12 row" style="margin-top:5px;">
+                                            <label for="userName" class="col-sm-2 col-form-label col-form-label">রিপোর্ট ধরণ  <span class="redStar">*</span></label>
+                                            <select class="col-sm-6 form-control" id="ItemId" name="type">
+                                                <option value="0">নির্বাচন করুন</option>
+                                                <option value="1">ডিলার ভিত্তিক ক্রয়</option>
+                                                <option value="2">ডিলার ভিত্তিক বিক্রয়</option>
+                                                <option value="3">সরবরাহকারি ভিত্তিক ক্রয়</option>
+                                                <option value="4">ব্যক্তি ভিত্তিক বিক্রয়</option>
+                                                <option value="5">প্রতিষ্ঠান ভিত্তিক বিক্রয়</option>
+                                                <option value="6">আগ্নেয়াস্ত্রের ধরন ভিত্তিক ক্রয়</option>
+                                                <option value="7">আগ্নেয়াস্ত্রের ধরন ভিত্তিক বিক্রয়</option>
+                                                @*<option value="8">Item Category Purchase</option>
+                                                <option value="9">Item Category wise Sales</option>*@
+                                            </select>
+                                            <label class="col-sm-2 col-form-label"></label>
+                                        </div>
+
+                                        <div class="col-12 row" id="divDealer" style="margin-top:5px; display:none">
+                                            <br />
+                                            <label class="col-sm-2 col-form-label col-form-label">ডিলার</label>
+                                            <select class="col-sm-6 form-control" id="dealerId" name="dealerId" data-parsley-required="true">
+                                                <option value="0">নির্বাচন করুন</option>
+                                                @foreach (var data in Model.dealers)
+                                                {
+                                                    <option value="@data.Id">@data.dealerName</option>
+                                                }
+                                            </select>
+                                            <label class="col-sm-2 col-form-label"></label>
+                                        </div>
+
+                                        <div class="col-12 row" id="divSupplier" style="margin-top:5px; display:none">
+                                            <br />
+                                            <label class="col-sm-2 col-form-label col-form-label">সরবরাহকারী</label>
+                                            <select class="col-sm-6 form-control" id="supplierId" name="supplierId" data-parsley-required="true">
+                                                <option value="0">নির্বাচন করুন</option>
+                                                @foreach (var data in Model.suppliers)
+                                                {
+                                                    <option value="@data.Id">@data.supplierName</option>
+                                                }
+                                            </select>
+                                            <label class="col-sm-2 col-form-label"></label>
+                                        </div>
+
+                                        <div class="col-12 row" id="divPersonal" style="margin-top:5px; display:none">
+                                            <br />
+                                            <label class="col-sm-2 col-form-label col-form-label">ব্যক্তিগত</label>
+                                            <select class="col-sm-6 form-control" id="PersonalInfosId" name="PersonalInfosId" data-parsley-required="true">
+                                                <option value="0">নির্বাচন করুন</option>
+                                                @foreach (var data in Model.personalInfos)
+                                                {
+                                                    <option value="@data.Id">@data.nameEnglish</option>
+                                                }
+                                            </select>
+                                            <label class="col-sm-2 col-form-label"></label>
+                                        </div>
+
+                                        <div class="col-12 row" id="divOrganization" style="margin-top:5px; display:none">
+                                            <br />
+                                            <label class="col-sm-2 col-form-label col-form-label">প্রাতিষ্ঠানিক</label>
+                                            <select class="col-sm-6 form-control" id="organizationInfosId" name="organizationInfosId" data-parsley-required="true">
+                                                <option value="0">নির্বাচন করুন</option>
+                                                @foreach (var data in Model.organizationInfos)
+                                                {
+                                                    <option value="@data.Id">@data.name</option>
+                                                }
+                                            </select>
+                                            <label class="col-sm-2 col-form-label"></label>
+                                        </div>
+
+                                        <div class="col-12 row" id="divOrganization" style="margin-top:5px; display:none">
+                                            <br />
+                                            <label class="col-sm-2 col-form-label col-form-label">প্রাতিষ্ঠানিক (২)</label>
+                                            <select class="col-sm-6 form-control" id="organizationInfosId" name="organizationInfosId" data-parsley-required="true">
+                                                <option value="0">নির্বাচন করুন</option>
+                                                @foreach (var data in Model.organizationInfos)
+                                                {
+                                                    <option value="@data.Id">@data.name</option>
+                                                }
+                                            </select>
+                                            <label class="col-sm-2 col-form-label"></label>
+                                        </div>
+
+                                        <div class="col-12 row" id="divItem" style="margin-top:5px; display:none">
+                                            <br />
+                                            <label class="col-sm-2 col-form-label col-form-label">আইটেম</label>
+                                            <select class="col-sm-6 form-control" id="itemId" name="itemId" data-parsley-required="true">
+                                                <option value="0">নির্বাচন করুন</option>
+                                                @foreach (var data in Model.items)
+                                                {
+                                                    <option value="@data.Id">@data.itemName</option>
+                                                }
+                                            </select>
+                                            <label class="col-sm-2 col-form-label"></label>
+                                        </div>
+
+                                        <div class="col-12 row" id="divItemCategory" style="margin-top:5px; display:none">
+                                            <br />
+                                            <label class="col-sm-2 col-form-label col-form-label">আগ্নেয়াস্ত্রের ক্যাটাগরি</label>
+                                            <select class="col-sm-6 form-control" id="itemCategoryId" name="itemCategoryId" data-parsley-required="true">
+                                                <option value="0">নির্বাচন করুন</option>
+                                                @foreach (var data in Model.armTypes)
+                                                {
+                                                    <option value="@data.Id">@data.ArmTypeName</option>
+                                                }
+                                            </select>
+                                            <label class="col-sm-2 col-form-label"></label>
+                                        </div>
+
+                                        <div class="col-12 row" style="margin-top:5px;">
+                                            <label class="col-sm-2 col-form-label">শুরুর তারিখ</label>
+                                            <input name="fromDdate" id="fromDate" class="form-control col-sm-6 flatpickr-input" type="text" readonly="readonly" required>
+                                            <label class="col-sm-2 col-form-label mb-3"></label>
+                                        </div>
+
+                                        <div class="col-12 row" style="margin-top:5px;">
+                                            <label class="col-sm-2 col-form-label">শেষের তারিখ</label>
+                                            <input name="toDate" id="toDate" class="form-control col-sm-6 flatpickr-input" type="text" readonly="readonly" required>
+                                            <label class="col-sm-2 col-form-label mb-3"></label>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-9"></label>
+                                        <div class="col-sm-3">
+                                            <br>
+                                            <button type="submit" class="btn btn-success" title="Preview"><i class="fas fa-print"></i></button>&nbsp;
+                                            <button type="reset" title="Refresh" class="btn btn-danger"><i class="fas fa-sync"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@*@DateTime.Now.ToString("dd.MM.yy")*@
+
+@section Scripts{
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        $(document).ready(function () {
+            $('#fromDate').flatpickr({
+                dateFormat: "Y-m-d",
+                altInput: true,
+                altFormat: "F j, Y",
+                maxDate: "@DateTime.Now.ToString("yyyy.MM.dd")"
+            });
+
+            $('#toDate').flatpickr({
+                dateFormat: "Y-m-d",
+                maxDate: "@DateTime.Now.ToString("yyyy.MM.dd")",
+                altInput: true,
+                altFormat: "F j, Y"
+            });
+
+            $('#ItemId').on('change', function () {
+                var id = $('#ItemId').val();
+                DisplayAll(id);
+            })
+
+            @*$('#dealerId').on('change', function () {
+                var id = $('@Model.dealer?.Id').val();
+                DealerPurchaswAll(id);
+            })*@
+
+
+        });
+
+
+        function DisplayAll() {
+            var id = $('#ItemId').val();
+            if (id == 1) {
+                $('#divDealer').show();
+                $('#divSupplier').hide();
+                $('#divPersonal').hide();
+                $('#divOrganization').hide();
+                $('#divItem').hide();
+                $('#divItemCategory').hide();
+            }
+
+            else if (id == 2) {
+                $('#divDealer').show();
+                $('#divSupplier').hide();
+                $('#divPersonal').hide();
+                $('#divOrganization').hide();
+                $('#divItem').hide();
+                $('#divItemCategory').hide();
+            }
+            else if (id == 3) {
+                $('#divSupplier').show();
+                $('#divDealer').hide();
+                $('#divPersonal').hide();
+                $('#divOrganization').hide();
+                $('#divItem').hide();
+                $('#divItemCategory').hide();
+            }
+            else if (id == 4) {
+                $('#divPersonal').show();
+                $('#divOrganization').hide();
+                $('#divDealer').hide();
+                $('#divSupplier').hide();
+                $('#divItem').hide();
+                $('#divItemCategory').hide();
+            }
+            else if (id == 5) {
+                $('#divOrganization').show();
+                $('#divPersonal').hide();
+                $('#divDealer').hide();
+                $('#divSupplier').hide();
+                $('#divItem').hide();
+                $('#divItemCategory').hide();
+                //DisplayArms();
+            }
+            else if (id == 6) {
+                $('#divItem').show();
+                $('#divOrganization').hide();
+                $('#divPersonal').hide();
+                $('#divDealer').hide();
+                $('#divSupplier').hide();
+                $('#divItemCategory').hide();
+            }
+            else if (id == 7) {
+                $('#divItem').show();
+                $('#divOrganization').hide();
+                $('#divPersonal').hide();
+                $('#divDealer').hide();
+                $('#divSupplier').hide();
+                $('#divItemCategory').hide();
+            }
+
+            else if (id == 8) {
+                $('#divItemCategory').show();
+                $('#divItem').hide();
+                $('#divOrganization').hide();
+                $('#divPersonal').hide();
+                $('#divDealer').hide();
+                $('#divSupplier').hide();
+                $('#divItem').hide();
+
+            }
+            else if (id == 9) {
+                $('#divItemCategory').show();
+                $('#divItem').hide();
+                $('#divOrganization').hide();
+                $('#divPersonal').hide();
+                $('#divDealer').hide();
+                $('#divSupplier').hide();
+                $('#divItem').hide();
+            }
+
+        }
+
+        function ReloadPage() {
+            location.reload();
+        };
+        function ProcessReport() {
+            var id = $('#ItemId').val();
+            if (id == 0) {
+                swal('Warning', 'Please select Report Type Name', 'warning');
+                return false;
+            }
+            //if (id == 1) {
+            //    var thana = $('#thanaId').val();
+            //    if (thana == 0) {
+            //        swal('Warning', 'Please select Thana', 'warning');
+            //        return false;
+            //    }
+            //}
+            //else if (id == 2) {
+            //    var dis = $('#districtId').val();
+            //    if (dis == 0) {
+            //        swal('Warning', 'Please select District', 'warning');
+            //        return false;
+            //    }
+            //}
+            //else if (id == 3) {
+            //    var div = $('#divisionId').val();
+            //    if (div == 0) {
+            //        swal('Warning', 'Please select Division', 'warning');
+            //        return false;
+            //    }
+            //}
+            //else if (id == 4) {
+            //    var armtype = $('#armsId').val();
+            //    if (armtype == 0) {
+            //        swal('Warning', 'Please select Arms Type', 'warning');
+            //        return false;
+            //    }
+            //}
+            //else if (id == 5) {
+            //    var litype = $('#licenseId').val();
+            //    if (litype == 0) {
+            //        swal('Warning', 'Please select License Type', 'warning');
+            //        return false;
+            //    }
+            //}
+            $('#btnSubmit').click();
+        }
+
+    </script>
+}

@@ -1,0 +1,113 @@
+{
+  "title": "Personal Information",
+  "titledetails": "License Details",
+  "photoTitle": "Picture upload",
+  "NameBangla": "Name(Bangla)",
+  "NameEnglish": "Name",
+  "FathersName": "Father's Name",
+  "FathersOcupation": "Father's Occupation",
+  "MothersName": "Mathers's Name",
+  "MothersOcupation": "Mathers's Occupation",
+  "WifeHusbendName": "Wife/Husbend's Name",
+  "WifeHusbendOcupation": "Wife/Husbend's Occupation",
+  "nid": "NID",
+  "dateofbirth": "Date Of Birth",
+  "age": "Age",
+  "birthplace": "Date Place",
+  "nationlatity": "Nationlatity",
+  "gender": "Gender",
+  "religion": "Religion",
+  "dropdown": "Select one",
+
+
+  "maritalStatus": "Marital Status",
+  "bloodgroup": " Blood Group",
+  "passportNo": "Passport no",
+  "batch": "Batch",
+  "isnationality": "Do you have dual citizenship?",
+  "educationalStatus": "Educational Qualifications",
+  "phoneoffice": "Telephone (office)",
+  "phonehome": "Telephone (home)",
+  "mobileoffice": "Mobile (Office)",
+  "mobilePersonal": "Mobile(home)",
+  "email": "Email",
+  "ispolitical": "Political relations (if any)",
+  "isgovjob": "Whether a ",
+  "govjobdegention": "Designation",
+  "phisicalStability": "Whether ?",
+  "organization": "Organization ",
+  "yearlyincome": "Annual income",
+  "previousrecodearms": "Has any weapon?",
+
+
+
+  "previousrecodelicense": "Has ?",
+  "reason": "What is the ",
+  "armstype": "The type of weapon applied",
+  "anotherarms": "Affidavit ",
+  "armshended": "Whether notarized ",
+  "yes": "Yes",
+  "no": "No",
+  "bangladeshi": "Bangladeshi",
+  "foreigner": "Foreigner",
+  "men": "Men",
+  "women": "Women",
+  "gother": "Others",
+  "Islam": "Islam",
+  "Hindu": "Hindu",
+  "Boddo": "Buddhist",
+  "Khristan": "Christian ",
+  "rother": "Others",
+  "pstol": "Pistol ",
+  "revolber": "Revolver",
+  "eknola": "One-barreled gun",
+  "duenola": "Double gun",
+  "shortgun": "Shortgun",
+  "Married": "Married",
+  "Unmarried": "Unmarried",
+  "Ocupation": "Ocupation",
+  "Teamname": "Party name",
+  "PartyDesignation": "Party Designation",
+
+
+
+
+
+  "politicalRelation": "Political Relation ( If there is)",
+
+
+  "address": "Address",
+
+  "addressTitle": " Address Heading ",
+
+  "presentAddress": "Present Address  ",
+
+  "permanentAddress": " Permanent Address ",
+
+
+
+  "houseNo": "House No  ",
+
+  "block": " Block ",
+
+  "postCode": "Post Code  ",
+
+  "postOffice": " Post Office ",
+
+  "division": "Division  ",
+
+  "district": "District  ",
+
+  "thana": "Thana  ",
+
+  "union": "Union  ",
+
+  "licenseNo": "License No  ",
+
+  "licenseIssue": "License Issue Date  ",
+
+  "qrCode": "qr Code  "
+  
+}
+  
+

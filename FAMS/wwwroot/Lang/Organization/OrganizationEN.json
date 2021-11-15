@@ -1,0 +1,28 @@
+{
+  "organizanId": "organizan Id",
+  "name": "Organization Name",
+  "orgCode": "Organization Code",
+  "instituteTypeId": "Type",
+  "branch": "Branch",
+  "generalManager": "General Manager",
+  "estrabilishedDate": "Established Date",
+  "organogram": "Organogram",
+  "taxId": "Tax ID",
+  "carQuintity": "Car Quantity",
+  "previousFairArms": "Previous Fair Arms",
+  "certificate": "Have any Certificate?",
+  "demandArmsType": "Demand Arms Type",
+  "demandArmsQty": "Quentity",
+  "presentSecuritySystem": "Present Security System",
+  "licenseNeed": "License Need ",
+  "reason": "Reason",
+  "action": "Action ",
+  "title": "Employee Registration",
+  "title2": "Organization Informations",
+  "ownerName": "Owner Name ",
+  "blance": "Blance"
+}
+
+
+
+

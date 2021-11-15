@@ -1,0 +1,19 @@
+﻿{
+  "title": "ব্যক্তিগত তথ্য",
+  "Code": "কর্মী নম্বর",
+  "Name": "কর্মী নাম",
+  "designation": "পদবি",
+  "mobileNumberPersonal": "মোবাইল নম্বর",
+  "emailAddressPersonal": "ইমেল",
+  "basic": "প্রাথমিক তথ্য",
+  "address": "ঠিকানা",
+  "traning": "প্রশিক্ষণ",
+  "gd": "জি ডি",
+  "tax": "কর",
+  "photo": "ছবি",
+  "useGun": "বন্দুককের ব্যহার",
+  "gunBuy": "ক্রয়কৃত বন্দুক",
+  "gunStolen": "চুরিকৃত বন্দুক"
+
+}
+ 

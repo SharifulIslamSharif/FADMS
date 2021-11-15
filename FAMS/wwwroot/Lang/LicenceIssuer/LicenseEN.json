@@ -1,0 +1,37 @@
+﻿{
+  "title": "License Information",
+  "titleSB": "Inquiry into the application",
+  "titleSB1": "External investigation",
+  "titleSB2": "Fill Up The Investigation Form",
+  "titleIR": "Investigation Report",
+  "titleIR2": "Comments regarding granting license",
+  "licenseApprover": "Approver",
+  "titleLInfo": "Type of authorized license",
+  "licenseNumber": "License Number",
+  "licenseTypeId": "License Type Id",
+  "applyNumber": "Apply No",
+  "licenseName": "License Name",
+  "licenseType": "License Type",
+  "armsType": "Arms Type",
+  "action": "Action",
+
+  "applyForm": "Application Form ",
+
+  "fileName": "File Name",
+
+  "fileType": "File Type",
+
+  "comments": "Comments",
+
+  "docAttchment": " Doc Attchment",
+
+
+  "place": "Place of Issue",
+  "dateOfIssue": "Date Of Issue",
+  "dateOfExpair": "Date Of Expairy",
+  "reason": "Reason",
+  "source": "Source",
+
+  "licenseGunType": "License Gun Type"
+}
+

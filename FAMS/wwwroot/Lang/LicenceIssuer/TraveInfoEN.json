@@ -1,0 +1,19 @@
+{
+  "type": "Tour Type",
+  "purpose": "Tour purpose",
+  "location": "Tour location",
+  "presentDivision": "Present Division",
+  "country": "Country",
+  "sponsoringAgency": "Sponsoring Agency",
+  "startDate": "Start Date",
+  "endDate": "End Date",
+  "goNumber": "Go Number",
+  "goDate": "Go Date",
+  "file": "Upload File",
+  "titleOfFile": "Title Of File",
+  "remarks": "Remarks",
+  "action": "Action"
+}
+
+    
+      

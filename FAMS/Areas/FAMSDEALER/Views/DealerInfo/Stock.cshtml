@@ -1,0 +1,260 @@
+﻿
+@{
+    ViewData["Title"] = "Stock";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="width: 100%;padding:10px">
+                <div class="card-body">
+                    <h5 class="card-title" style="color: black">আগ্নেয়াস্ত্রের  হিসাব</h5>
+                    <hr />
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <table id="tblDealerInfo" class="table table-striped table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>dealerName</th>
+                                        <th>armsType</th>
+                                        <th>ক্রয়ের সংখ্যা </th>
+                                        <th>বিক্রয়ের  সংখ্যা </th>
+                                        <th>অবশিষ্ঠ</th>
+                                        @*<th>@Model.armPurchaseInfoLn.purchaseDate </th>
+                                        <th>Action</th>*@
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @*@foreach (var data in Model.armStockViewModels)
+                                    {*@
+                                    <tr>
+                                        <td>NameOfOrganization</td>
+                                        <td>ArmTypeName</td>
+
+                                        <td><a onclick="GetArmPurchaseInfo()" data-toggle="modal" data-target="#Modal" style="color:blue">PurchaseQuantity</a></td>
+                                        <td><a onclick="GetArmBuyInfo()" data-toggle="modal" data-target="#ModalB" style="color:blue">SaleQuantity</a></td>
+                                        <td>Balance</td>
+                                        @*<td>@data.PurchaseDate</td>
+                                        <td>
+                                            <a href="javascript:void(0)" class="btn btn-success" onclick="Edit(@data.Id,@data.ManufactureInfoId,@data.ArmTypeId,@data.ArmsModelId,'@data.PurchaseDate','@data.SerialNo')"><i class="fa fa-edit"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-danger" onclick="Delete(@data.Id)"><i class="fa fa-trash"></i></a>
+                                        </td>*@
+                                    </tr>
+                                    @*}*@
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@*<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div style="width:100%;" class="row">
+                    <div class="col-4">
+                        <img src="~/images/Aloha New Logo.png" style="height:50px;" />
+                    </div>
+                    <div class="col-7">
+                        <h4 class="text-center" style="color:black;padding-top:15px;">আগ্নেয়াস্ত্র  ক্রয়ের হিসাব</h4>
+                    </div>
+                    <div class="col-1">
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-12">
+                                <table id="tblarmBuyInfo" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+
+                                            <th>@Model.armPurchaseInfoLn.armsType</th>
+                                            <th>@Model.armPurchaseInfoLn.model</th>
+                                            <th>@Model.armPurchaseInfoLn.manufacturer</th>
+                                            <th>@Model.armPurchaseInfoLn.armIdNo</th>
+                                            <th>@Model.armPurchaseInfoLn.purchaseDate </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblarmBuyInfotbody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <hr />
+
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="ModalB" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div style="width:100%;" class="row">
+                    <div class="col-4">
+                        <img src="~/images/Aloha New Logo.png" style="height:50px;" />
+                    </div>
+                    <div class="col-7">
+                        <h4 class="text-center" style="color:black;padding-top:15px;">আগ্নেয়াস্ত্র  বিক্রয়ের হিসাব</h4>
+                    </div>
+                    <div class="col-1">
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-12">
+                                <table id="tblarmBuyInfoB" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+
+                                            <th>@Model.armPurchaseInfoLn.armsType</th>
+                                            <th>@Model.armPurchaseInfoLn.model</th>
+                                            <th>@Model.armPurchaseInfoLn.manufacturer</th>
+                                            <th>@Model.armPurchaseInfoLn.armIdNo</th>
+                                            <th>@Model.armPurchaseInfoLn.purchaseDate </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblarmBuyInfotbodyB"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <hr />
+
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>*@
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#purchaseDate').datepicker({
+                uiLibrary: 'bootstrap4'
+            });
+            $("#ArmTypeId").change(function () {
+                var id = $(this).val();
+                Common.Ajax('GET', '/License/ArmPurchase/GetArmModel/' + id, [], 'json', ajaxGetArmModel);
+            });
+
+        })
+        function GetArmPurchaseInfo(Id, ArmTypeId) {
+           // alert('bashar');
+           // $('#Modal').show();
+        $.ajax({
+            url: '@Url.Action("GetArmPurchaseInfo", "ArmPurchase", "http")',
+            type: 'GET',
+            data: { Id: Id, ArmTypeId: ArmTypeId}
+        })
+            .done(function (response) {
+                console.log(response);
+                var options = '';
+            $.each(response, function (i, item) {
+
+                options += '<tr><td>' + item.ArmType.ArmTypeName + '</td><td>' + item.ArmsModel.modelName + '</td><td>' + item.ManufactureInfo.ManufactureName + '</td><td>' + item.SerialNo + '</td><td>' + item.PurchaseDate + '</td></tr>'
+
+
+                //options += '<option value="' + item.Id + '">' + item.modelName + '</option>';
+            });
+
+
+
+
+
+            $('#tblarmBuyInfotbody').empty();
+            $('#tblarmBuyInfotbody').append(options);
+        })
+        }
+         function GetArmBuyInfo(Id, ArmTypeId) {
+           // alert('bashar');
+           // $('#Modal').show();
+        $.ajax({
+            url: '@Url.Action("GetArmBuyInfobydealerIdArmId", "ArmPurchase", "http")',
+            type: 'GET',
+            data: { Id: Id, ArmTypeId: ArmTypeId}
+        })
+            .done(function (response) {
+                console.log(response);
+                var options = '';
+            $.each(response, function (i, item) {
+
+                options += '<tr><td>' + item.armType.ArmTypeName + '</td><td>' + item.ArmsModel.modelName + '</td><td>' + item.ManufactureInfo.ManufactureName + '</td><td>' + item.SerialNo + '</td><td>' + item.PurchaseDate + '</td></tr>'
+
+            });
+
+
+
+
+
+            $('#tblarmBuyInfotbodyB').empty();
+            $('#tblarmBuyInfotbodyB').append(options);
+        })
+    }
+        function Edit(Id, ManufactureInfoId, ArmTypeId, ArmsModelId, PurchaseDate,SerialNo) {
+
+
+            $("#id").val(Id);
+            $("#ManufactureInfoId").val(ManufactureInfoId);
+
+            $("#ArmTypeId").val(ArmTypeId);
+            Common.Ajax('GET', '/License/ArmPurchase/GetArmModel/' + ArmTypeId, [], 'json', ajaxGetArmModel);
+           // alert(ArmsModelId);
+
+
+            //alert($("#ArmsModelId").val(ArmsModelId));
+            $("#purchaseDate").val(PurchaseDate);
+           // alert(SerialNo+'-'+PurchaseDate)
+            $("#SerialNo").val(SerialNo);
+            $("#ArmsModelId").val(ArmsModelId);
+
+        }
+        function ajaxGetArmModel(response) {
+
+            var options = '<option value="">Select</option>';
+            $.each(response, function (i, item) {
+                options += '<option value="' + item.Id + '">' + item.modelName + '</option>';
+            });
+            $('#ArmsModelId').empty();
+            $('#ArmsModelId').append(options);
+        }
+
+    </script>
+
+}
+
+

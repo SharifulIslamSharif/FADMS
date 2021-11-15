@@ -1,0 +1,18 @@
+{
+  "title": "Personal Information",
+  "Code": "User Code",
+  "Name": "User Name",
+  "designation": "Designation",
+  "mobileNumberPersonal": "Mobile Number",
+  "emailAddressPersonal": "Email",
+  "basic": "Basic",
+  "address": "Address",
+  "traning": "Traning",
+  "gd": "G.D.",
+  "tax": "Tax",
+  "photo": "Photo",
+  "useGun": "Use Of Gun",
+  "gunBuy": "Gun Buy",
+  "gunStolen": "Gun Stolen"
+}
+

@@ -1,0 +1,144 @@
+﻿
+@model FADMS.Areas.FAMSDEALER.Models.SalesInvoiceViewModel
+@{
+    ViewData["Title"] = "Sales Invoice";
+    Layout = "~/Views/Shared/_PrintView.cshtml";
+}
+
+
+<div class="col-12">
+    <div>
+        <div style="float:left">
+            <img src="~/appslogo/Specialbranch.png" style="margin:0px 0px 0px 0px;" height="70" width="70" />
+        </div>
+        <div style="color:black">
+
+            <h4 style="font-weight:900;padding-left:250px">Firearms Management System</h4>
+            <h6 style="width:650px;padding-left:300px;text-align:center">
+                SB Head Querters,Dhaka, Bangladesh
+                Contact Number:013********
+            </h6>
+
+            <p style="width:650px;padding-left:300px;text-align:center;margin-top:30px!important; font-weight:600">Salse Invoice</p>
+
+        </div>
+
+    </div>
+
+
+    <br />
+    <br />
+
+    <div style="margin-bottom:30px;color:black">
+        <span style="float:left;font-weight:600;">Invoice No : @Model.salesInvoiceMaster.invoiceNumber</span>
+        <span style="text-align:right;float:right;font-weight:600;">Invoice Date : @Model.salesInvoiceMaster.invoiceDate?.ToString("dd-MMM-yyyy")</span>
+        <br />
+        <span style="float:left;font-weight:600;">License Number : @Model.salesInvoiceMaster?.licenseInfo.licenseNumber</span>
+        <br />
+        <span style="float:left;font-weight:600;">Address : @Model.salesInvoiceMaster?.licenseInfo.place</span>
+    </div>
+
+    <div>
+        <table class="table table-striped table-bordered" id="voucherList">
+            <thead>
+                <tr style="background-color:#E3E6F0; border-bottom:2px solid black!important">
+                    <th style="border-bottom:1px solid black!important">Item</th>
+                    <th style="border-bottom:1px solid black!important">Item Spac.</th>
+                    <th style="border-bottom:1px solid black!important">Price</th>
+                    <th style="border-bottom:1px solid black!important">Qty</th>
+                    <th style="border-bottom:1px solid black!important">Vat</th>
+                    <th style="border-bottom:1px solid black!important">Tax</th>
+
+                    <th style="border-bottom:1px solid black!important">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.salesInvoiceDetails)
+                {
+                    //decimal lineTot = 0; decimal lineDisc = 0;
+
+                    //lineTot = (Convert.ToDecimal(@item.itemPriceFixing.price) * Convert.ToDecimal(@item.quantity));
+                    //if (@item.itemPriceFixing.discountPersent != null)
+                    //{
+                    //    lineDisc = (Convert.ToDecimal(@item.itemPriceFixing.price) * Convert.ToDecimal(@item.quantity) * Convert.ToDecimal(@item.itemPriceFixing.discountPersent) / 100);
+                    //}
+                    //decimal lineTotal = lineTot - lineDisc;
+
+                    <tr style="background-color:#fff">
+                        <td>@item.itemSpecification.Item.itemName</td>
+                        <td>@item.itemSpecification.specificationName</td>
+                        <td>@item.rate?.ToString("0.00")</td>
+                        <td>@item.quantity?.ToString("0.00")</td>
+                        <td>@item.vatAmount?.ToString("0.00")</td>
+                        <td>@item.taxAmount?.ToString("0.00")</td>
+                        <td style="text-align:right;">@item.lineTotal?.ToString("0.00")</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="6" style="text-align:right;">Gross Total</th>
+                    <td style="text-align:right;">@Model.salesInvoiceMaster.NetTotal?.ToString("0.00")</td>
+                </tr>
+                @*<tr>
+                        <th colspan="5" style="text-align:right;">Discount(%)</th>
+                        <td style="text-align:right;">@Model.salesInvoiceMaster.DiscountOnTotal?.ToString("0.00")</td>
+                    </tr>*@
+                <tr>
+                    <th colspan="6" style="text-align:right;">VAT</th>
+                    <td style="text-align:right;">@Model.salesInvoiceMaster.VATOnTotal?.ToString("0.00")</td>
+                </tr>
+                <tr>
+                    <th colspan="6" style="text-align:right;">TAX</th>
+                    <td style="text-align:right;">@Model.salesInvoiceMaster.TAXOnTotal?.ToString("0.00")</td>
+                </tr>
+                <tr>
+                    <th colspan="6" style="text-align:right;">Net Total</th>
+                    <td style="text-align:right;">@Model.salesInvoiceMaster.NetTotal?.ToString("0.00")</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div>
+        <div style="text-align:left;width:100%;">
+            <span style="color:black"><span style="font-weight:600">Amount In Word:</span>&nbsp; &nbsp;@ViewBag.InWord</span>
+        </div>
+    </div>
+
+    <br /><br /><br /><br /><br /><br />
+
+    <div>
+        <div>
+            <div style="float:left">
+                <span style="color:black"></span>
+                <br />
+                <span style="color:black">-----------------</span>
+                <br />
+                <span style="color:black;padding-left:20px">Approved By</span>
+            </div>
+
+            <div style="float:right">
+                <span style="color:black;text-align:center;">@Model.salesInvoiceMaster.createdBy</span>
+                <br />
+                <span style="color:black">------------------</span>
+                <br />
+                <span style="color:black;padding-left:20px">Create By</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+{
+  "title": "Summary of License Application",
+  "title1": "License according to type",
+  "title2": "License according to the Arms",
+  "newApply": "New Apply",
+  "newInvestigation": "New Investigation",
+  "totalInvestigation": "Total Investigation",
+  "hmInfo": "Home Ministry Info",
+  "licenseAssignment": "License Assignment",
+  "approved": "approved",
+
+
+  "process": "Processing",
+  "favor": "Grant Investigation",
+  "against": "Against Investigation",
+
+
+  "licenseRenewYear": "license Renew Year",
+  "SourceName": "Source Name",
+  "LicenseType": "License Type",
+  "armType": "Arm Type",
+
+  "reason": "Reason",
+  "source": "Source",
+  "licenseTypeId": "License Type Id",
+  "licenseGunType": "License Gun Type"
+}
+

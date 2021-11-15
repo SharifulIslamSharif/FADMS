@@ -1,0 +1,36 @@
+Dashboard-Edit-
+               License-one fild missing-http://103.106.237.12:1026/FAMSDB/LicenseInfo/CreateLicense/2
+               gun withdrawn-delete button no work.
+               gun repair - list does not show.
+
+      Private- action-Adress--Edit button not work.http://103.106.237.12:1026/FAMSAPP/PersonalInfo/Address/53710#
+               gun deposit list show gun withdrawn table
+
+      Institution-Basic-Fild Name nill.License-one fild missing.
+
+     	 Financial Institution-Basic-Fild Name nill.
+	License-one fild nill.
+	Gun Deposit license no not show.
+
+      Pistol-Fild Name nill.
+
+      Shotgun-Fild Name nill.
+      
+      License-one fild nill.
+
+      Rifle-Fild Name nill.License-one fild nill.
+
+      Division-Dhaka-Fild Name nill.License-one fild nill.
+
+      Total male license-gun deposit list show gun withdrawn table-http://103.106.237.12:1026/FAMSAPP/PersonalInfo/Gunwithdrawn/
+---------------------------------------------------------------------------------------------
+
+New License Entry-
+      Organization-Organization information profile-One Fild missing. Date Not show.http://103.106.237.12:1026/FAMSDB/LICENSEINFO/NEWLICENSEENTRYfororg/0
+
+License list-
+         Personal list-   gun deposit list show gun withdrawn table. 
+         Organizational list- Basic-Fild Name nill. License-one fild nill. 
+         Gun Deposite Informations-Gun Deposite List http://103.106.237.12:1026/FAMSDB/FinancialOrganization/gundeposite/1009
+
+Dealer-Supplier List-Edit-Contact-Data not save.http://103.106.237.12:1026/FAMSDEALER/Supplier/Contact/1

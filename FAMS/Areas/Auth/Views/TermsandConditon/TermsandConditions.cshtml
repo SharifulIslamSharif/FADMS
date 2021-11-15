@@ -1,0 +1,72 @@
+﻿@using FADMS.DAL.AuthService.Interfaces
+@using System
+@model RegisterViewModel
+@{
+    ViewData["Title"] = "TermsandConditions";
+   Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@inject IUserInfoes userInfo
+@{
+
+    var userInfos = await userInfo.GetUserInfoByUser(@User.Identity.Name);
+    var menu = await userInfo.GetMenuByUserName(User.Identity.Name);
+    string orgTitle = string.Empty;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<div class="container-fluid col-8 offset-2 mt-lg-5">
+    <iframe src="~/terms.pdf" style="border:none;" height="300" width="900" title="Iframe Example"></iframe>
+    <form asp-controller="TermsandConditon" asp-action="TermsandConditions" asp-area="Auth" method="post" data-parsley-validate="parsley" >
+        <hr />
+        <br />
+        <input type="hidden" name="typeId" value="" />
+        <div class="row">
+            <div class="col-10">
+                <input type="checkbox" name="checkbox" value="check" id="agree" /> I have read and agree to the Terms and Conditions and Privacy Policy
+            </div>
+
+            <div class="col-2 float-left">
+                <button class="btn btn-lg btn-outline-info" type="button" id="btnNext" name="submit" style="width:120%;border-radius:50px">Next</button>
+
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+@section Scripts{
+<script>
+
+        $(document).ready(function () {
+
+            $('#btnNext').click(function () {
+                if (document.getElementById('agree').checked)
+                {
+                    var type ='@userInfos.userType.userTypeName';
+
+                    if ($.trim(type) === 'Personal') {
+                        window.location.href = "/FAMSDB/MenuforPersonal/NewEntry";
+                    }
+                    else if (type === 'Organization') {
+                        window.location.href = "/FAMSDB/MenuforOrg/NewEntry";
+                    }
+                    else if (type === 'FinancialOrganization') {
+                        window.location.href = "/FAMSDB/MenuforOrg/NewEntry";
+                    }
+                }
+                else
+                {
+                    swal('Warning', 'Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy', 'warning');
+                    //alert('Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy');
+                    return false;
+                }
+            
+            })
+        })
+
+    
+
+</script>
+}

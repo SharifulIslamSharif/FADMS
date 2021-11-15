@@ -1,0 +1,9 @@
+{
+  "title": "Organization",
+  "name": "Name",
+  "type": "Type",
+  "EstablishDate": "Establish Date",
+  "noOfEmployee": "Number of Employee",
+  "ownerName": "Owner Name",
+  "blance": "Financial Balance"
+}
